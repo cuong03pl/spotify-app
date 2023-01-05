@@ -1,0 +1,12 @@
+.main { 
+    position: relative;
+    height: 100vh;
+    .wrapper {
+        display: flex;
+        height: 620px;
+        .container {
+            width: 100%;
+        }
+    }
+
+}

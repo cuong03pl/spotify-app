@@ -1,0 +1,46 @@
+@import 'normalize.css';
+
+:root {
+        --font-family: "CircularSp";
+
+}
+* { 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+html { 
+    font-size: 62.5%;
+}
+body { 
+    font-family: var(--font-family), sans-serif;
+}
+@font-face {
+    font-family: 'CircularSp';
+    font-weight: 700;
+    src: url('/assets/fonts/CircularSp-Bold.woff2');
+}
+
+  @font-face {
+    font-family: 'CircularSp';
+    font-weight: 400;
+    
+    src: url('/assets/fonts/CircularSp-Book.woff2');
+  }
+
+//   @font-face {
+//     font-family: 'CircularSpTitle-Black';
+//     font-weight: 700;
+//     src: url('/assets/fonts/CircularSpTitle-Black.woff2');
+//   }
+//   @font-face {
+//     font-family: 'CircularSpTitle-Bold';
+//     font-weight: 700;
+//     src: url('/assets/fonts/CircularSpTitle-Bold.woff2');
+//   }
+
+//   @font-face {
+//     font-family: 'CircularSpTitle-Tall-Bold';
+//     font-weight: 700;
+//     src: url('/assets/fonts/CircularSpTitle-Tall-Bold.woff2');
+//   }
