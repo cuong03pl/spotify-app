@@ -1,5 +1,63 @@
 .wrapper {
     height: 64px;
-    background-color: #005a00;
+    background-color: #070707;
     width: 100%;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    .header-left {
+        
+    }
+    .icon {
+        display: flex;
+        &>button:first-child {
+            margin-right: 16px;
+        }
+    }
+    .header-right {
+        display: flex;
+        align-items: center;
+        .update-btn {
+            margin-right: 30px;
+        }
+        .user {
+            padding: 2px;
+            width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #282828;
+            border-radius: 20px;
+            cursor: pointer;
+            .user-icon {
+                height: 28px;
+                width: 28px;
+                display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            background: #535353;
+            }
+            .user-id {
+                color: #fff;
+                width: 110px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                font-size: 1.4rem;
+                font-weight: 700;
+            }
+            .down-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 6px;
+            }
+        }
+        .header-right-btn {
+            gap: 16px;
+            display: flex;
+        }
+    }
+    
 }

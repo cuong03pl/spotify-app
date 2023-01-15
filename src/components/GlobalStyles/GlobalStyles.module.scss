@@ -14,13 +14,25 @@ html {
 }
 body { 
     font-family: var(--font-family), sans-serif;
+    line-height: 1.6;
+}
+a {
+  text-decoration: none;
+}
+button {
+  border: none;
+  background: none;
 }
 @font-face {
-    font-family: 'CircularSp';
-    font-weight: 700;
-    src: url('/assets/fonts/CircularSp-Bold.woff2');
+    font-family: 'CircularSpTitle-Bold';
+    // font-weight: 400;
+    src: url('/assets/fonts/CircularSpTitle-Bold.woff2');
 }
-
+@font-face {
+  font-family: 'CircularSp';
+  font-weight: 700;
+  src: url('/assets/fonts/CircularSp-Bold.woff2');
+}
   @font-face {
     font-family: 'CircularSp';
     font-weight: 400;
@@ -28,19 +40,21 @@ body {
     src: url('/assets/fonts/CircularSp-Book.woff2');
   }
 
-//   @font-face {
-//     font-family: 'CircularSpTitle-Black';
-//     font-weight: 700;
-//     src: url('/assets/fonts/CircularSpTitle-Black.woff2');
-//   }
-//   @font-face {
-//     font-family: 'CircularSpTitle-Bold';
-//     font-weight: 700;
-//     src: url('/assets/fonts/CircularSpTitle-Bold.woff2');
-//   }
 
-//   @font-face {
-//     font-family: 'CircularSpTitle-Tall-Bold';
-//     font-weight: 700;
-//     src: url('/assets/fonts/CircularSpTitle-Tall-Bold.woff2');
-//   }
+// custom tippy
+.tippy-box {
+  background-color: #545454eb;
+  color: rgb(255, 255, 255);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 22px;
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 99;
+  .tippy-content {
+      padding: 0;
+  }
+  .tippy-arrow {
+      color: #545454eb;
+  }
+}

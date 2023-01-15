@@ -2,4 +2,31 @@
     height: 620px;
     min-width: 241px;
     background-color: #000000;
+    padding-top: 24px;
+    .logo {
+        display: block;
+        padding: 0 24px;
+        margin-bottom: 18px;
+        img {
+            width: 131px;
+            height: 40px;
+        }
+    }
+    .menu-1 {
+        margin-bottom: 24px;
+    }
+
+    .separate {
+        width: 100%;
+        height: 1px;
+        padding: 0 24px;
+        margin-top: 8px;
+        span {
+            height: 1px;
+            background-color: #282828;
+            width: 100%;
+            display: block;
+        }
+        
+    }
 }

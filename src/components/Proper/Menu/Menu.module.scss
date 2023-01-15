@@ -1,0 +1,36 @@
+
+.wrapper {
+    width: 188px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px 12px 12px;
+    height: 40px;
+    width: 100%;
+    &:hover {
+        background: hsla(0,0%,100%,.1);
+        color: #fff;
+    }
+}
+.title {
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #ffffe6;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: CircularSpTitle-Bold;
+}
+.icon {
+
+}
+
+.menu-wrapper {
+    padding: 4px;
+}
+.separate {
+    border-top: 1px hsla(0,0%,100%,.1) solid;
+}

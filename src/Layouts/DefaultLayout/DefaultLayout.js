@@ -6,7 +6,6 @@ import styles from "./DefaultLayout.module.scss";
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
-  console.log(children);
   return (
     <div className={cx("main")}>
       <div className={cx("wrapper")}>

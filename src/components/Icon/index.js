@@ -1,0 +1,237 @@
+export const HomeIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      className="Svg-sc-ytk21e-0 uPxdw home-icon"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+    >
+      <path d="M12.5 3.247a1 1 0 00-1 0L4 7.577V20h4.5v-6a1 1 0 011-1h5a1 1 0 011 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 013 0l7.5 4.33a2 2 0 011 1.732V21a1 1 0 01-1 1h-6.5a1 1 0 01-1-1v-6h-3v6a1 1 0 01-1 1H3a1 1 0 01-1-1V7.577a2 2 0 011-1.732l7.5-4.33z"></path>
+    </svg>
+  );
+};
+
+export const HomeActiveIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill="currentColor"
+    >
+      <path d="M13.5 1.515a3 3 0 00-3 0L3 5.845a2 2 0 00-1 1.732V21a1 1 0 001 1h6a1 1 0 001-1v-6h4v6a1 1 0 001 1h6a1 1 0 001-1V7.577a2 2 0 00-1-1.732l-7.5-4.33z"></path>
+    </svg>
+  );
+};
+
+export const SearchIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      className="Svg-sc-ytk21e-0 uPxdw search-icon"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill="currentColor"
+    >
+      <path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 101.414-1.414l-4.344-4.344a9.157 9.157 0 002.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z"></path>
+    </svg>
+  );
+};
+
+export const SearchActiveIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      className="Svg-sc-ytk21e-0 uPxdw search-active-icon"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill="currentColor"
+    >
+      <path d="M15.356 10.558c0 2.623-2.16 4.75-4.823 4.75-2.664 0-4.824-2.127-4.824-4.75s2.16-4.75 4.824-4.75c2.664 0 4.823 2.127 4.823 4.75z"></path>
+      <path d="M1.126 10.558c0-5.14 4.226-9.28 9.407-9.28 5.18 0 9.407 4.14 9.407 9.28a9.157 9.157 0 01-2.077 5.816l4.344 4.344a1 1 0 01-1.414 1.414l-4.353-4.353a9.454 9.454 0 01-5.907 2.058c-5.18 0-9.407-4.14-9.407-9.28zm9.407-7.28c-4.105 0-7.407 3.274-7.407 7.28s3.302 7.279 7.407 7.279 7.407-3.273 7.407-7.28c0-4.005-3.302-7.278-7.407-7.278z"></path>
+    </svg>
+  );
+};
+
+export const LibraryIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      className="Svg-sc-ytk21e-0 uPxdw collection-icon"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill="currentColor"
+    >
+      <path d="M14.5 2.134a1 1 0 011 0l6 3.464a1 1 0 01.5.866V21a1 1 0 01-1 1h-6a1 1 0 01-1-1V3a1 1 0 01.5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 01-1-1V3a1 1 0 012 0v18a1 1 0 01-1 1zm6 0a1 1 0 01-1-1V3a1 1 0 012 0v18a1 1 0 01-1 1z"></path>
+    </svg>
+  );
+};
+
+export const LibraryActiveIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      className="Svg-sc-ytk21e-0 uPxdw collection-active-icon"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill="currentColor"
+    >
+      <path d="M3 22a1 1 0 01-1-1V3a1 1 0 012 0v18a1 1 0 01-1 1zM15.5 2.134A1 1 0 0014 3v18a1 1 0 001 1h6a1 1 0 001-1V6.464a1 1 0 00-.5-.866l-6-3.464zM9 2a1 1 0 00-1 1v18a1 1 0 102 0V3a1 1 0 00-1-1z"></path>
+    </svg>
+  );
+};
+
+export const CreateListIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      className="Svg-sc-ytk21e-0 uPxdw"
+      fill="currentColor"
+    >
+      <path d="M15.25 8a.75.75 0 01-.75.75H8.75v5.75a.75.75 0 01-1.5 0V8.75H1.5a.75.75 0 010-1.5h5.75V1.5a.75.75 0 011.5 0v5.75h5.75a.75.75 0 01.75.75z"></path>
+    </svg>
+  );
+};
+export const FavouriteIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      fill="currentColor"
+      className="Svg-sc-ytk21e-0 uPxdw"
+    >
+      <path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path>
+    </svg>
+  );
+};
+export const BookMarkIcon = ({ height, width, className }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      fill="currentColor"
+      className="Svg-sc-ytk21e-0 uPxdw"
+    >
+      <path d="M3.75 0A1.75 1.75 0 002 1.75v12.952c0 1.051 1.22 1.633 2.037.972l3.962-3.208 3.943 3.204c.817.663 2.038.082 2.038-.97V1.75A1.75 1.75 0 0012.23 0H3.75z"></path>
+    </svg>
+  );
+};
+
+export const PrevIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      className="Svg-sc-ytk21e-0 kcBZLg IYDlXmBmmUKHveMzIPCF"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M15.957 2.793a1 1 0 010 1.414L8.164 12l7.793 7.793a1 1 0 11-1.414 1.414L5.336 12l9.207-9.207a1 1 0 011.414 0z"></path>
+    </svg>
+  );
+};
+export const NextIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      className="Svg-sc-ytk21e-0 kcBZLg IYDlXmBmmUKHveMzIPCF"
+      viewBox="0 0 24 24"
+      fill={fill}
+      data-encore-id="icon"
+    >
+      <path d="M8.043 2.793a1 1 0 000 1.414L15.836 12l-7.793 7.793a1 1 0 101.414 1.414L18.664 12 9.457 2.793a1 1 0 00-1.414 0z"></path>
+    </svg>
+  );
+};
+
+export const DownIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      className="Svg-sc-ytk21e-0 uPxdw eAXFT6yvz37fvS1lmt6k"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M14 6l-6 6-6-6h12z"></path>
+    </svg>
+  );
+};
+
+export const UserIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      className="Svg-sc-ytk21e-0 uPxdw"
+      fill={fill}
+    >
+      <path d="M6.233.371a4.388 4.388 0 015.002 1.052c.421.459.713.992.904 1.554.143.421.263 1.173.22 1.894-.078 1.322-.638 2.408-1.399 3.316l-.127.152a.75.75 0 00.201 1.13l2.209 1.275a4.75 4.75 0 012.375 4.114V16H.382v-1.143a4.75 4.75 0 012.375-4.113l2.209-1.275a.75.75 0 00.201-1.13l-.126-.152c-.761-.908-1.322-1.994-1.4-3.316-.043-.721.077-1.473.22-1.894a4.346 4.346 0 01.904-1.554c.411-.448.91-.807 1.468-1.052zM8 1.5a2.888 2.888 0 00-2.13.937 2.85 2.85 0 00-.588 1.022c-.077.226-.175.783-.143 1.323.054.921.44 1.712 1.051 2.442l.002.001.127.153a2.25 2.25 0 01-.603 3.39l-2.209 1.275A3.25 3.25 0 001.902 14.5h12.196a3.25 3.25 0 00-1.605-2.457l-2.209-1.275a2.25 2.25 0 01-.603-3.39l.127-.153.002-.001c.612-.73.997-1.52 1.052-2.442.032-.54-.067-1.097-.144-1.323a2.85 2.85 0 00-.588-1.022A2.888 2.888 0 008 1.5z"></path>
+    </svg>
+  );
+};
+
+export const ExternalLinkIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      aria-label="Đường liên kết bên ngoài"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      className="Svg-sc-ytk21e-0 uPxdw"
+      fill={fill}
+    >
+      <path d="M1 2.75A.75.75 0 011.75 2H7v1.5H2.5v11h10.219V9h1.5v6.25a.75.75 0 01-.75.75H1.75a.75.75 0 01-.75-.75V2.75z"></path>
+      <path d="M15 1v4.993a.75.75 0 11-1.5 0V3.56L8.78 8.28a.75.75 0 01-1.06-1.06l4.72-4.72h-2.433a.75.75 0 010-1.5H15z"></path>
+    </svg>
+  );
+};
