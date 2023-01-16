@@ -10,6 +10,7 @@ function Button(
     disableBtn,
     iconBtnSmall,
     circleBtn,
+    playPauseBtn,
     signUpBtn,
     leftIcon,
     rightIcon,
@@ -29,6 +30,7 @@ function Button(
     circleBtn,
     transparentBtn,
     signUpBtn,
+    playPauseBtn,
   });
   const props = { onClick, ...passProps };
   if (to) {

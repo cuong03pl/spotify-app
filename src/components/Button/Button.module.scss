@@ -1,13 +1,13 @@
 .button {
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
 .iconBtnSmall {
     height: 32px;
     width: 32px;
-    background: rgba(0,0,0,.7);
 }
 
 .circleBtn {
@@ -45,4 +45,19 @@
     &:hover {
         opacity: 0.9;
     }
+}
+
+.playPauseBtn {
+    background: #fff;
+    color: #000000;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+        transform: scale(1.06);
+    }
+}
+.left-icon {
+    display: flex;
 }

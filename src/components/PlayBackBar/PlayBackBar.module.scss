@@ -1,0 +1,49 @@
+.playback-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    .current-time {
+        font-weight: 400;
+        font-size: 1.1rem;
+        color: #a7a7a7;
+    }
+    .progress-bar {
+        width: 100%;
+        height: 10px;
+        display: flex;
+        align-items: center;
+        margin: 0 12px;
+        .progress-total {
+            background: hsla(0,0%,100%,.3);
+            height: 4px;
+            width: 100%;
+            position: relative;
+            border-radius: 2px;
+
+            .progress-transform {
+                background: #fff;
+                height: 4px;
+                width: 30%;
+                position: absolute;
+                border-radius: 2px;
+
+            }
+            .progress-hover {
+                border-radius: 2px;
+                
+            }
+            
+        }
+        &:hover .progress-transform{
+            background: #1db954;
+        }
+        
+    }
+    
+    .total-time {
+        font-weight: 400;
+        font-size: 1.1rem;
+        color: #a7a7a7;
+    }
+}
