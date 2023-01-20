@@ -1,0 +1,13 @@
+.playing-bar-right {
+    display: flex;
+    align-items: center;
+    justify-content: end    ;
+    min-width: 180px;
+    width: 15%;
+    .player-btn-icon {
+        opacity: 0.7;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

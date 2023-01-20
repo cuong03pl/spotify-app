@@ -10,9 +10,9 @@ function AuthContext({ children }) {
   //   var scopes = \'user-read-email user-read-private\;
   var response_type = "token";
   const [token, setToken] = useState();
-  console.log(
-    `${auth}?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=${response_type}`
-  );
+  // console.log(
+  //   `${auth}?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=${response_type}`
+  // );
   useEffect(() => {
     const getToken = () => {
       const hash = window.location.hash;
@@ -29,7 +29,6 @@ function AuthContext({ children }) {
     getToken();
   }, []);
 
-  console.log(token);
   return (
     <TokenContext.Provider value={token}>{children}</TokenContext.Provider>
   );

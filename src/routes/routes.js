@@ -5,6 +5,8 @@ import HomePage from "../pages/HomePage/HomePage";
 import CreateListPage from "../pages/CreateListPage/CreateListPage";
 import FavouritePage from "../pages/FavouritePage/FavouritePage";
 import BookMarkPage from "../pages/BookMarkPage/BookMarkPage";
+import LyricsPage from "../pages/LyricsPage/LyricsPage";
+import QueuePage from "../pages/QueuePage/QueuePage";
 export const publicRoutes = [
   {
     path: config.routes.home,
@@ -29,5 +31,13 @@ export const publicRoutes = [
   {
     path: config.routes.bookmark,
     component: <BookMarkPage />,
+  },
+  {
+    path: config.routes.lyrics,
+    component: <LyricsPage />,
+  },
+  {
+    path: config.routes.queue,
+    component: <QueuePage />,
   },
 ];

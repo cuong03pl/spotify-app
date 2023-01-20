@@ -1,0 +1,18 @@
+.player-controls {
+    width: 40%;
+    .player-btn {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        .player-btn-icon {
+            opacity: 0.7;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    
+
+}

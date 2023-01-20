@@ -20,27 +20,37 @@
             width: 100%;
             position: relative;
             border-radius: 2px;
-
             .progress-transform {
                 background: #fff;
                 height: 4px;
                 width: 30%;
                 position: absolute;
                 border-radius: 2px;
-
             }
-            .progress-hover {
-                border-radius: 2px;
-                
+            .progress-scrubber {
+                position: relative;
+                height: 4px;
+                width: 100%;
+                display: none;
+                .progress-scrubber-item {
+                    height: 12px;
+                    width: 12px;
+                    background: #fff;
+                    position: absolute;
+                    top: -4px;
+                    border-radius: 100%;
+                    margin-left: -6px;
+                }
             }
-            
         }
         &:hover .progress-transform{
             background: #1db954;
         }
-        
+        &:hover .progress-scrubber {
+            display: block;
+
+        }
     }
-    
     .total-time {
         font-weight: 400;
         font-size: 1.1rem;

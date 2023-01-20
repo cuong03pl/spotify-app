@@ -5,5 +5,7 @@ const routes = {
   create_list: "/create-list",
   favourite: "/favourite",
   bookmark: "/bookmark",
+  lyrics: "/lyrics",
+  queue: "/queue",
 };
 export default routes;
