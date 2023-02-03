@@ -31,7 +31,7 @@ function PlayerControl({
       (progressTransform / totalWidth) * audio.current.duration;
   };
   return (
-    <div className={cx("player-controls")}>
+    <div className={cx("wrapper")}>
       <div className={cx("player-btn")}>
         <Tippy content="Trộn bài">
           <div className={cx("player-btn-icon")}>

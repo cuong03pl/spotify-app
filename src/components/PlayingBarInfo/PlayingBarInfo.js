@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 function PlayingBarInfo() {
   return (
-    <div className={cx("content-info")}>
+    <div className={cx("wrapper")}>
       <img
         className={cx("content-img")}
         src="https://i.scdn.co/image/ab67616d00004851f909731198469e69f5809083"

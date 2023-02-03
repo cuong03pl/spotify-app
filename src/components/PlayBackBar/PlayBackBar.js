@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 function PlayBackBar({ currentTime, totalTime, onSeek, timeProgress }) {
   const progressRef = useRef();
   return (
-    <div className={cx("playback-bar")}>
+    <div className={cx("wrapper")}>
       {currentTime && <div className={cx("current-time")}>{currentTime}</div>}
       <div className={cx("progress-bar")}>
         <div

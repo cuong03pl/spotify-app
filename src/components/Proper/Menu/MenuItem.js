@@ -3,9 +3,12 @@ import Button from "../../Button/Button";
 import styles from "./Menu.module.scss";
 const cx = classNames.bind(styles);
 
-function MenuItem({ item }) {
+function MenuItem({ item, onClick }) {
   return (
-    <button className={cx("menu-item", { separate: item.separate })}>
+    <button
+      onClick={onClick}
+      className={cx("menu-item", { separate: item.separate })}
+    >
       <div className={cx("title")}>{item.title}</div>
       <div className={cx("icon")}>{item.icon}</div>
     </button>

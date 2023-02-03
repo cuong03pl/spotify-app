@@ -1,5 +1,4 @@
 import Tippy from "@tippyjs/react";
-import { Tippy as TippyHeadless } from "@tippyjs/react/headless";
 import classNames from "classnames/bind";
 import Button from "../../../components/Button/Button";
 import {
@@ -12,12 +11,12 @@ import styles from "./Header.module.scss";
 import "tippy.js/dist/tippy.css";
 import Menu from "../../../components/Proper/Menu/Menu";
 import { getUser } from "../../../Services/Services";
-import { TokenContext } from "../../../context/AuthContext";
 import { useContext, useEffect, useState } from "react";
 const cx = classNames.bind(styles);
 
 function Header() {
-  const token = useContext(TokenContext);
+  const token = localStorage.getItem("token");
+
   const [user, setUser] = useState();
   var response_type = "token";
 

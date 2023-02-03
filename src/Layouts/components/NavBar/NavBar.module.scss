@@ -3,6 +3,10 @@
     min-width: 241px;
     background-color: #000000;
     padding-top: 24px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
     .logo {
         display: block;
         padding: 0 24px;
@@ -11,6 +15,7 @@
             width: 131px;
             height: 40px;
         }
+
     }
     .menu-1 {
         margin-bottom: 24px;

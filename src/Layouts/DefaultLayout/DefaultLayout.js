@@ -1,4 +1,5 @@
 import classNames from "classnames/bind";
+import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import NavBar from "../components/NavBar/NavBar";
 import PlayingBar from "../components/PlayingBar/PlayingBar";
@@ -13,9 +14,9 @@ function DefaultLayout({ children }) {
         <div className={cx("container")}>
           <Header />
           {children}
+          <Footer />
         </div>
       </div>
-
       <PlayingBar />
     </div>
   );

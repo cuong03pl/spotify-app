@@ -9,8 +9,11 @@ function Button(
     transparentBtn,
     disableBtn,
     iconBtnSmall,
+    mediumBtn,
     circleBtn,
     playPauseBtn,
+    primaryBtn,
+
     signUpBtn,
     leftIcon,
     rightIcon,
@@ -26,11 +29,13 @@ function Button(
   let Comp = "button";
   const classes = cx("button", {
     iconBtnSmall,
+    mediumBtn,
     disableBtn,
     circleBtn,
     transparentBtn,
     signUpBtn,
     playPauseBtn,
+    primaryBtn,
   });
   const props = { onClick, ...passProps };
   if (to) {

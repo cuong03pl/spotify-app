@@ -9,7 +9,10 @@
     height: 32px;
     width: 32px;
 }
-
+.mediumBtn {
+    width: 48px;
+    height: 48px;
+}
 .circleBtn {
     border-radius: 100%;
 }
@@ -60,4 +63,8 @@
 }
 .left-icon {
     display: flex;
+}
+
+.primaryBtn {
+    background: #1ed760;
 }

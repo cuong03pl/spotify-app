@@ -30,7 +30,7 @@ function PlayingBarRight({ audio }) {
     setVolumeProgress(currentVolume * 100);
   };
   return (
-    <div className={cx("playing-bar-right")}>
+    <div className={cx("wrapper")}>
       <Tippy content="Lời bài hát">
         <div className={cx("player-btn-icon")}>
           <Button
@@ -49,7 +49,7 @@ function PlayingBarRight({ audio }) {
           ></Button>
         </div>
       </Tippy>
-      {minVolume ? (
+      {minVolume || volumeProgress > 0 ? (
         <Tippy content="Tắt tiếng">
           <div className={cx("player-btn-icon")} onClick={handleMute}>
             <Button

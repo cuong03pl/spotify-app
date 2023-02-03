@@ -7,5 +7,7 @@ const routes = {
   bookmark: "/bookmark",
   lyrics: "/lyrics",
   queue: "/queue",
+  playlist: "/playlist/:id",
+  show: "/show/:id",
 };
 export default routes;

@@ -1,9 +1,5 @@
 import Tippy from "@tippyjs/react/headless";
-import axios from "axios";
 import classNames from "classnames/bind";
-import { useContext, useEffect, useState } from "react";
-import { TokenContext } from "../../../context/AuthContext";
-import { getUser } from "../../../Services/Services";
 import { ExternalLinkIcon } from "../../Icon";
 import Wrapper from "../Wrapper";
 import styles from "./Menu.module.scss";
@@ -39,12 +35,16 @@ const MENU_ITEMS = [
     title: "Đăng xuất",
     icon: null,
     separate: true,
+    onclick: () => {
+      localStorage.removeItem("token");
+      window.location.reload();
+    },
   },
 ];
 function Menu({ children }) {
   const renderItem = () => {
     return MENU_ITEMS.map((item, index) => {
-      return <MenuItem item={item} key={index} />;
+      return <MenuItem item={item} key={index} onClick={item.onclick} />;
     });
   };
   return (

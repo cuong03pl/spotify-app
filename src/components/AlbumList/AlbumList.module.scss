@@ -1,0 +1,83 @@
+.wrapper {
+    margin-top: 32px;
+    
+    .header {
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+            font-weight: 700;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            user-select: none;
+            // &:hover {
+            //     text-decoration: underline;
+            // }
+        }
+        .see-all {
+            font-size: 1.2rem;
+            color: #b3b3b3;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .album-list {
+        display: flex;
+        column-gap: 24px;
+        .album-item {
+            padding: 16px;
+            background: #181818;
+            width: 218px;
+            height: 308px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color .3s ease;
+            user-select: none;
+
+            &:hover {
+                background: #282828;
+            }
+            .album-img {
+                img {
+                    box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+                    width: 186px;
+                    height: 186px;
+                }
+                margin-bottom: 16px;
+            }
+            .content {
+                .title {
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                    color: #fff;
+                    margin-bottom: 4px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;  
+                    overflow: hidden;
+                }
+                .full-name {
+                    font-size: 1.4rem;
+                    font-weight: 400;
+                    color: #a7a7a7;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;  
+                    overflow: hidden;
+                } 
+            }
+        }
+    }
+    
+    
+}
