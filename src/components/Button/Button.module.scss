@@ -24,7 +24,7 @@
 .transparentBtn {
     background: transparent;
     border: 1px solid #878787;
-    color: #fff;
+    color: var(--text-base);
     font-size: 1.4rem;
     padding: 3px 15px;
     height: 32px;
@@ -51,7 +51,7 @@
 }
 
 .playPauseBtn {
-    background: #fff;
+    background: var(--text-base);
     color: #000000;
     opacity: 1;
     display: flex;

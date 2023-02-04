@@ -7,15 +7,15 @@ import GlobalStyles from "./components/GlobalStyles/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <GlobalStyles>
-      <AuthContext>
-        <App />
-      </AuthContext>
-    </GlobalStyles>
-  </BrowserRouter>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <GlobalStyles>
+        <AuthContext>
+          <App />
+        </AuthContext>
+      </GlobalStyles>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 reportWebVitals();

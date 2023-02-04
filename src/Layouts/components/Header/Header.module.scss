@@ -1,10 +1,14 @@
 .wrapper {
-    height: 64px;
+    height: var(--header-height);
     background-color: #070707;
+    // width: calc(100% - var(--nav-bar-width));
     width: 100%;
     padding: 16px 32px;
     display: flex;
     justify-content: space-between;
+    position: sticky;
+  top: 0;
+  align-self: flex-start;
     .header-left {
         
     }
@@ -26,7 +30,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #282828;
+            background-color: var(--bg-sub);
+
             border-radius: 20px;
             cursor: pointer;
             .user-icon {
@@ -39,7 +44,7 @@
             background: #535353;
             }
             .user-id {
-                color: #fff;
+                color: var(--text-base);
                 width: 110px;
                 text-overflow: ellipsis;
                 overflow: hidden;
@@ -59,5 +64,7 @@
             display: flex;
         }
     }
-    
+    &.sticky {
+        position: sticky;
+    }
 }

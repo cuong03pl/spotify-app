@@ -4,9 +4,10 @@
     background-color: #000000;
     padding-top: 24px;
     position: fixed;
+    height: 100%;
     left: 0;
     top: 0;
-    bottom: 0;
+   
     .logo {
         display: block;
         padding: 0 24px;
@@ -28,7 +29,8 @@
         margin-top: 8px;
         span {
             height: 1px;
-            background-color: #282828;
+            background-color: var(--bg-sub);
+
             width: 100%;
             display: block;
         }

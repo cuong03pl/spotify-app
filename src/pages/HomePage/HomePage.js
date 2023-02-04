@@ -57,9 +57,6 @@ const PATH_LISTS_5 = [
   "playlists/37i9dQZF1DXd6eRC1rN02a",
 ];
 function HomePage() {
-  //
-  // const
-
   return (
     <div className={cx("wrapper")}>
       <Banner data={PATH_LISTS} />

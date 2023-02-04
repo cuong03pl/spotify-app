@@ -1,15 +1,17 @@
 .wrapper { 
     background-color: #181818;
-    height: calc(100vh - 620px);
+    height: var( --playing-bar-height);
     color: white;
     padding: 0 16px;
     display: flex; 
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    bottom: 0;
     width: 100%;
     z-index: 1000;
     min-height: 90px;
     max-height: 90px;
-    border-top: 1px solid #282828;
+    // grid-area: nav-bar;
+
 }

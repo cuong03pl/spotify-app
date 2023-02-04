@@ -22,7 +22,7 @@
             
         }
         &.active {
-            color: #fff;
+            color: var(--text-base);
             .active-icon {
                 display: flex;
                 align-items: center;
@@ -32,7 +32,7 @@
             }
         }
         &:hover .title {
-            color: #fff;
+            color: var(--text-base);
         }
     }
     

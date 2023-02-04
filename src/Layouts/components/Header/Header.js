@@ -19,7 +19,9 @@ function Header() {
 
   const [user, setUser] = useState();
   var response_type = "token";
-
+  // window.onscroll = () => {
+  //   console.log(window.scrollY);
+  // };
   useEffect(() => {
     const fetchApi = async () => {
       await getUser("me", {

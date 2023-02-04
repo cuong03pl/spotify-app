@@ -8,7 +8,7 @@
         align-items: center;
         .title {
             font-weight: 700;
-            color: #fff;
+            color: var(--text-base);
             font-size: 24px;
             cursor: pointer;
             user-select: none;
@@ -41,7 +41,7 @@
             user-select: none;
 
             &:hover {
-                background: #282828;
+                background-color: var(--bg-sub);
             }
             .album-img {
                 img {
@@ -55,7 +55,8 @@
                 .title {
                     font-size: 1.6rem;
                     font-weight: 700;
-                    color: #fff;
+                    color: var(--text-base);
+
                     margin-bottom: 4px;
                     text-overflow: ellipsis;
                     overflow: hidden;
@@ -67,7 +68,7 @@
                 .full-name {
                     font-size: 1.4rem;
                     font-weight: 400;
-                    color: #a7a7a7;
+                    color: var(--text-sub);
                     text-overflow: ellipsis;
                     overflow: hidden;
                     display: -webkit-box;

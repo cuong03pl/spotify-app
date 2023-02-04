@@ -17,6 +17,7 @@ function AlbumItem({ data }) {
         },
       })
         .then((res) => {
+          console.log(res);
           setAlbum(res);
         })
         .catch((err) => {
@@ -30,7 +31,6 @@ function AlbumItem({ data }) {
       setIsShow(true);
     } else setIsShow(false);
   }, [data]);
-  console.log(isShow);
   return (
     <Link
       to={isShow ? `/show/${album?.id}` : `/playlist/${album?.id}`}

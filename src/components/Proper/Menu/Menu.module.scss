@@ -12,7 +12,7 @@
     width: 100%;
     &:hover {
         background: hsla(0,0%,100%,.1);
-        color: #fff;
+        color: var(--text-base);
     }
 }
 .title {

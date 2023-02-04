@@ -16,8 +16,8 @@ function DefaultLayout({ children }) {
           {children}
           <Footer />
         </div>
+        <PlayingBar />
       </div>
-      <PlayingBar />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .wrapper {
     display: flex;
     align-items: center;
-    width: 30%;
+    width: 20%;
     .content-img {
         width: 56px;
         height: 56px;
@@ -19,7 +19,7 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
-            color: #fff;
+            color: var(--text-base);
             &:hover {
                 text-decoration: underline;
                 cursor: pointer;
@@ -31,16 +31,18 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
-            color: #a7a7a7;
+            color: var(--text-sub);
+
 
             .author-item {
                 // display: block;
-            color: #a7a7a7;
+                color: var(--text-sub);
+
                 
                 &:hover {
                     text-decoration: underline;
                     cursor: pointer;
-                    color: #fff;
+                    color: var(--text-base);
                 }
             }
         }

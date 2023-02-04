@@ -34,7 +34,6 @@ function BannerItem({ data }) {
       setIsShow(true);
     } else setIsShow(false);
   }, [data]);
-  console.log(isShow);
   return (
     <Link
       to={isShow ? `/show/${album?.id}` : `/playlist/${album?.id}`}
