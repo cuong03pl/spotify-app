@@ -364,3 +364,69 @@ export const MinVolumeIcon = ({ height, width, className, fill }) => {
     </svg>
   );
 };
+
+export const MoreIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M4.5 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm15 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm-7.5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+    </svg>
+  );
+};
+
+export const MoreArrowIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      className={className}
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M14 10L8 4l-6 6h12z"></path>
+    </svg>
+  );
+};
+export const UploadIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      fill={fill}
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+    >
+      <path d="M3 8a1 1 0 011-1h3.5v2H5v11h14V9h-2.5V7H20a1 1 0 011 1v13a1 1 0 01-1 1H4a1 1 0 01-1-1V8z"></path>
+      <path d="M12 12.326a1 1 0 001-1V3.841l1.793 1.793a1 1 0 101.414-1.414L12 .012 7.793 4.22a1 1 0 101.414 1.414L11 3.84v7.485a1 1 0 001 1z"></path>
+    </svg>
+  );
+};
+
+export const SaveIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M11.999 3a9 9 0 100 18 9 9 0 000-18zm-11 9c0-6.075 4.925-11 11-11s11 4.925 11 11-4.925 11-11 11-11-4.925-11-11z"></path>
+      <path d="M17.999 12a1 1 0 01-1 1h-4v4a1 1 0 11-2 0v-4h-4a1 1 0 110-2h4V7a1 1 0 112 0v4h4a1 1 0 011 1z"></path>
+    </svg>
+  );
+};

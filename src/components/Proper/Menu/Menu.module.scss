@@ -2,7 +2,10 @@
 .wrapper {
     width: 188px;
 }
-
+.moreMenu {
+    min-width: 260px;
+    max-width: 350px;
+}
 .menu-item {
     display: flex;
     justify-content: space-between;

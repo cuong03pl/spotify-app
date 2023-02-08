@@ -68,3 +68,33 @@
 .primaryBtn {
     background: #1ed760;
 }
+
+.followBtn {
+    background: transparent;
+    border: 1px solid #878787;
+    color: var(--text-base);
+    font-size: 1.2rem;
+    padding: 7px 15px;
+    height: 32px;
+    border-radius: 4px;
+    font-weight: 700;
+    &:hover {
+        border: 1px solid #fff; 
+
+    }
+}
+.unfollowBtn {
+    background: transparent;
+    border: 1px solid #fff; 
+
+    color: var(--text-base);
+    font-size: 1.2rem;
+    padding: 7px 15px;
+    height: 32px;
+    
+    border-radius: 4px;
+    font-weight: 700;
+    span {
+        display: block;
+    }
+}

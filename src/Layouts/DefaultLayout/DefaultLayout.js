@@ -14,6 +14,7 @@ function DefaultLayout({ children }) {
         <div className={cx("container")}>
           <Header />
           {children}
+
           <Footer />
         </div>
         <PlayingBar />

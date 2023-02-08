@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import Button from "../../../components/Button/Button";
 import {
   DownIcon,
+  ExternalLinkIcon,
   NextIcon,
   PrevIcon,
   UserIcon,
@@ -13,7 +14,41 @@ import Menu from "../../../components/Proper/Menu/Menu";
 import { getUser } from "../../../Services/Services";
 import { useContext, useEffect, useState } from "react";
 const cx = classNames.bind(styles);
-
+const MENU_ITEMS = [
+  {
+    title: "Tài khoản",
+    icon: <ExternalLinkIcon height={16} width={16} fill="#ffffe6" />,
+  },
+  {
+    title: "Hồ sơ",
+    icon: null,
+  },
+  {
+    title: "Nâng cấp lên Premium",
+    icon: <ExternalLinkIcon height={16} width={16} fill="#ffffe6" />,
+  },
+  {
+    title: "Hỗ trợ",
+    icon: <ExternalLinkIcon height={16} width={16} fill="#ffffe6" />,
+  },
+  {
+    title: "Tải xuống",
+    icon: <ExternalLinkIcon height={16} width={16} fill="#ffffe6" />,
+  },
+  {
+    title: "Cài đặt",
+    icon: null,
+  },
+  {
+    title: "Đăng xuất",
+    icon: null,
+    separate: true,
+    onclick: () => {
+      localStorage.removeItem("token");
+      window.location.reload();
+    },
+  },
+];
 function Header() {
   const token = localStorage.getItem("token");
 
@@ -59,8 +94,7 @@ function Header() {
             <div className={cx("update-btn")}>
               <Button transparentBtn>Nâng cấp</Button>
             </div>
-
-            <Menu>
+            <Menu placement={"bottom-end"} data={MENU_ITEMS}>
               <Tippy arrow={false} content={`${user?.display_name}`}>
                 <div className={cx("user")}>
                   <span className={cx("user-icon")}>

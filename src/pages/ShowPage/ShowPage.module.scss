@@ -1,0 +1,17 @@
+.wrapper{
+    .action {
+        padding: 24px 32px;
+        display: flex;
+        .action-btn {
+            margin-right: 32px;
+        }
+    }
+    .more-icon {
+        transform: rotate(90deg);
+    }
+    .content {
+        display: flex;
+        gap: 5%;
+        padding: 0 32px;
+    }
+}

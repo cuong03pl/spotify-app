@@ -86,3 +86,28 @@ audio {
       color: #545454eb;
   }
 }
+
+.more-icon{
+  transform: rotate(90deg);
+}
+
+
+// custom toast
+
+.Toastify__toast-container {
+  background: transparent !important;
+  display: none;
+}
+
+.Toastify__toast-theme--light {
+  background: #2E77D0 !important;
+  color: var(--text-base) !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+}
+.Toastify__toast-body {
+}
+.Toastify__close-button--light {
+  display: none;
+}
+

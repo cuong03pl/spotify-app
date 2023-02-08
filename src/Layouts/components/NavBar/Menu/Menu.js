@@ -1,13 +1,5 @@
 import classNames from "classnames/bind";
-import {
-  HomeActiveIcon,
-  HomeIcon,
-  LibraryActiveIcon,
-  LibraryIcon,
-  SearchActiveIcon,
-  SearchIcon,
-} from "../../../../components/Icon";
-import { config } from "../../../../config";
+
 import styles from "./Menu.module.scss";
 import MenuItem from "./MenuItem";
 const cx = classNames.bind(styles);

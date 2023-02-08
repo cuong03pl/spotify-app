@@ -16,3 +16,6 @@ https://p.scdn.co/mp3-preview/4df38b27b145e6e2d180a0790e991af3eef99d86?cid=e5ad9
 
 code homepage, cau hinh den playlist, call api
 37i9dQZF1DX29nkpzsmQhh
+
+convert time, ngay, title intro
+toggle follow, sao chép đường liên kết

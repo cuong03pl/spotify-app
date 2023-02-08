@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./Intro.module.scss";
 import PropTypes from "prop-types";
 const cx = classNames.bind(styles);
 
-function Intro() {
-  const show = true;
+function Intro({ show, data }) {
+  const [fontSize, setFontSize] = useState();
 
+  useEffect(() => {
+    if (data?.name.length > 20) {
+      setFontSize(32);
+    }
+  }, [data]);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("intro-img")}>
-        <img
-          src="https://i.scdn.co/image/ab67706f00000002dd689db01730e0325d16bd7b"
-          alt=""
-        />
+        <img src={data?.images[0].url} alt="" />
       </div>
       <div className={cx("content")}>
-        <span className={cx("category")}>playlist</span>
-        <span className={cx("title")}>Thiên Hạ Nghe Gì</span>
+        <span className={cx("category")}>{show ? "PODCAST" : "Playlist"}</span>
+        <span style={{ fontSize: fontSize + "px" }} className={cx("title")}>
+          {data?.name}
+        </span>
         {!show ? (
           <>
             <span className={cx("description")}>
@@ -29,7 +33,7 @@ function Intro() {
             </div>
           </>
         ) : (
-          <span className={cx("author")}>Hieu Nguyen</span>
+          <span className={cx("author")}>{data?.publisher}</span>
         )}
       </div>
     </div>

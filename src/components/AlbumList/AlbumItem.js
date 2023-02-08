@@ -17,7 +17,6 @@ function AlbumItem({ data }) {
         },
       })
         .then((res) => {
-          console.log(res);
           setAlbum(res);
         })
         .catch((err) => {

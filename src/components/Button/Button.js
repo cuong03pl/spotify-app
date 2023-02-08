@@ -13,7 +13,8 @@ function Button(
     circleBtn,
     playPauseBtn,
     primaryBtn,
-
+    followBtn,
+    unfollowBtn,
     signUpBtn,
     leftIcon,
     rightIcon,
@@ -36,6 +37,8 @@ function Button(
     signUpBtn,
     playPauseBtn,
     primaryBtn,
+    followBtn,
+    unfollowBtn,
   });
   const props = { onClick, ...passProps };
   if (to) {
