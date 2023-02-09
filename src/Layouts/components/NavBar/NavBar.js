@@ -50,7 +50,7 @@ function NavBar() {
     {
       to: config.routes.favourite,
       title: "Bài hát đã thích",
-      icon: <FavouriteIcon height={24} width={24} />,
+      icon: <FavouriteIcon height={24} width={24} fill={"currentColor"} />,
       activeIcon: <FavouriteIcon height={24} width={24} />,
     },
     {

@@ -4,8 +4,7 @@ import Button from "../../components/Button/Button";
 
 import styles from "./ShowPage.module.scss";
 import { useEffect, useState } from "react";
-import { MoreArrowIcon, MoreIcon } from "../../components/Icon";
-import Tippy from "@tippyjs/react";
+import { MoreIcon } from "../../components/Icon";
 import Menu from "../../components/Proper/Menu/Menu";
 import ShowList from "../../components/ShowList/ShowList";
 import ShowIntro from "../../components/ShowIntro/ShowIntro";

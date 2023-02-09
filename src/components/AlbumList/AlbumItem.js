@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getPlayList } from "../../Services/Services";
+import { getAlbum } from "../../Services/Services";
 import styles from "./AlbumList.module.scss";
 const cx = classNames.bind(styles);
 
@@ -11,7 +11,7 @@ function AlbumItem({ data }) {
   const [isShow, setIsShow] = useState(false);
   useEffect(() => {
     const fetchApi = async () => {
-      await getPlayList(data, {
+      await getAlbum(data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

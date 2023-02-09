@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 
 function ShowItem({ data }) {
   const [playing, setPlaying] = useState(false);
-  // console.log(data.release_date.split("-"));
+  const [minute, second] = useConvertTime(data.duration_ms);
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(
       `${window.location.origin}/episode/${data?.id}`
@@ -70,9 +70,9 @@ function ShowItem({ data }) {
             <span className={cx("release_date")}>
               {useConvertDate(data.release_date.split("-"))}
             </span>
-            <span className={cx("total-time")}>
-              {useConvertTime(data.duration_ms)}
-            </span>
+            <span className={cx("total-time")}>{`${minute} phút ${
+              second == "0" ? "" : second + "giây"
+            } `}</span>
           </div>
           <div className={cx("action-right")}>
             <div className={cx("icon")}>

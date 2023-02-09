@@ -10,6 +10,7 @@ function Button(
     disableBtn,
     iconBtnSmall,
     mediumBtn,
+    bigBtn,
     circleBtn,
     playPauseBtn,
     primaryBtn,
@@ -31,6 +32,7 @@ function Button(
   const classes = cx("button", {
     iconBtnSmall,
     mediumBtn,
+    bigBtn,
     disableBtn,
     circleBtn,
     transparentBtn,

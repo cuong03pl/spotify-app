@@ -24,12 +24,15 @@ function Intro({ show, data }) {
         </span>
         {!show ? (
           <>
-            <span className={cx("description")}>
-              Những nghệ sĩ Việt có lượt nghe nhiều nhất năm 2022. Ảnh bìa: Đen
-            </span>
+            <span className={cx("description")}>{data?.description}</span>
             <div className={cx("sub")}>
-              <span className={cx("total")}>108.845 lượt thích </span>
-              <span className={cx("total")}>100 bài hát </span>
+              <span className={cx("total")}>
+                {data?.followers.total
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
+                lượt thích
+              </span>
+              <span className={cx("total")}>{data?.tracks.total} bài hát </span>
             </div>
           </>
         ) : (

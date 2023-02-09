@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getPlayList } from "../../Services/Services";
+import { getAlbum } from "../../Services/Services";
 
 import styles from "./Banner.module.scss";
 
@@ -15,7 +15,7 @@ function BannerItem({ data }) {
   console.log();
   useEffect(() => {
     const fetchApi = async () => {
-      await getPlayList(data, {
+      await getAlbum(data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
