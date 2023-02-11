@@ -9,6 +9,10 @@ import LyricsPage from "../pages/LyricsPage/LyricsPage";
 import QueuePage from "../pages/QueuePage/QueuePage";
 import ShowPage from "../pages/ShowPage/ShowPage";
 import PlayListPage from "../pages/PlayListPage/PlayListPage";
+import EpisodePage from "../pages/EpisodePage/EpisodePage";
+import TrackPage from "../pages/TrackPage/TrackPage";
+import ArtistPage from "../pages/ArtistPage/ArtistPage";
+import AlbumPage from "../pages/AlbumPage/AlbumPage";
 export const publicRoutes = [
   {
     path: config.routes.home,
@@ -49,5 +53,21 @@ export const publicRoutes = [
   {
     path: config.routes.playlist,
     component: <PlayListPage />,
+  },
+  {
+    path: config.routes.episode,
+    component: <EpisodePage />,
+  },
+  {
+    path: config.routes.track,
+    component: <TrackPage />,
+  },
+  {
+    path: config.routes.artist,
+    component: <ArtistPage />,
+  },
+  {
+    path: config.routes.album,
+    component: <AlbumPage />,
   },
 ];

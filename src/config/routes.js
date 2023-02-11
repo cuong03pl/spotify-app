@@ -9,5 +9,9 @@ const routes = {
   queue: "/queue",
   playlist: "/playlist/:id",
   show: "/show/:id",
+  episode: "/episodes/:id",
+  artist: "/artists/:id",
+  album: "/albums/:id",
+  track: "/tracks/:id",
 };
 export default routes;

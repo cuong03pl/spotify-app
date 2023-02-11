@@ -10,11 +10,13 @@ import { useConvertDate } from "../../hooks/useConvertDate";
 import { useConvertTime } from "../../hooks/useConvertTime";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 function ShowItem({ data }) {
   const [playing, setPlaying] = useState(false);
   const [minute, second] = useConvertTime(data.duration_ms);
+  const [year, month, day] = useConvertDate(data.release_date.split("-"));
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(
       `${window.location.origin}/episode/${data?.id}`
@@ -31,7 +33,7 @@ function ShowItem({ data }) {
     });
   };
   return (
-    <div className={cx("show-item")}>
+    <Link to={`/episodes/${data?.id}`} className={cx("show-item")}>
       <div className={cx("intro-img")}>
         <img src={data?.images[0].url} alt="" />
       </div>
@@ -67,14 +69,14 @@ function ShowItem({ data }) {
                 </div>
               </Tippy>
             )}
-            <span className={cx("release_date")}>
-              {useConvertDate(data.release_date.split("-"))}
-            </span>
+            <span
+              className={cx("release_date")}
+            >{`${day} thg ${month} ${year}`}</span>
             <span className={cx("total-time")}>{`${minute} phút ${
               second == "0" ? "" : second + "giây"
             } `}</span>
           </div>
-          <div className={cx("action-right")}>
+          <Link to={""} className={cx("action-right")}>
             <div className={cx("icon")}>
               <Tippy content={"Chia sẻ"}>
                 <Button
@@ -90,14 +92,14 @@ function ShowItem({ data }) {
                 />
               </Tippy>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
       <ToastContainer
         bodyClassName={cx("toast-container")}
         toastClassName={cx("toast")}
       />
-    </div>
+    </Link>
   );
 }
 

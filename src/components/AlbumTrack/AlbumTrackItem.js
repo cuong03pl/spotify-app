@@ -1,21 +1,15 @@
 import classNames from "classnames/bind";
-import styles from "./Playlist.module.scss";
-import PropTypes from "prop-types";
-import { PauseIcon, PlayIcon } from "../Icon";
 import { useState } from "react";
-import { useConvertDate } from "../../hooks/useConvertDate";
 import { useConvertTime } from "../../hooks/useConvertTime";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
-
+import { PauseIcon, PlayIcon } from "../Icon";
+import styles from "./AlbumTrack.module.scss";
 const cx = classNames.bind(styles);
 
-function PlaylistItem({ data, i }) {
+function AlbumTrackItem({ data, i }) {
   const [playing, setPlaying] = useState(false);
-  const [minute, second] = useConvertTime(data?.track.duration_ms);
-  const [year, month, day] = useConvertDate(
-    data?.added_at.slice(0, 10).split("-")
-  );
+
+  const [minute, second] = useConvertTime(data?.duration_ms);
   const handlePlay = () => {
     // audio.current.play();
     setPlaying(true);
@@ -25,7 +19,7 @@ function PlaylistItem({ data, i }) {
     setPlaying(false);
   };
   return (
-    <div className={cx("playlist-item")}>
+    <div className={cx("album-track-item")}>
       <div className={cx("numerical-order")}>
         <span className={cx("index")}>{i + 1}</span>
         <span className={cx("btn")}>
@@ -43,14 +37,13 @@ function PlaylistItem({ data, i }) {
         </span>
       </div>
       <div className={cx("info")}>
-        <img src={data?.track.album.images[0].url} alt="" />
         <div>
-          <span className={cx("title")}>{data?.track.name}</span>
+          <span className={cx("title")}>{data.name}</span>
           <div className={cx("author")}>
-            {data?.track.artists.map((item, index) => {
+            {data?.artists.map((item, index) => {
               return (
                 <span key={index}>
-                  {index < data?.track.artists.length - 1
+                  {index < item?.artists?.length - 1
                     ? `${item.name},`
                     : ` ${item.name}`}
                 </span>
@@ -59,15 +52,7 @@ function PlaylistItem({ data, i }) {
           </div>
         </div>
       </div>
-      <div>
-        <Link
-          to={`/albums/${data?.track.album.id}`}
-          className={cx("album-name")}
-        >
-          {data?.track.album.name}
-        </Link>
-      </div>
-      <span className={cx("release-date")}>{`${day}-${month}-${year}`}</span>
+
       <span className={cx("total-time")}>{`${minute}:${
         second < 10 ? `0${second}` : second
       }`}</span>
@@ -75,6 +60,6 @@ function PlaylistItem({ data, i }) {
   );
 }
 
-PlaylistItem.propTypes = {};
+AlbumTrackItem.propTypes = {};
 
-export default PlaylistItem;
+export default AlbumTrackItem;

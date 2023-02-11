@@ -48,13 +48,10 @@ function ShowPage() {
 
   const handleFollow = () => {
     setFollowed(true);
-    console.log(234);
   };
   const handleUnFollow = () => {
     setFollowed(false);
-    console.log(123);
   };
-  console.log(followed);
   return (
     <div className={cx("wrapper")}>
       <Intro show data={shows} />
@@ -83,7 +80,9 @@ function ShowPage() {
       </div>
       <div className={cx("content")}>
         <ShowList data={shows?.episodes.items} />
-        <ShowIntro data={shows} />
+        <div style={{ maxWidth: "30%" }}>
+          <ShowIntro data={shows} title={"Giới thiệu"} />
+        </div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const cx = classNames.bind(styles);
 
-function ShowIntro({ data }) {
+function ShowIntro({ data, title }) {
   const [seeAll, setSeeAll] = useState(false);
   const handleSeeMore = () => {
     setSeeAll(true);
@@ -16,7 +16,7 @@ function ShowIntro({ data }) {
   };
   return (
     <div className={cx("wrapper")}>
-      <h3 className={cx("header")}>Giới thiệu</h3>
+      <h3 className={cx("header")}>{title}</h3>
       <div
         style={
           seeAll

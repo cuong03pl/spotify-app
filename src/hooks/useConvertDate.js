@@ -1,4 +1,6 @@
 export const useConvertDate = (DateArr) => {
-  //   const DateArr = data.release_date.split("-");
-  return `${DateArr[2]} thg ${DateArr[1]} ${DateArr[0]}`;
+  const year = DateArr[0];
+  const month = DateArr[1];
+  const day = DateArr[2];
+  return [year, month, day];
 };

@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
-import AlbumList from "../../components/AlbumList/AlbumList";
 import Banner from "../../components/Banner/Banner";
+import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import styles from "./HomePage.module.scss";
 const cx = classNames.bind(styles);
 
@@ -59,19 +59,19 @@ const PATH_LISTS_5 = [
 function HomePage() {
   return (
     <div className={cx("wrapper")}>
-      <Banner data={PATH_LISTS} />
+      <Banner path={PATH_LISTS} />
 
-      <AlbumList
-        data={PATH_LISTS_1.slice(0, 5)}
+      <Thumbnails
+        path={PATH_LISTS_1.slice(0, 5)}
         title="Chương trình của bạn "
       />
-      <AlbumList
-        data={PATH_LISTS_2.slice(0, 5)}
+      <Thumbnails
+        path={PATH_LISTS_2.slice(0, 5)}
         title="Khám phá thêm nhạc của Madihu "
       />
-      <AlbumList data={PATH_LISTS_3.slice(0, 5)} title="Dành Cho Bạn " />
-      <AlbumList data={PATH_LISTS_4.slice(0, 5)} title="Tâm Trạng " />
-      <AlbumList data={PATH_LISTS_5.slice(0, 5)} title="Hoài Niệm" />
+      <Thumbnails path={PATH_LISTS_3.slice(0, 5)} title="Dành Cho Bạn " />
+      <Thumbnails path={PATH_LISTS_4.slice(0, 5)} title="Tâm Trạng " />
+      <Thumbnails path={PATH_LISTS_5.slice(0, 5)} title="Hoài Niệm" />
     </div>
   );
 }

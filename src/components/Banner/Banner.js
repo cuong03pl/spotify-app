@@ -3,12 +3,12 @@ import styles from "./Banner.module.scss";
 import BannerItem from "./BannerItem";
 const cx = classNames.bind(styles);
 
-function Banner({ data }) {
+function Banner({ path }) {
   return (
     <div className={cx("wrapper")}>
       <span className={cx("welcome")}>Chào buổi chiều</span>
       <div className={cx("content")}>
-        {data?.map((item, index) => {
+        {path?.map((item, index) => {
           return <BannerItem key={index} data={item} />;
         })}
       </div>

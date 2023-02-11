@@ -19,3 +19,5 @@ code homepage, cau hinh den playlist, call api
 
 convert time, ngay, title intro
 toggle follow, sao chép đường liên kết
+
+phần title của banner
