@@ -49,6 +49,7 @@ function AlbumPage({}) {
               title={item?.name}
               artistList={item?.artists}
               i={index}
+              key={index}
             />
           );
         })}

@@ -79,6 +79,13 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;  
             overflow: hidden;
+        
+        }
+        .des + .des {
+            &::before {
+                content: '•';
+                margin: 0px 4px;
+            }
         } 
     }
 }

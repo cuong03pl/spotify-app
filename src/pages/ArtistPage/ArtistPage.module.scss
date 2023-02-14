@@ -71,6 +71,18 @@
                 margin-bottom: 12px;
                 display: block;
             }
+            .see-more {
+                font-size: 1.4rem;
+                color: #ffffffb3;
+                font-weight: 700;
+                margin-top: 8px;
+                display: inline-block;
+
+                &:hover {
+                    color: var(--text-base);
+                    cursor: pointer;
+                }
+            }
         }
         .title {
             font-size: 2.4rem;
@@ -83,7 +95,7 @@
             display: flex;
             gap: 24px;
         }
-
+        
     }
 
     

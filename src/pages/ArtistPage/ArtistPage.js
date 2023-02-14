@@ -11,6 +11,7 @@ import {
 import { useParams } from "react-router-dom";
 import PlaylistItem from "../../components/Playlist/PlaylistItem";
 import AlbumItem from "../../components/Album/AlbumItem";
+import AlbumList from "../../components/Album/Album";
 const cx = classNames.bind(styles);
 function ArtistPage({}) {
   const { id } = useParams();
@@ -19,7 +20,9 @@ function ArtistPage({}) {
   const [topTracks, setTopTracks] = useState();
   const [artist, setArtist] = useState();
   const [relatedArtists, setRelatedArtists] = useState();
-
+  const [seeAll, setSeeAll] = useState(false);
+  const [size, setSize] = useState(5);
+  // const top
   // useEffect(() => {
   //   if (name.length > 20) {
   //     setFontSize(32);
@@ -35,6 +38,7 @@ function ArtistPage({}) {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
+        console.log(res);
         setTopTracks(res);
       });
     };
@@ -52,7 +56,6 @@ function ArtistPage({}) {
     };
     fetchApi();
   }, [id, token]);
-
   useEffect(() => {
     const fetchApi = async () => {
       await getRelatedArtists(`artists/${id}/related-artists`, {
@@ -65,6 +68,16 @@ function ArtistPage({}) {
     };
     fetchApi();
   }, [id]);
+
+  const handleSeeMore = () => {
+    setSeeAll(true);
+    setSize(10);
+  };
+  const handleSeeLess = () => {
+    setSeeAll(false);
+    setSize(5);
+  };
+  console.log(topTracks);
   return (
     <div className={cx("wrapper")}>
       <div
@@ -91,9 +104,11 @@ function ArtistPage({}) {
           <Action />
           <div className={cx("track")}>
             <span className={cx("track-title")}>Phổ biến</span>
-            {topTracks?.tracks.map((item, index) => {
+            {topTracks?.tracks.slice(0, size).map((item, index) => {
+              console.log(item);
               return (
                 <PlaylistItem
+                  key={index}
                   i={index}
                   durationTime={item?.duration_ms}
                   title={item?.name}
@@ -102,10 +117,21 @@ function ArtistPage({}) {
                 />
               );
             })}
+            {seeAll ? (
+              <span onClick={handleSeeLess} className={cx("see-more")}>
+                Ẩn bớt
+              </span>
+            ) : (
+              <span onClick={handleSeeMore} className={cx("see-more")}>
+                Xem thêm
+              </span>
+            )}
           </div>
+
           <span className={cx("title")}>Fan cũng thích</span>
           <div className={cx("artist-list")}>
-            {relatedArtists?.artists.splice(0, 5).map((item, index) => {
+            {relatedArtists?.artists.slice(0, 5).map((item, index) => {
+              console.log(item);
               return (
                 <AlbumItem
                   id={item?.id}
@@ -117,6 +143,12 @@ function ArtistPage({}) {
               );
             })}
           </div>
+
+          <AlbumList
+            id={id}
+            title={`Album của  ${artist?.name}`}
+            artistID={artist?.id}
+          />
         </div>
       </div>
     </div>
