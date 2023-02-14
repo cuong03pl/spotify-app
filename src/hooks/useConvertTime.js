@@ -1,5 +1,7 @@
 export const useConvertTime = (time) => {
-  const second = Math.floor((time / 1000) % 60);
-  const minute = Math.floor(time / 1000 / 60);
-  return [minute, second];
+  if (time) {
+    var second = Math.floor((time / 1000) % 60);
+    var minute = Math.floor(time / 1000 / 60);
+    return [minute, second];
+  }
 };

@@ -5,7 +5,6 @@ import ThumbnailsItem from "./ThumbnailsItem";
 const cx = classNames.bind(styles);
 
 function Thumbnails({ title, path, data }) {
-  // console.log(data);
   return (
     <div className={cx("wrapper")}>
       {title && (

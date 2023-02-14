@@ -9,7 +9,19 @@ function Playlist({ data }) {
   return (
     <div className={cx("wrapper")}>
       {data?.map((item, index) => {
-        return <PlaylistItem data={item} i={index} key={index} />;
+        return (
+          <PlaylistItem
+            i={index}
+            key={index}
+            durationTime={item?.track.duration_ms}
+            imgURL={item?.track.album.images[0].url}
+            title={item?.track.name}
+            albumId={item?.track.album.id}
+            datetime={item?.added_at.slice(0, 10).split("-")}
+            artistList={item?.track.artists}
+            albumName={item?.track.album.name}
+          />
+        );
       })}
     </div>
   );

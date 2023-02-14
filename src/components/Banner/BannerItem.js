@@ -12,7 +12,6 @@ function BannerItem({ data }) {
   const [album, setAlbum] = useState();
   const [isShow, setIsShow] = useState(false);
 
-  console.log();
   useEffect(() => {
     const fetchApi = async () => {
       await getList(data, {

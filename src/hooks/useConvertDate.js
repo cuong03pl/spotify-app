@@ -1,6 +1,8 @@
 export const useConvertDate = (DateArr) => {
-  const year = DateArr[0];
-  const month = DateArr[1];
-  const day = DateArr[2];
+  if (DateArr) {
+    var year = DateArr[0];
+    var month = DateArr[1];
+    var day = DateArr[2];
+  }
   return [year, month, day];
 };

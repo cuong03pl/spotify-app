@@ -25,7 +25,6 @@ function PlayingBarRight({ audio }) {
   };
   const handleUnMute = () => {
     setMinVolume(true);
-    console.log(currentVolume);
     audio.current.volume = currentVolume;
     setVolumeProgress(currentVolume * 100);
   };

@@ -1,106 +1,112 @@
 .wrapper {
     margin-top: 16px;
-    .playlist-item {
+    
+    
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    grid-template-columns:  5% 35% 35% 20%  5% ;
+    display: grid;
+    color: #b3b3b3;
+    padding: 0 16px;
+    height: 56px;
+    border-radius: 4px;
+     
+    .numerical-order {
+        font-size: 1.6rem;
+        .index {
+            display: block;
+        }
+        .btn {
+            display: none;
+        }
+    }
+    .info{
         display: flex;
         align-items: center;
-        grid-template-columns:  5% 35% 35% 20%  5% ;
-        display: grid;
-        color: #b3b3b3;
-        padding: 0 16px;
-        height: 56px;
-        border-radius: 4px;
-         
-        .numerical-order {
+        padding-right: 32px;
+
+        img {
+            height: 40px;
+            width: 40px;
+            margin-right: 16px;
+        }
+        .title{
             font-size: 1.6rem;
-            .index {
-                display: block;
-            }
-            .btn {
-                display: none;
+            color: var(--text-base);
+            display: block;
+            cursor: pointer;
+            text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;  
+                overflow: hidden;
+            &:hover {
+                text-decoration: underline;
             }
         }
-        .info{
+        .author {
+            font-size: 1.4rem;
+            color: #b3b3b3;
+            display: block;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            padding-right: 32px;
-
-            img {
-                height: 40px;
-                width: 40px;
-                margin-right: 16px;
-            }
-            .title{
-                font-size: 1.6rem;
-                color: var(--text-base);
-                display: block;
-                cursor: pointer;
-                text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;  
-                    overflow: hidden;
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-            .author {
-                font-size: 1.4rem;
+            text-overflow: ellipsis;
+            // display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+            .artists {
                 color: #b3b3b3;
-                display: block;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;  
-                    overflow: hidden;
+            }
+            .artists:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .album-name {
+        font-size: 1.4rem;
+        color: #b3b3b3;
+        cursor: pointer;
+        padding-right: 32px;
 
-                span:hover {
-                    text-decoration: underline;
-                }
+        text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;  
+                overflow: hidden;
+        &:hover {
+            text-decoration: underline;
+            color: var(--text-base);
+
+        }
+    }
+    .release-date {
+        font-size: 1.4rem;
+            color: #b3b3b3;
+    }
+    .total-time {
+        font-size: 1.4rem;
+            color: #b3b3b3;
+    }
+    &:hover  {
+        background: #ffffff1a;
+        .btn {
+            display: block;
+        }
+        .index {
+            display: none;
+        }
+        .author {
+            .artists {
+                color: var(--text-base);
             }
         }
         .album-name {
-            font-size: 1.4rem;
-            color: #b3b3b3;
-            cursor: pointer;
-            padding-right: 32px;
-
-            text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;  
-                    overflow: hidden;
-            &:hover {
-                text-decoration: underline;
-                color: var(--text-base);
-
-            }
+            color: var(--text-base);
         }
-        .release-date {
-            font-size: 1.4rem;
-                color: #b3b3b3;
-        }
-        .total-time {
-            font-size: 1.4rem;
-                color: #b3b3b3;
-        }
-        &:hover  {
-            background: #ffffff1a;
-            .btn {
-                display: block;
-            }
-            .index {
-                display: none;
-            }
-            .author {
-                color: var(--text-base);
-            }
-            .album-name {
-                color: var(--text-base);
-            }
-        }  
-    }
-    
+    }  
 }

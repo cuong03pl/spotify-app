@@ -32,7 +32,15 @@ function AlbumList({ id, title, artistID }) {
 
       <div className={cx("album-list")}>
         {artistAlbum?.map((item, index) => {
-          return <AlbumItem data={item} key={index} />;
+          return (
+            <AlbumItem
+              id={item?.id}
+              title={item?.name}
+              datetime={item?.release_date.slice(0, 10).split("-")}
+              imgUrl={item?.images[0].url}
+              key={index}
+            />
+          );
         })}
       </div>
     </div>

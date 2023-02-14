@@ -10,12 +10,20 @@ import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-function PlaylistItem({ data, i }) {
+function PlaylistItem({
+  i,
+  durationTime,
+  imgURL,
+  albumId,
+  title,
+  datetime,
+  artistList,
+  albumName,
+  style,
+}) {
   const [playing, setPlaying] = useState(false);
-  const [minute, second] = useConvertTime(data?.track.duration_ms);
-  const [year, month, day] = useConvertDate(
-    data?.added_at.slice(0, 10).split("-")
-  );
+  const [minute, second] = useConvertTime(durationTime);
+  const [year, month, day] = useConvertDate(datetime);
   const handlePlay = () => {
     // audio.current.play();
     setPlaying(true);
@@ -25,7 +33,7 @@ function PlaylistItem({ data, i }) {
     setPlaying(false);
   };
   return (
-    <div className={cx("playlist-item")}>
+    <div style={style} className={cx("playlist-item")}>
       <div className={cx("numerical-order")}>
         <span className={cx("index")}>{i + 1}</span>
         <span className={cx("btn")}>
@@ -43,34 +51,45 @@ function PlaylistItem({ data, i }) {
         </span>
       </div>
       <div className={cx("info")}>
-        <img src={data?.track.album.images[0].url} alt="" />
+        {imgURL && <img src={imgURL} alt="" />}
+
         <div>
-          <span className={cx("title")}>{data?.track.name}</span>
-          <div className={cx("author")}>
-            {data?.track.artists.map((item, index) => {
-              return (
-                <span key={index}>
-                  {index < data?.track.artists.length - 1
-                    ? `${item.name},`
-                    : ` ${item.name}`}
-                </span>
-              );
-            })}
-          </div>
+          {title && <span className={cx("title")}>{title}</span>}
+          {artistList && (
+            <div className={cx("author")}>
+              {artistList.map((item, index) => {
+                return (
+                  <Link
+                    className={cx("artists")}
+                    to={`/artists/${item?.id}`}
+                    key={index}
+                  >
+                    {index < artistList.length - 1
+                      ? `${item.name},`
+                      : ` ${item.name}`}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
-      <div>
-        <Link
-          to={`/albums/${data?.track.album.id}`}
-          className={cx("album-name")}
-        >
-          {data?.track.album.name}
-        </Link>
-      </div>
-      <span className={cx("release-date")}>{`${day}-${month}-${year}`}</span>
-      <span className={cx("total-time")}>{`${minute}:${
-        second < 10 ? `0${second}` : second
-      }`}</span>
+      {albumName && (
+        <div>
+          <Link to={`/albums/${albumId}`} className={cx("album-name")}>
+            {albumName}
+          </Link>
+        </div>
+      )}
+
+      {datetime && (
+        <span className={cx("release-date")}>{`${day}-${month}-${year}`}</span>
+      )}
+      {durationTime && (
+        <span className={cx("total-time")}>{`${minute}:${
+          second < 10 ? `0${second}` : second
+        }`}</span>
+      )}
     </div>
   );
 }

@@ -30,54 +30,55 @@
     .album-list {
         display: flex;
         column-gap: 24px;
-        .album-item {
-            padding: 16px;
-            background: #181818;
-            width: 218px;
-            height: 308px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color .3s ease;
-            user-select: none;
-
-            &:hover {
-                background-color: var(--bg-sub);
-            }
-            .album-img {
-                img {
-                    box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
-                    width: 186px;
-                    height: 186px;
-                }
-                margin-bottom: 16px;
-            }
-            .content {
-                .title {
-                    font-size: 1.6rem;
-                    font-weight: 700;
-                    color: var(--text-base);
-
-                    margin-bottom: 4px;
-                    text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;  
-                    overflow: hidden;
-                }
-                .full-name {
-                    font-size: 1.4rem;
-                    font-weight: 400;
-                    color: var(--text-sub);
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;  
-                    overflow: hidden;
-                } 
-            }
-        }
+        
     }
     
     
+}
+.album-item {
+    padding: 16px;
+    background: #181818;
+    width: 218px;
+    height: 308px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+    user-select: none;
+
+    &:hover {
+        background-color: var(--bg-sub);
+    }
+    .album-img {
+        img {
+            box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+            width: 186px;
+            height: 186px;
+        }
+        margin-bottom: 16px;
+    }
+    .content {
+        .title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-base);
+
+            margin-bottom: 4px;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+        .des {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-sub);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        } 
+    }
 }

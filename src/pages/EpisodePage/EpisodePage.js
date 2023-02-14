@@ -20,7 +20,6 @@ function EpisodePage({}) {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        console.log(res);
         setEpisodes(res);
       });
     };

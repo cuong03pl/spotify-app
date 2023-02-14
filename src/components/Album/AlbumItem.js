@@ -6,20 +6,27 @@ import { getArtistAlbum, getList } from "../../Services/Services";
 import styles from "./Album.module.scss";
 const cx = classNames.bind(styles);
 
-function AlbumItem({ data }) {
-  const [year, month, day] = useConvertDate(
-    data?.release_date.slice(0, 10).split("-")
-  );
+function AlbumItem({ id, title, description, datetime, imgUrl, artistItem }) {
+  const [year, month, day] = useConvertDate(datetime);
+  if (artistItem) {
+    var path = `/artists/${id}`;
+  }
+
   return (
-    <Link to={`/albums/${data?.id}`} className={cx("album-item")}>
+    <Link to={path || `/albums/${id}`} className={cx("album-item")}>
       <div className={cx("album-img")}>
-        <img src={data?.images[0].url} alt="" />
+        {imgUrl && (
+          <img
+            style={artistItem && { borderRadius: "50%" }}
+            src={imgUrl}
+            alt=""
+          />
+        )}
       </div>
       <div className={cx("content")}>
-        <div className={cx("title")}>{data?.name}</div>
-        <div className={cx("full-name")}>
-          {data?.publisher || data?.description || year}
-        </div>
+        {title && <div className={cx("title")}>{title}</div>}
+        {description && <div className={cx("des")}>{description}</div>}
+        {datetime && <div className={cx("des")}>{year}</div>}
       </div>
     </Link>
   );

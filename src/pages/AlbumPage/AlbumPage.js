@@ -7,8 +7,8 @@ import Action from "../../components/Action/Action";
 import { ClockIcon, PauseIcon, PlayIcon } from "../../components/Icon";
 import { getAlbum, getArtistAlbum } from "../../Services/Services";
 import { useParams } from "react-router-dom";
-import AlbumTrack from "../../components/AlbumTrack/AlbumTrack";
 import AlbumList from "../../components/Album/Album";
+import PlaylistItem from "../../components/Playlist/PlaylistItem";
 const cx = classNames.bind(styles);
 function AlbumPage({}) {
   const { id } = useParams();
@@ -28,7 +28,6 @@ function AlbumPage({}) {
     };
     fetchApi();
   }, [id]);
-  console.log(album);
   return (
     <div className={cx("wrapper")}>
       <Intro category={album?.album_type} show data={album} />
@@ -41,7 +40,19 @@ function AlbumPage({}) {
             <ClockIcon height={16} width={16} fill={"#b3b3b3"} />{" "}
           </span>
         </div>
-        <AlbumTrack data={albumTracks} />
+        {/* <AlbumTrack data={albumTracks} /> */}
+        {albumTracks?.map((item, index) => {
+          return (
+            <PlaylistItem
+              style={{ gridTemplateColumns: "5% 90% 5%" }}
+              durationTime={item?.duration_ms}
+              title={item?.name}
+              artistList={item?.artists}
+              i={index}
+            />
+          );
+        })}
+
         <AlbumList
           id={id}
           artistID={album?.artists[0].id}
