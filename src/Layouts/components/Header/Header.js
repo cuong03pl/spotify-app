@@ -12,7 +12,11 @@ import styles from "./Header.module.scss";
 import "tippy.js/dist/tippy.css";
 import Menu from "../../../components/Proper/Menu/Menu";
 import { getUser } from "../../../Services/Services";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Search from "../../../components/Search/Search";
+import { useDispatch } from "react-redux";
+import { clearInputValue } from "./../../../components/Search/searchSlice";
+
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
   {
@@ -51,10 +55,10 @@ const MENU_ITEMS = [
 ];
 function Header() {
   const token = localStorage.getItem("token");
-
+  const dispatch = useDispatch();
   const [user, setUser] = useState();
   var response_type = "token";
-
+  const currentPath = window.location.pathname;
   useEffect(() => {
     const fetchApi = async () => {
       await getUser("me", {
@@ -65,6 +69,12 @@ function Header() {
     };
     fetchApi();
   }, [token]);
+
+  useEffect(() => {
+    if (!currentPath.includes("/search")) {
+      dispatch(clearInputValue());
+    }
+  }, [currentPath]);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header-left")}>
@@ -84,6 +94,7 @@ function Header() {
             ></Button>
           </Tippy>
         </div>
+        {currentPath.includes("/search") && <Search />}
       </div>
 
       <div className={cx("header-right")}>

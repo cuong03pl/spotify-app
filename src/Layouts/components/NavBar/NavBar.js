@@ -27,9 +27,9 @@ function NavBar() {
       activeIcon: <HomeActiveIcon height={24} width={24} />,
     },
     {
-      to: config.routes.search,
+      to: "/search",
       title: "Tìm kiếm",
-      icon: <SearchIcon height={24} width={24} />,
+      icon: <SearchIcon height={24} width={24} fill={"#B3B3B3"} />,
       activeIcon: <SearchActiveIcon height={24} width={24} />,
     },
     {

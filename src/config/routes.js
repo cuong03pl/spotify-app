@@ -1,6 +1,7 @@
 const routes = {
   home: "/",
-  search: "/search",
+  search: "/search/*",
+  search_results: "/search/:id/*",
   library: "/library",
   create_list: "/create-list",
   favourite: "/favourite",

@@ -27,14 +27,14 @@ export const HomeActiveIcon = ({ height, width, className }) => {
   );
 };
 
-export const SearchIcon = ({ height, width, className }) => {
+export const SearchIcon = ({ height, width, className, fill }) => {
   return (
     <svg
       role="img"
       height={height}
       width={width}
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill={fill}
     >
       <path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 101.414-1.414l-4.344-4.344a9.157 9.157 0 002.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z"></path>
     </svg>
@@ -459,6 +459,22 @@ export const ClockIcon = ({ height, width, className, fill }) => {
     >
       <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"></path>
       <path d="M8 3.25a.75.75 0 01.75.75v3.25H11a.75.75 0 010 1.5H7.25V4A.75.75 0 018 3.25z"></path>
+    </svg>
+  );
+};
+
+export const CloseIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M3.293 3.293a1 1 0 0 1 1.414 0L12 10.586l7.293-7.293a1 1 0 1 1 1.414 1.414L13.414 12l7.293 7.293a1 1 0 0 1-1.414 1.414L12 13.414l-7.293 7.293a1 1 0 0 1-1.414-1.414L10.586 12 3.293 4.707a1 1 0 0 1 0-1.414z"></path>
     </svg>
   );
 };

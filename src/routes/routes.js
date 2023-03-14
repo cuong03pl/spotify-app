@@ -13,6 +13,7 @@ import EpisodePage from "../pages/EpisodePage/EpisodePage";
 import TrackPage from "../pages/TrackPage/TrackPage";
 import ArtistPage from "../pages/ArtistPage/ArtistPage";
 import AlbumPage from "../pages/AlbumPage/AlbumPage";
+import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage";
 export const publicRoutes = [
   {
     path: config.routes.home,
@@ -21,6 +22,10 @@ export const publicRoutes = [
   {
     path: config.routes.search,
     component: <SearchPage />,
+  },
+  {
+    path: config.routes.search_results,
+    component: <SearchResultsPage />,
   },
   {
     path: config.routes.library,

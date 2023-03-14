@@ -6,10 +6,21 @@ import { getArtistAlbum, getList } from "../../Services/Services";
 import styles from "./Album.module.scss";
 const cx = classNames.bind(styles);
 
-function AlbumItem({ id, title, description, datetime, imgUrl, artistItem }) {
+function AlbumItem({
+  id,
+  title,
+  description,
+  datetime,
+  imgUrl,
+  artistItem,
+  playlist,
+}) {
   const [year, month, day] = useConvertDate(datetime);
   if (artistItem) {
     var path = `/artists/${id}`;
+  }
+  if (playlist) {
+    var path = `/playlist/${id}`;
   }
 
   return (

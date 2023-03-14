@@ -7,7 +7,7 @@ import styles from "./Album.module.scss";
 import AlbumItem from "./AlbumItem";
 const cx = classNames.bind(styles);
 
-function AlbumList({ id, title, artistID }) {
+function AlbumList({ id, title = "", artistID }) {
   const [artistAlbum, setArtistAlbum] = useState();
   const token = localStorage.getItem("token");
   useEffect(() => {

@@ -21,3 +21,16 @@ convert time, ngay, title intro
 toggle follow, sao chép đường liên kết
 
 phần title của banner
+
+ui + logic search, page ...
+
+useEffect(() => {
+if (location.key === "default") {
+setPrev(false);
+} else setPrev(true);
+}, [location.key]);
+
+phần nghệ sĩ, playlist
+lưu pathname vào localstorage
+
+useddebounce

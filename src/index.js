@@ -5,14 +5,18 @@ import App from "./App";
 import AuthContext from "./Auth/Auth";
 import GlobalStyles from "./components/GlobalStyles/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <GlobalStyles>
-        <AuthContext>
-          <App />
-        </AuthContext>
+        <Provider store={store}>
+          <AuthContext>
+            <App />
+          </AuthContext>
+        </Provider>
       </GlobalStyles>
     </BrowserRouter>
   </React.StrictMode>

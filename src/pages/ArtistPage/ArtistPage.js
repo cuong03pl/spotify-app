@@ -38,7 +38,6 @@ function ArtistPage({}) {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        console.log(res);
         setTopTracks(res);
       });
     };
@@ -77,7 +76,6 @@ function ArtistPage({}) {
     setSeeAll(false);
     setSize(5);
   };
-  console.log(topTracks);
   return (
     <div className={cx("wrapper")}>
       <div
@@ -105,7 +103,6 @@ function ArtistPage({}) {
           <div className={cx("track")}>
             <span className={cx("track-title")}>Phổ biến</span>
             {topTracks?.tracks.slice(0, size).map((item, index) => {
-              console.log(item);
               return (
                 <PlaylistItem
                   key={index}
@@ -131,9 +128,9 @@ function ArtistPage({}) {
           <span className={cx("title")}>Fan cũng thích</span>
           <div className={cx("artist-list")}>
             {relatedArtists?.artists.slice(0, 5).map((item, index) => {
-              console.log(item);
               return (
                 <AlbumItem
+                  key={index}
                   id={item?.id}
                   title={item?.name}
                   description={item?.type}

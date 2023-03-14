@@ -43,3 +43,8 @@ export const getRelatedArtists = async (path, params) => {
   const res = await get(path, params);
   return res.data;
 };
+
+export const getSearch = async (path, params) => {
+  const res = await get(path, params);
+  return res.data;
+};
