@@ -48,3 +48,20 @@ export const getSearch = async (path, params) => {
   const res = await get(path, params);
   return res.data;
 };
+
+export const getCurrentUserPlaylists = async (params) => {
+  const res = await get("me/playlists", params);
+  return res.data;
+};
+export const getCurrentUserShows = async (params) => {
+  const res = await get("me/shows", params);
+  return res.data;
+};
+export const getCurrentUserAlbums = async (params) => {
+  const res = await get("me/albums", params);
+  return res.data;
+};
+export const getCurrentUserArists = async (params) => {
+  const res = await get("me/following", params);
+  return res.data;
+};

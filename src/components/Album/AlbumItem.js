@@ -13,6 +13,7 @@ function AlbumItem({
   imgUrl,
   artistItem,
   playlist,
+  show,
 }) {
   const [year, month, day] = useConvertDate(datetime);
   if (artistItem) {
@@ -21,7 +22,9 @@ function AlbumItem({
   if (playlist) {
     var path = `/playlist/${id}`;
   }
-
+  if (show) {
+    var path = `/show/${id}`;
+  }
   return (
     <Link to={path || `/albums/${id}`} className={cx("album-item")}>
       <div className={cx("album-img")}>

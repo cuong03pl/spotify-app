@@ -16,6 +16,8 @@ import { useEffect, useState } from "react";
 import Search from "../../../components/Search/Search";
 import { useDispatch } from "react-redux";
 import { clearInputValue } from "./../../../components/Search/searchSlice";
+import Collection from "components/Collection/Collection";
+import queryString from "query-string";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -58,6 +60,7 @@ function Header() {
   const dispatch = useDispatch();
   const [user, setUser] = useState();
   var response_type = "token";
+  const scopes = "user-library-read user-follow-read";
   const currentPath = window.location.pathname;
   useEffect(() => {
     const fetchApi = async () => {
@@ -75,9 +78,7 @@ function Header() {
       dispatch(clearInputValue());
     }
   }, [currentPath]);
-  console.log(
-    `${process.env.REACT_APP_SPOTIFY_AUTH_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${response_type}`
-  );
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header-left")}>
@@ -98,6 +99,7 @@ function Header() {
           </Tippy>
         </div>
         {currentPath.includes("/search") && <Search />}
+        {currentPath.includes("/collection") && <Collection />}
       </div>
 
       <div className={cx("header-right")}>
@@ -125,7 +127,13 @@ function Header() {
             <Button signUpBtn>Đăng kí</Button>
             <Button
               signUpBtn
-              href={`${process.env.REACT_APP_SPOTIFY_AUTH_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${response_type}`}
+              href={`${process.env.REACT_APP_SPOTIFY_AUTH_URL}?client_id=${
+                process.env.REACT_APP_CLIENT_ID
+              }&redirect_uri=${
+                process.env.REACT_APP_REDIRECT_URI
+              }&${queryString.stringify({
+                scope: scopes,
+              })}&response_type=${response_type}`}
             >
               Đăng nhập
             </Button>

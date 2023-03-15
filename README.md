@@ -34,3 +34,5 @@ phần nghệ sĩ, playlist
 lưu pathname vào localstorage
 
 useddebounce
+custom image fallback
+lỗi phần clipboard phải setwidth để không bị thụt ra thụt vào

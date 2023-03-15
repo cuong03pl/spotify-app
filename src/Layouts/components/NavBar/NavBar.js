@@ -33,7 +33,7 @@ function NavBar() {
       activeIcon: <SearchActiveIcon height={24} width={24} />,
     },
     {
-      to: config.routes.library,
+      to: config.routes.library.playlist,
       title: "Thư viện",
       icon: <LibraryIcon height={24} width={24} />,
       activeIcon: <LibraryActiveIcon height={24} width={24} />,
