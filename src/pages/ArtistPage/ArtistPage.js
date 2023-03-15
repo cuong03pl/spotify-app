@@ -30,7 +30,7 @@ function ArtistPage({}) {
   // }, [name]);
   useEffect(() => {
     const fetchApi = async () => {
-      await getTopTracks(`artists/${id}/top-tracks`, {
+      await getTopTracks(id, {
         params: {
           market: "VN",
         },
@@ -45,7 +45,7 @@ function ArtistPage({}) {
   }, [id, token]);
   useEffect(() => {
     const fetchApi = async () => {
-      await getArtist(`artists/${id}`, {
+      await getArtist(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +57,7 @@ function ArtistPage({}) {
   }, [id, token]);
   useEffect(() => {
     const fetchApi = async () => {
-      await getRelatedArtists(`artists/${id}/related-artists`, {
+      await getRelatedArtists(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -79,7 +79,7 @@ function ArtistPage({}) {
   return (
     <div className={cx("wrapper")}>
       <div
-        style={{ backgroundImage: `url(${artist?.images[0].url})` }}
+        style={{ backgroundImage: `url(${artist?.images[0]?.url})` }}
         className={cx("bg-img")}
       ></div>
       <div className={cx("main")}>

@@ -12,7 +12,7 @@ function AlbumList({ id, title = "", artistID }) {
   const token = localStorage.getItem("token");
   useEffect(() => {
     const fetchApi = async () => {
-      await getArtistAlbum(`artists/${artistID}/albums`, {
+      await getArtistAlbum(artistID, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -7,14 +7,14 @@ import styles from "./Banner.module.scss";
 
 const cx = classNames.bind(styles);
 
-function BannerItem({ data }) {
+function BannerItem({ path }) {
   const token = localStorage.getItem("token");
   const [album, setAlbum] = useState();
   const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
     const fetchApi = async () => {
-      await getList(data, {
+      await getList(path, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -29,10 +29,10 @@ function BannerItem({ data }) {
     fetchApi();
   }, [token]);
   useEffect(() => {
-    if (data.includes("shows")) {
+    if (path.includes("shows")) {
       setIsShow(true);
     } else setIsShow(false);
-  }, [data]);
+  }, [path]);
   return (
     <Link
       to={isShow ? `/show/${album?.id}` : `/playlist/${album?.id}`}

@@ -15,7 +15,7 @@ function EpisodePage({}) {
   const [episodes, setEpisodes, setPlaylist] = useState();
   useEffect(() => {
     const fetchApi = async () => {
-      await getEpisode(`episodes/${id}`, {
+      await getEpisode(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -2,7 +2,6 @@ import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useConvertDate } from "../../hooks/useConvertDate";
-import { getArtistAlbum, getList } from "../../Services/Services";
 import styles from "./Album.module.scss";
 const cx = classNames.bind(styles);
 

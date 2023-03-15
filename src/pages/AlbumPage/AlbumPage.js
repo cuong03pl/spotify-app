@@ -17,7 +17,7 @@ function AlbumPage({}) {
   const [albumTracks, setAlbumTracks] = useState();
   useEffect(() => {
     const fetchApi = async () => {
-      await getAlbum(`albums/${id}`, {
+      await getAlbum(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

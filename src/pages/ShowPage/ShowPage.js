@@ -37,7 +37,7 @@ function ShowPage() {
 
   useEffect(() => {
     const fetchApi = async () => {
-      await getShow(`shows/${id}`, {
+      await getShow(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

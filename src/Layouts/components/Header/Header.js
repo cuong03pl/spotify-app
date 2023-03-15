@@ -61,7 +61,7 @@ function Header() {
   const currentPath = window.location.pathname;
   useEffect(() => {
     const fetchApi = async () => {
-      await getUser("me", {
+      await getUser({
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -75,6 +75,9 @@ function Header() {
       dispatch(clearInputValue());
     }
   }, [currentPath]);
+  console.log(
+    `${process.env.REACT_APP_SPOTIFY_AUTH_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${response_type}`
+  );
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header-left")}>

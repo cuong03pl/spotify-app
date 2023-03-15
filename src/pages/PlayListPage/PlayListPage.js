@@ -18,7 +18,7 @@ function PlayListPage() {
 
   useEffect(() => {
     const fetchApi = async () => {
-      await getPlaylist(`playlists/${id}`, {
+      await getPlaylist(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

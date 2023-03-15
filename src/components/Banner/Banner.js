@@ -8,8 +8,8 @@ function Banner({ path }) {
     <div className={cx("wrapper")}>
       <span className={cx("welcome")}>Chào buổi chiều</span>
       <div className={cx("content")}>
-        {path?.map((item, index) => {
-          return <BannerItem key={index} data={item} />;
+        {path?.map((pathItem, index) => {
+          return <BannerItem key={index} path={pathItem} />;
         })}
       </div>
     </div>
