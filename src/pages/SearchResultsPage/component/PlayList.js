@@ -41,7 +41,7 @@ function PlayList(props) {
   }, [token]);
 
   return (
-    <>
+    <div className={cx("item")}>
       <div className={cx("header")}>
         <span className={cx("title")}>Playlist</span>
       </div>
@@ -62,7 +62,7 @@ function PlayList(props) {
             );
           })}
       </div>
-    </>
+    </div>
   );
 }
 

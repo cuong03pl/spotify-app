@@ -1,12 +1,18 @@
 .wrapper {
     padding: 0 32px;
+    min-height: 100vh;
+    background: var(--bg-base);
+    padding-top: 24px;
+}
+.item:not(:first-child) {
+    margin-top: 32px;
 }
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
-    margin-top: 32px;
+    
 }
 .title {
     color: var(--text-base);
@@ -20,7 +26,8 @@
 
 }
 .list {
-    display: flex;
+    display: grid;
     gap: 24px;
-    justify-content: center;
+    grid-template-columns:repeat(5, minmax(0,1fr));
+    // padding: 0 32px;
 }

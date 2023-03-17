@@ -6,12 +6,12 @@ import styles from "./NoAlbumsFound.module.scss";
 import Button from "components/Button/Button";
 
 const cx = classNames.bind(styles);
-function NoAlbumsFound({ title, des, titleBtn, to }) {
+function NoAlbumsFound({ title, des, titleBtn, to, onClick }) {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("title")}>{title}</div>
       <span className={cx("des")}>{des}</span>
-      <Button to={to} signUpBtn>
+      <Button to={to} onClick={onClick} signUpBtn>
         {titleBtn}
       </Button>
     </div>

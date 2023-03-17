@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { getCurrentUserPlaylists, getUser } from "Services/Services";
+import {
+  getCurrentUserPlaylists,
+  getUser,
+  postNewPlaylist,
+} from "Services/Services";
 import classNames from "classnames/bind";
 
 import styles from "./../LibraryPage.module.scss";
 import AlbumItem from "../../../components/Album/AlbumItem";
 import NoAlbumsFound from "../components/NoAlbumsFound";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 function LibraryPlayListPage(props) {
   const [playlist, setPlaylist] = useState([]);
   const token = localStorage.getItem("token");
   const [user, setUser] = useState();
+  const [newPlaylist, setNewPlaylist] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -33,6 +40,33 @@ function LibraryPlayListPage(props) {
     };
     fetchApi();
   }, [token]);
+
+  const handleCreatePlaylist = async () => {
+    await postNewPlaylist(
+      user?.id,
+      {
+        name: "New Playlist",
+        description: `Của ${user?.id}`,
+        public: true,
+      },
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((res) => {
+        setNewPlaylist(res);
+        navigate(`/playlist/${res?.id}`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  console.log(newPlaylist);
   return (
     <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       {playlist?.items?.filter((item) => item.images?.length !== 0).length ===
@@ -41,6 +75,7 @@ function LibraryPlayListPage(props) {
           title={"Tạo playlist đầu tiên của bạn"}
           des={"Thật dễ dàng, chúng tôi sẽ giúp bạn."}
           titleBtn={"Tạo playlist"}
+          onClick={handleCreatePlaylist}
         />
       ) : (
         <>

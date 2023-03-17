@@ -31,7 +31,7 @@ function Tracks(props) {
   }, [searchValue]);
 
   return (
-    <>
+    <div className={cx("item")}>
       <div className={cx("header")}>
         <span className={cx("title")}>Bài hát</span>
       </div>
@@ -51,7 +51,7 @@ function Tracks(props) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 

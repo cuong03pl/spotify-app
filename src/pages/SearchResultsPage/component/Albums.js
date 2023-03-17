@@ -30,12 +30,9 @@ function Album(props) {
     fetchApi();
   }, [searchValue]);
   return (
-    <>
+    <div className={cx("item")}>
       <div className={cx("header")}>
         <span className={cx("title")}>Album</span>
-        <Link to="" className={cx("link")}>
-          Xem thêm
-        </Link>
       </div>
       <div className={cx("list")}>
         {albums?.albums?.items.slice(0, 5).map((item, index) => {
@@ -50,7 +47,7 @@ function Album(props) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -31,7 +31,7 @@ function Artists(props) {
   }, [searchValue]);
 
   return (
-    <>
+    <div className={cx("item")}>
       <div className={cx("header")}>
         <span className={cx("title")}>Nghệ sĩ</span>
       </div>
@@ -49,7 +49,7 @@ function Artists(props) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import { get } from "../utils/request";
+import { get, post, put } from "../utils/request";
 
 export const getUser = async (params) => {
   const res = await get("me", params);
@@ -63,5 +63,17 @@ export const getCurrentUserAlbums = async (params) => {
 };
 export const getCurrentUserArists = async (params) => {
   const res = await get("me/following", params);
+  return res.data;
+};
+
+// post
+export const postNewPlaylist = async (id, data, params) => {
+  const res = await post(`users/${id}/playlists`, data, params);
+  return res.data;
+};
+
+// put
+export const putNewPlaylistDetails = async (id, data, params) => {
+  const res = await put(`playlists/${id}`, data, params);
   return res.data;
 };

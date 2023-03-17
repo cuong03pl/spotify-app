@@ -4,7 +4,7 @@ import styles from "./Intro.module.scss";
 import PropTypes from "prop-types";
 const cx = classNames.bind(styles);
 
-function Intro({ show, data, category }) {
+function Intro({ show, data, category, isUserPlaylist, onClick }) {
   const [fontSize, setFontSize] = useState();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function Intro({ show, data, category }) {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("intro-img")}>
-        <img src={data?.images[0].url} alt="" />
+        <img src={data?.images[0]?.url} alt="" />
       </div>
       <div className={cx("content")}>
         {category ? (
@@ -25,10 +25,20 @@ function Intro({ show, data, category }) {
             {show ? "PODCAST" : "Playlist"}
           </span>
         )}
+        {isUserPlaylist ? (
+          <span
+            onClick={onClick}
+            style={{ fontSize: fontSize + "px", cursor: "pointer" }}
+            className={cx("title")}
+          >
+            {data?.name}
+          </span>
+        ) : (
+          <span style={{ fontSize: fontSize + "px" }} className={cx("title")}>
+            {data?.name}
+          </span>
+        )}
 
-        <span style={{ fontSize: fontSize + "px" }} className={cx("title")}>
-          {data?.name}
-        </span>
         {show ? (
           <span className={cx("author")}>{data?.publisher}</span>
         ) : (
