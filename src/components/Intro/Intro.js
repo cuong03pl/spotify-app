@@ -4,7 +4,7 @@ import styles from "./Intro.module.scss";
 import PropTypes from "prop-types";
 const cx = classNames.bind(styles);
 
-function Intro({ show, data, category, isUserPlaylist, onClick }) {
+function Intro({ show, data, category, isUserPlaylist, onClick, fallback }) {
   const [fontSize, setFontSize] = useState();
 
   useEffect(() => {
@@ -15,7 +15,11 @@ function Intro({ show, data, category, isUserPlaylist, onClick }) {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("intro-img")}>
-        <img src={data?.images[0]?.url} alt="" />
+        {data?.images[0]?.url ? (
+          <img src={data?.images[0]?.url} alt="" />
+        ) : (
+          fallback
+        )}
       </div>
       <div className={cx("content")}>
         {category ? (

@@ -7,7 +7,7 @@ export default function AlertDialog({ isOpen, onClick, id, data }) {
   return (
     <Dialog open={isOpen} onClose={onClick}>
       <DialogContent sx={{ padding: 0, bgcolor: "#282828" }}>
-        <EditDetails id={id} onClick={onClick} data={data} />
+        <EditDetails id={id} onClose={onClick} data={data} />
       </DialogContent>
       {/* <DialogActions></DialogActions> */}
     </Dialog>

@@ -6,6 +6,8 @@ import classNames from "classnames/bind";
 import styles from "./../LibraryPage.module.scss";
 import AlbumItem from "../../../components/Album/AlbumItem";
 import NoAlbumsFound from "../components/NoAlbumsFound";
+import { ArtistFallBackIcon } from "components/Icon";
+import ImageFallBack from "components/FallBack/ImageFallBack";
 
 const cx = classNames.bind(styles);
 function LibraryPlayListPage(props) {
@@ -49,6 +51,18 @@ function LibraryPlayListPage(props) {
                       : ` ${item.name}`;
                   })}
                   imgUrl={item?.album?.images[0]?.url}
+                  fallback={
+                    <ImageFallBack
+                      icon={
+                        <ArtistFallBackIcon
+                          height={64}
+                          width={64}
+                          fill={"#b3b3b3"}
+                        />
+                      }
+                      playlist
+                    />
+                  }
                 />
               );
             })}

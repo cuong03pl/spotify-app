@@ -14,6 +14,7 @@ function AlbumItem({
   artistItem,
   playlist,
   show,
+  fallback,
 }) {
   const [year, month, day] = useConvertDate(datetime);
   if (artistItem) {
@@ -28,12 +29,14 @@ function AlbumItem({
   return (
     <Link to={path || `/albums/${id}`} className={cx("album-item")}>
       <div className={cx("album-img")}>
-        {imgUrl && (
+        {imgUrl ? (
           <img
             style={artistItem && { borderRadius: "50%" }}
             src={imgUrl}
             alt=""
           />
+        ) : (
+          fallback
         )}
       </div>
       <div className={cx("content")}>

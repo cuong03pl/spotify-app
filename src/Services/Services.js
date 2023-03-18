@@ -77,3 +77,8 @@ export const putNewPlaylistDetails = async (id, data, params) => {
   const res = await put(`playlists/${id}`, data, params);
   return res.data;
 };
+
+export const putNewImage = async (id, data, params) => {
+  const res = await put(`playlists/${id}/images`, data, params);
+  return res.data;
+};

@@ -35,7 +35,7 @@ function PlaylistItem({
   return (
     <div style={style} className={cx("playlist-item")}>
       <div className={cx("numerical-order")}>
-        <span className={cx("index")}>{i + 1}</span>
+        {<span className={cx("index")}>{i + 1}</span>}
         <span className={cx("btn")}>
           {playing ? (
             <Button

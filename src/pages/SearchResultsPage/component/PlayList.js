@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import styles from "./../SearchResultsPage.module.scss";
 import AlbumItem from "../../../components/Album/AlbumItem";
 import { getSearch, getUser } from "../../../Services/Services";
+import ImageFallBack from "components/FallBack/ImageFallBack";
+import { PlaylistFallBackIcon } from "components/Icon";
 const cx = classNames.bind(styles);
 function PlayList(props) {
   const [playlist, setPlaylist] = useState([]);
@@ -39,28 +41,36 @@ function PlayList(props) {
     };
     fetchApi();
   }, [token]);
-
   return (
     <div className={cx("item")}>
       <div className={cx("header")}>
         <span className={cx("title")}>Playlist</span>
       </div>
       <div className={cx("list")}>
-        {playlist?.playlists?.items
-          ?.filter((item) => item?.owner?.display_name !== user?.display_name)
-          ?.slice(0, 5)
-          .map((item, index) => {
-            return (
-              <AlbumItem
-                key={index}
-                id={item?.id}
-                title={item?.name}
-                description={`Của ${item?.owner.display_name} `}
-                imgUrl={item?.images[0]?.url}
-                playlist
-              />
-            );
-          })}
+        {playlist?.playlists?.items?.slice(0, 5).map((item, index) => {
+          return (
+            <AlbumItem
+              key={index}
+              id={item?.id}
+              title={item?.name}
+              description={`Của ${item?.owner.display_name} `}
+              imgUrl={item?.images[0]?.url}
+              fallback={
+                <ImageFallBack
+                  icon={
+                    <PlaylistFallBackIcon
+                      height={64}
+                      width={64}
+                      fill={"#b3b3b3"}
+                    />
+                  }
+                  playlist
+                />
+              }
+              playlist
+            />
+          );
+        })}
       </div>
     </div>
   );

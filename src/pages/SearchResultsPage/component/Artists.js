@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import styles from "./../SearchResultsPage.module.scss";
 import AlbumItem from "../../../components/Album/AlbumItem";
 import { getSearch } from "../../../Services/Services";
+import { ArtistFallBackIcon } from "components/Icon";
+import ImageFallBack from "components/FallBack/ImageFallBack";
 const cx = classNames.bind(styles);
 function Artists(props) {
   const [artist, setArtist] = useState([]);
@@ -45,6 +47,18 @@ function Artists(props) {
               description={item?.type}
               imgUrl={item?.images[0]?.url}
               artistItem
+              fallback={
+                <ImageFallBack
+                  icon={
+                    <ArtistFallBackIcon
+                      height={64}
+                      width={64}
+                      fill={"#b3b3b3"}
+                    />
+                  }
+                  artist
+                />
+              }
             />
           );
         })}

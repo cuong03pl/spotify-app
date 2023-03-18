@@ -2,16 +2,22 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./EditDetails.module.scss";
 import PropTypes from "prop-types";
-import { CloseIcon, PenIcon } from "components/Icon";
+import { CloseIcon, PenIcon, PlaylistFallBackIcon } from "components/Icon";
 import { TextField } from "@mui/material";
 import Button from "components/Button/Button";
-import { putNewPlaylistDetails } from "Services/Services";
+import { putNewImage, putNewPlaylistDetails } from "Services/Services";
+import { useDispatch, useSelector } from "react-redux";
+import { updateDetails } from "pages/PlayListPage/playlistSlice";
+import ImageFallBack from "components/FallBack/ImageFallBack";
 const cx = classNames.bind(styles);
 
-function EditDetails({ onClick, id, data }) {
+function EditDetails({ onClose, id, data }) {
   const [namePlaylist, setNamePlaylist] = useState(data?.name);
   const [des, setDes] = useState(data?.description);
   const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  const playlist = useSelector((state) => state.playlist);
+  console.log(playlist);
 
   const handleSubmit = async () => {
     await putNewPlaylistDetails(
@@ -28,36 +34,35 @@ function EditDetails({ onClick, id, data }) {
         },
       }
     )
-      .then((res) => {
-        console.log("success");
-      })
+      .then((res) => {})
       .catch((error) => {
         console.error(error);
       });
+    dispatch(updateDetails({ namePlaylist, des }));
+    onClose();
   };
 
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header")}>
         <span className={cx("title")}>Sửa thông tin chi tiết</span>
-        <span onClick={onClick}>
+        <span onClick={onClose}>
           <CloseIcon height={32} width={32} fill={"#B3B3B3"} />
         </span>
       </div>
 
       <div className={cx("content")}>
         <div className={cx("image")}>
-          {/* co anh  */}
-          <>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
-              alt=""
+          {playlist?.images.length > 0 ? (
+            <img src={playlist?.images[0]?.url} alt="" />
+          ) : (
+            <ImageFallBack
+              icon={
+                <PlaylistFallBackIcon height={64} width={64} fill={"#b3b3b3"} />
+              }
+              playlist
             />
-          </>
-          <div className={cx("pen")}>
-            <PenIcon height={48} width={48} fill="#fff" />
-            <span className={cx("pen-text")}>Chọn ảnh</span>
-          </div>
+          )}
         </div>
         <div className={cx("fields")}>
           <input
