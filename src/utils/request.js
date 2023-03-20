@@ -18,3 +18,8 @@ export const put = async (path, data, params) => {
   const res = await request.put(path, data, params);
   return res;
 };
+
+export const deleteMethod = async (path, data, params) => {
+  const res = await request.delete(path, data, params);
+  return res;
+};

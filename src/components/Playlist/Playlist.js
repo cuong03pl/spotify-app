@@ -5,7 +5,7 @@ import PlaylistItem from "./PlaylistItem";
 
 const cx = classNames.bind(styles);
 
-function Playlist({ data }) {
+function Playlist({ data, isUserPlaylist, onDelete }) {
   return (
     <div className={cx("wrapper")}>
       {data?.map((item, index) => {
@@ -20,6 +20,9 @@ function Playlist({ data }) {
             datetime={item?.added_at.slice(0, 10).split("-")}
             artistList={item?.track.artists}
             albumName={item?.track.album.name}
+            isUserPlaylist={isUserPlaylist}
+            uris={item?.track?.uri}
+            onDelete={onDelete}
           />
         );
       })}

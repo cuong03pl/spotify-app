@@ -5,6 +5,7 @@ import { PauseIcon, PlayIcon } from "../Icon";
 import { useState } from "react";
 import { useConvertDate } from "../../hooks/useConvertDate";
 import { useConvertTime } from "../../hooks/useConvertTime";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
@@ -19,17 +20,20 @@ function PlaylistItem({
   datetime,
   artistList,
   albumName,
+  addTrack,
+  onAdd,
+  onDelete,
+  uris,
+  isUserPlaylist,
   style,
 }) {
   const [playing, setPlaying] = useState(false);
   const [minute, second] = useConvertTime(durationTime);
   const [year, month, day] = useConvertDate(datetime);
   const handlePlay = () => {
-    // audio.current.play();
     setPlaying(true);
   };
   const handlePause = () => {
-    // audio.current.pause();
     setPlaying(false);
   };
   return (
@@ -86,9 +90,23 @@ function PlaylistItem({
         <span className={cx("release-date")}>{`${day}-${month}-${year}`}</span>
       )}
       {durationTime && (
-        <span className={cx("total-time")}>{`${minute}:${
-          second < 10 ? `0${second}` : second
-        }`}</span>
+        <div className={cx("durationTime")}>
+          <span className={cx("total-time")}>{`${minute}:${
+            second < 10 ? `0${second}` : second
+          }`}</span>
+          {isUserPlaylist && (
+            <span onClick={() => onDelete(uris)} className={cx("icon")}>
+              <DeleteIcon sx={{ fontSize: "20px" }} />
+            </span>
+          )}
+        </div>
+      )}
+      {addTrack && (
+        <div className={cx("add-track")}>
+          <Button onClick={() => onAdd(uris)} transparentBtn>
+            Thêm
+          </Button>
+        </div>
       )}
     </div>
   );

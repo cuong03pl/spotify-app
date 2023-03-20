@@ -109,5 +109,27 @@
         .album-name {
             color: var(--text-base);
         }
+        .durationTime .icon {
+            display: block;
+        }
     }  
+}
+
+.add-track {
+    display: flex;
+    justify-content: end;
+
+}
+
+.durationTime {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    .icon {
+        cursor: pointer;
+        display: none;
+        &:hover {
+            color: #fff;
+        }
+    }
 }

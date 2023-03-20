@@ -36,3 +36,11 @@ lưu pathname vào localstorage
 useddebounce
 custom image fallback
 lỗi phần clipboard phải setwidth để không bị thụt ra thụt vào
+
+đề xuất +thêm bài hát vào my playlist
+ấn vào tạo playlist sẽ tạo 1 playlist mới, xoas baif hat(tao redux luu uris)
+fix ui playlist item
+
+Bài hát đã thích
+tập podcast đã thích
+danh sách chờ

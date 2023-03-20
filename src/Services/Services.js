@@ -1,4 +1,4 @@
-import { get, post, put } from "../utils/request";
+import { deleteMethod, get, post, put } from "../utils/request";
 
 export const getUser = async (params) => {
   const res = await get("me", params);
@@ -66,9 +66,17 @@ export const getCurrentUserArists = async (params) => {
   return res.data;
 };
 
+export const getRecommendations = async (params) => {
+  const res = await get("recommendations", params);
+  return res.data;
+};
 // post
 export const postNewPlaylist = async (id, data, params) => {
   const res = await post(`users/${id}/playlists`, data, params);
+  return res.data;
+};
+export const postNewTrack = async (id, data, params) => {
+  const res = await post(`playlists/${id}/tracks`, data, params);
   return res.data;
 };
 
@@ -80,5 +88,12 @@ export const putNewPlaylistDetails = async (id, data, params) => {
 
 export const putNewImage = async (id, data, params) => {
   const res = await put(`playlists/${id}/images`, data, params);
+  return res.data;
+};
+
+// delete
+
+export const deleteTrack = async (id, data) => {
+  const res = await deleteMethod(`playlists/${id}/tracks`, data);
   return res.data;
 };

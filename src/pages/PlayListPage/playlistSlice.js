@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getPlaylist } from "Services/Services";
+import { deleteTrack, getPlaylist, postNewTrack } from "Services/Services";
 const token = localStorage.getItem("token");
 
 export const getPlaylistThunk = createAsyncThunk("playlist", async (id) => {
@@ -11,6 +11,43 @@ export const getPlaylistThunk = createAsyncThunk("playlist", async (id) => {
   return response;
 });
 
+export const addPlaylistThunk = createAsyncThunk(
+  "post/playlist",
+  async (params) => {
+    const response = await postNewTrack(
+      params.id,
+      { uris: [params.uris] },
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  }
+);
+export const deletePlaylistThunk = createAsyncThunk(
+  "delete/playlist",
+  async (params) => {
+    const response = await deleteTrack(params.id, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        tracks: [
+          {
+            uri: params.uris,
+          },
+        ],
+      },
+    });
+    return response;
+  }
+);
 const initialState = "";
 
 export const playlistSlice = createSlice({
@@ -27,11 +64,16 @@ export const playlistSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(getPlaylistThunk.fulfilled, (state, action) => {
-      // Add user to the state array
-      return (state = action.payload);
-    });
+    builder
+      .addCase(getPlaylistThunk.fulfilled, (state, action) => {
+        return (state = action.payload);
+      })
+      .addCase(addPlaylistThunk.fulfilled, (state, action) => {
+        return (state = action.payload);
+      })
+      .addCase(deletePlaylistThunk.fulfilled, (state, action) => {
+        return (state = action.payload);
+      });
   },
 });
 
