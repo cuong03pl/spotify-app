@@ -65,11 +65,21 @@ export const getCurrentUserArists = async (params) => {
   const res = await get("me/following", params);
   return res.data;
 };
+export const getCurrentUserTracks = async (params) => {
+  const res = await get("me/tracks", params);
+  return res.data;
+};
 
 export const getRecommendations = async (params) => {
   const res = await get("recommendations", params);
   return res.data;
 };
+
+export const CheckUsersSavedTracks = async (params) => {
+  const res = await get("me/tracks/contains", params);
+  return res.data;
+};
+
 // post
 export const postNewPlaylist = async (id, data, params) => {
   const res = await post(`users/${id}/playlists`, data, params);
@@ -79,7 +89,10 @@ export const postNewTrack = async (id, data, params) => {
   const res = await post(`playlists/${id}/tracks`, data, params);
   return res.data;
 };
-
+export const postFavouriteTracks = async (data, params) => {
+  const res = await post("me/tracks", data, params);
+  return res.data;
+};
 // put
 export const putNewPlaylistDetails = async (id, data, params) => {
   const res = await put(`playlists/${id}`, data, params);
@@ -91,9 +104,20 @@ export const putNewImage = async (id, data, params) => {
   return res.data;
 };
 
+export const putFavouriteTrack = async (data, params) => {
+  const res = await put(`me/tracks`, data, params);
+  console.log(res);
+  return res.data;
+};
+
 // delete
 
 export const deleteTrack = async (id, data) => {
   const res = await deleteMethod(`playlists/${id}/tracks`, data);
+  return res.data;
+};
+
+export const deleteFavouriteTrack = async (data) => {
+  const res = await deleteMethod(`me/tracks`, data);
   return res.data;
 };

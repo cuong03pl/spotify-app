@@ -32,9 +32,11 @@
         .content {
             display: flex;
             flex-direction: column;
+            width: 100%;
             .title {
                 font-size: 1.6rem;
                 color: var(--text-base);
+                font-weight: 700;
                 &:hover {
                     text-decoration: underline;
                 } 

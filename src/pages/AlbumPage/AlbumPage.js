@@ -4,8 +4,8 @@ import classNames from "classnames/bind";
 import styles from "./AlbumPage.module.scss";
 import Intro from "../../components/Intro/Intro";
 import Action from "../../components/Action/Action";
-import { ClockIcon, PauseIcon, PlayIcon } from "../../components/Icon";
-import { getAlbum, getArtistAlbum } from "../../Services/Services";
+import { ClockIcon } from "../../components/Icon";
+import { getAlbum } from "../../Services/Services";
 import { useParams } from "react-router-dom";
 import AlbumList from "../../components/Album/Album";
 import PlaylistItem from "../../components/Playlist/PlaylistItem";
@@ -30,7 +30,16 @@ function AlbumPage({}) {
   }, [id]);
   return (
     <div className={cx("wrapper")}>
-      <Intro category={album?.album_type} show data={album} />
+      <Intro
+        category={album?.album_type}
+        data={album}
+        imgUrl={album?.images[0]?.url}
+        title={album?.name}
+        publisher={album?.publisher}
+        description={album?.description}
+        followers={album?.followers}
+        totalTracks={album?.total_tracks}
+      />
       <Action />
       <div className={cx("content")}>
         <div className={cx("header")}>

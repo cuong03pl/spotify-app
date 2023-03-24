@@ -15,6 +15,7 @@ function Menu({ data }) {
             title={item.title}
             icon={item.icon}
             activeIcon={item.activeIcon}
+            onClick={item.onClick}
           />
         );
       })}

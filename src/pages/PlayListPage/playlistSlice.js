@@ -55,7 +55,6 @@ export const playlistSlice = createSlice({
   initialState,
   reducers: {
     updateDetails: (state, actions) => {
-      console.log(actions.payload);
       return (state = {
         ...state,
         description: actions.payload.des,

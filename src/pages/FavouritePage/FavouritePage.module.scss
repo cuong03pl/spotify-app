@@ -1,0 +1,29 @@
+.wrapper {
+    background: var(--bg-base);
+    min-height: calc(100vh - 200px);
+
+}
+.content {
+    padding: 0 32px;
+
+}
+.header {
+    color: #fff;
+    grid-template-columns:  5% 35% 35% 20%  5% ;
+    display: grid;
+    color: #b3b3b3;
+    padding: 0 16px;
+    height: 36px;
+    border-bottom: 1px solid hsla(0,0%,100%,.1);
+    span:first-child {
+        font-size: 1.6rem;
+    }
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+}  
+

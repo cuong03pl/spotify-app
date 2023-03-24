@@ -6,12 +6,7 @@ import PlaylistItem from "components/Playlist/PlaylistItem";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  deleteTrack,
-  getRecommendations,
-  getUser,
-  postNewTrack,
-} from "Services/Services";
+import { getRecommendations, getUser } from "Services/Services";
 import Action from "../../components/Action/Action";
 import { ClockIcon, PlaylistFallBackIcon } from "../../components/Icon";
 import Intro from "../../components/Intro/Intro";
@@ -102,8 +97,14 @@ function PlayListPage() {
   return (
     <div className={cx("wrapper")}>
       <Intro
+        category={playlist?.type}
+        imgUrl={playlist?.images[0]?.url}
+        title={playlist?.name}
+        publisher={playlist?.publisher}
+        description={playlist?.description}
+        followers={playlist?.followers?.total}
+        totalTracks={playlist?.tracks?.total}
         onClick={handleOpenModal}
-        data={playlist}
         isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
         fallback={
           <ImageFallBack

@@ -25,10 +25,19 @@ function EpisodePage({}) {
     };
     fetchApi();
   }, []);
-
   return (
     <div className={cx("wrapper")}>
-      <Intro show data={episodes} />
+      <Intro
+        category={episodes?.type == "show" ? "podcast" : episodes?.type}
+        data={episodes}
+        imgUrl={episodes?.images[0]?.url}
+        title={episodes?.name}
+        publisher={episodes?.show?.name}
+        description={episodes?.description}
+        followers={episodes?.followers}
+        totalTracks={episodes?.tracks?.total}
+        show
+      />
       <Action />
       <div className={cx("content")}>
         <div style={{ maxWidth: "672px" }}>

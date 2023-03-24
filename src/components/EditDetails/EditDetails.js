@@ -17,7 +17,6 @@ function EditDetails({ onClose, id, data }) {
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const playlist = useSelector((state) => state.playlist);
-  console.log(playlist);
 
   const handleSubmit = async () => {
     await putNewPlaylistDetails(

@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./Playlist.module.scss";
 import PropTypes from "prop-types";
-import { PauseIcon, PlayIcon } from "../Icon";
+import { LoveSolidIcon, PauseIcon, PlayIcon } from "../Icon";
 import { useState } from "react";
 import { useConvertDate } from "../../hooks/useConvertDate";
 import { useConvertTime } from "../../hooks/useConvertTime";
@@ -16,6 +16,7 @@ function PlaylistItem({
   durationTime,
   imgURL,
   albumId,
+  trackId,
   title,
   datetime,
   artistList,
@@ -25,17 +26,21 @@ function PlaylistItem({
   onDelete,
   uris,
   isUserPlaylist,
+  onUnlike,
+  isFavourite,
   style,
 }) {
   const [playing, setPlaying] = useState(false);
   const [minute, second] = useConvertTime(durationTime);
   const [year, month, day] = useConvertDate(datetime);
+
   const handlePlay = () => {
     setPlaying(true);
   };
   const handlePause = () => {
     setPlaying(false);
   };
+
   return (
     <div style={style} className={cx("playlist-item")}>
       <div className={cx("numerical-order")}>
@@ -87,8 +92,21 @@ function PlaylistItem({
       )}
 
       {datetime && (
-        <span className={cx("release-date")}>{`${day}-${month}-${year}`}</span>
+        <span className={cx("release-date")}>
+          {`${day}-${month}-${year}`}
+
+          {!isUserPlaylist && (
+            <div className={cx("icon")}>
+              {isFavourite && (
+                <span onClick={() => onUnlike(trackId)}>
+                  <LoveSolidIcon fill={"#1ed760"} />
+                </span>
+              )}
+            </div>
+          )}
+        </span>
       )}
+
       {durationTime && (
         <div className={cx("durationTime")}>
           <span className={cx("total-time")}>{`${minute}:${

@@ -54,7 +54,17 @@ function ShowPage() {
   };
   return (
     <div className={cx("wrapper")}>
-      <Intro show data={shows} />
+      <Intro
+        category={shows?.type == "show" ? "podcast" : shows?.type}
+        data={shows}
+        imgUrl={shows?.images[0]?.url}
+        title={shows?.name}
+        publisher={shows?.publisher}
+        description={shows?.description}
+        followers={shows?.followers}
+        totalTracks={shows?.tracks?.total}
+        show
+      />
       <div className={cx("action")}>
         <div className={cx("action-btn")}>
           {followed ? (

@@ -3,7 +3,6 @@ import SearchPage from "../pages/SearchPage/SeachPage";
 import HomePage from "../pages/HomePage/HomePage";
 import CreateListPage from "../pages/CreateListPage/CreateListPage";
 import FavouritePage from "../pages/FavouritePage/FavouritePage";
-import BookMarkPage from "../pages/BookMarkPage/BookMarkPage";
 import LyricsPage from "../pages/LyricsPage/LyricsPage";
 import QueuePage from "../pages/QueuePage/QueuePage";
 import ShowPage from "../pages/ShowPage/ShowPage";
@@ -56,10 +55,7 @@ export const publicRoutes = [
     path: config.routes.favourite,
     component: <FavouritePage />,
   },
-  {
-    path: config.routes.bookmark,
-    component: <BookMarkPage />,
-  },
+
   {
     path: config.routes.lyrics,
     component: <LyricsPage />,

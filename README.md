@@ -30,17 +30,7 @@ setPrev(false);
 } else setPrev(true);
 }, [location.key]);
 
-phần nghệ sĩ, playlist
-lưu pathname vào localstorage
+truyền lại dữ liệu vào Cpm intro
+Bài hát đã thích ( thêm sửa, xóa dùng redux để call api mỗi khi thêm mới bài hát, )
 
-useddebounce
-custom image fallback
-lỗi phần clipboard phải setwidth để không bị thụt ra thụt vào
-
-đề xuất +thêm bài hát vào my playlist
-ấn vào tạo playlist sẽ tạo 1 playlist mới, xoas baif hat(tao redux luu uris)
-fix ui playlist item
-
-Bài hát đã thích
-tập podcast đã thích
 danh sách chờ
