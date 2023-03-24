@@ -1,0 +1,12 @@
+.wrapper {
+    height: calc(100vh - var(--footer-height));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-base);
+
+    span {
+        font-size: 3.2rem;
+        color: var(--text-base);
+    }
+}

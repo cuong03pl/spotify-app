@@ -4,12 +4,13 @@ import { HomeIcon } from "../../../../components/Icon";
 import styles from "./Menu.module.scss";
 const cx = classNames.bind(styles);
 
-function MenuItem({ to, icon, activeIcon, title }) {
+function MenuItem({ to, icon, activeIcon, title, onClick }) {
   return (
     <NavLink
+      onClick={onClick}
       to={to}
       className={({ isActive }) =>
-        cx("menu-item", isActive ? "active" : undefined)
+        cx("menu-item", isActive && to ? "active" : undefined)
       }
     >
       <span className={cx("icon")}>{icon}</span>

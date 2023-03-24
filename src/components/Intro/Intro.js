@@ -4,44 +4,62 @@ import styles from "./Intro.module.scss";
 import PropTypes from "prop-types";
 const cx = classNames.bind(styles);
 
-function Intro({ show, data, category }) {
+function Intro({
+  show,
+  imgUrl,
+  category,
+  title,
+  publisher,
+  followers,
+  description,
+  totalTracks,
+  isUserPlaylist,
+  onClick,
+  fallback,
+}) {
   const [fontSize, setFontSize] = useState();
 
   useEffect(() => {
-    if (data?.name.length > 20) {
-      setFontSize(32);
+    if (title?.length > 20) {
+      setFontSize(36);
     }
-  }, [data]);
+  }, [title]);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("intro-img")}>
-        <img src={data?.images[0].url} alt="" />
+        {imgUrl ? <img src={imgUrl} alt="" /> : fallback}
       </div>
       <div className={cx("content")}>
-        {category ? (
-          <span className={cx("category")}>{category}</span>
+        {category && <span className={cx("category")}>{category}</span>}
+        {isUserPlaylist ? (
+          <span
+            onClick={onClick}
+            style={{ fontSize: fontSize + "px", cursor: "pointer" }}
+            className={cx("title")}
+          >
+            {title}
+          </span>
         ) : (
-          <span className={cx("category")}>
-            {show ? "PODCAST" : "Playlist"}
+          <span style={{ fontSize: fontSize + "px" }} className={cx("title")}>
+            {title}
           </span>
         )}
 
-        <span style={{ fontSize: fontSize + "px" }} className={cx("title")}>
-          {data?.name}
-        </span>
         {show ? (
-          <span className={cx("author")}>{data?.publisher}</span>
+          <span className={cx("author")}>{publisher}</span>
         ) : (
           <>
-            <span className={cx("description")}>{data?.description}</span>
+            <span className={cx("description")}>{description}</span>
             <div className={cx("sub")}>
-              <span className={cx("total")}>
-                {data?.followers.total
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
-                lượt thích
-              </span>
-              <span className={cx("total")}>{data?.tracks.total} bài hát </span>
+              {followers && (
+                <span className={cx("total")}>
+                  {followers?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
+                  lượt thích
+                </span>
+              )}
+              {totalTracks && (
+                <span className={cx("total")}>{totalTracks} bài hát </span>
+              )}
             </div>
           </>
         )}

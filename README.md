@@ -21,3 +21,16 @@ convert time, ngay, title intro
 toggle follow, sao chép đường liên kết
 
 phần title của banner
+
+ui + logic search, page ...
+
+useEffect(() => {
+if (location.key === "default") {
+setPrev(false);
+} else setPrev(true);
+}, [location.key]);
+
+truyền lại dữ liệu vào Cpm intro
+Bài hát đã thích ( thêm sửa, xóa dùng redux để call api mỗi khi thêm mới bài hát, )
+
+danh sách chờ

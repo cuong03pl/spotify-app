@@ -30,7 +30,7 @@ function ArtistPage({}) {
   // }, [name]);
   useEffect(() => {
     const fetchApi = async () => {
-      await getTopTracks(`artists/${id}/top-tracks`, {
+      await getTopTracks(id, {
         params: {
           market: "VN",
         },
@@ -38,7 +38,6 @@ function ArtistPage({}) {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        console.log(res);
         setTopTracks(res);
       });
     };
@@ -46,7 +45,7 @@ function ArtistPage({}) {
   }, [id, token]);
   useEffect(() => {
     const fetchApi = async () => {
-      await getArtist(`artists/${id}`, {
+      await getArtist(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +57,7 @@ function ArtistPage({}) {
   }, [id, token]);
   useEffect(() => {
     const fetchApi = async () => {
-      await getRelatedArtists(`artists/${id}/related-artists`, {
+      await getRelatedArtists(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -77,11 +76,10 @@ function ArtistPage({}) {
     setSeeAll(false);
     setSize(5);
   };
-  console.log(topTracks);
   return (
     <div className={cx("wrapper")}>
       <div
-        style={{ backgroundImage: `url(${artist?.images[0].url})` }}
+        style={{ backgroundImage: `url(${artist?.images[0]?.url})` }}
         className={cx("bg-img")}
       ></div>
       <div className={cx("main")}>
@@ -105,7 +103,6 @@ function ArtistPage({}) {
           <div className={cx("track")}>
             <span className={cx("track-title")}>Phổ biến</span>
             {topTracks?.tracks.slice(0, size).map((item, index) => {
-              console.log(item);
               return (
                 <PlaylistItem
                   key={index}
@@ -131,9 +128,9 @@ function ArtistPage({}) {
           <span className={cx("title")}>Fan cũng thích</span>
           <div className={cx("artist-list")}>
             {relatedArtists?.artists.slice(0, 5).map((item, index) => {
-              console.log(item);
               return (
                 <AlbumItem
+                  key={index}
                   id={item?.id}
                   title={item?.name}
                   description={item?.type}

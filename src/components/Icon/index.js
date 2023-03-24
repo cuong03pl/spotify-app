@@ -27,14 +27,14 @@ export const HomeActiveIcon = ({ height, width, className }) => {
   );
 };
 
-export const SearchIcon = ({ height, width, className }) => {
+export const SearchIcon = ({ height, width, className, fill }) => {
   return (
     <svg
       role="img"
       height={height}
       width={width}
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill={fill}
     >
       <path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 101.414-1.414l-4.344-4.344a9.157 9.157 0 002.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z"></path>
     </svg>
@@ -104,22 +104,9 @@ export const FavouriteIcon = ({ height, width, className, fill }) => {
       height={height}
       width={width}
       viewBox="0 0 16 16"
-      fill={fill}
-    >
-      <path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path>
-    </svg>
-  );
-};
-export const BookMarkIcon = ({ height, width, className }) => {
-  return (
-    <svg
-      role="img"
-      height={height}
-      width={width}
-      viewBox="0 0 16 16"
       fill="currentColor"
     >
-      <path d="M3.75 0A1.75 1.75 0 002 1.75v12.952c0 1.051 1.22 1.633 2.037.972l3.962-3.208 3.943 3.204c.817.663 2.038.082 2.038-.97V1.75A1.75 1.75 0 0012.23 0H3.75z"></path>
+      <path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path>
     </svg>
   );
 };
@@ -459,6 +446,119 @@ export const ClockIcon = ({ height, width, className, fill }) => {
     >
       <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"></path>
       <path d="M8 3.25a.75.75 0 01.75.75v3.25H11a.75.75 0 010 1.5H7.25V4A.75.75 0 018 3.25z"></path>
+    </svg>
+  );
+};
+
+export const CloseIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M3.293 3.293a1 1 0 0 1 1.414 0L12 10.586l7.293-7.293a1 1 0 1 1 1.414 1.414L13.414 12l7.293 7.293a1 1 0 0 1-1.414 1.414L12 13.414l-7.293 7.293a1 1 0 0 1-1.414-1.414L10.586 12 3.293 4.707a1 1 0 0 1 0-1.414z"></path>
+    </svg>
+  );
+};
+
+export const PenIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      fill={fill}
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+    >
+      <path d="M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z"></path>
+    </svg>
+  );
+};
+
+export const PlaylistFallBackIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      className={className}
+      fill={fill}
+    >
+      <path d="M6 3h15v15.167a3.5 3.5 0 1 1-3.5-3.5H19V5H8v13.167a3.5 3.5 0 1 1-3.5-3.5H6V3zm0 13.667H4.5a1.5 1.5 0 1 0 1.5 1.5v-1.5zm13 0h-1.5a1.5 1.5 0 1 0 1.5 1.5v-1.5z"></path>
+    </svg>
+  );
+};
+
+export const ArtistFallBackIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height={height}
+      width={width}
+      aria-hidden="true"
+      data-testid="card-image-fallback"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="m13.363 10.474-.521.625a2.499 2.499 0 0 0 .67 3.766l.285.164a5.998 5.998 0 0 1 1.288-1.565l-.573-.33a.5.5 0 0 1-.134-.754l.52-.624a7.372 7.372 0 0 0 1.837-4.355 7.221 7.221 0 0 0-.29-2.489 5.644 5.644 0 0 0-3.116-3.424A5.771 5.771 0 0 0 6.753 2.87a5.7 5.7 0 0 0-1.19 2.047 7.22 7.22 0 0 0-.29 2.49 7.373 7.373 0 0 0 1.838 4.355l.518.622a.5.5 0 0 1-.134.753L3.5 15.444a5 5 0 0 0-2.5 4.33v2.231h13.54a5.981 5.981 0 0 1-1.19-2H3v-.23a3 3 0 0 1 1.5-2.6l3.995-2.308a2.5 2.5 0 0 0 .67-3.766l-.521-.625a5.146 5.146 0 0 1-1.188-4.918 3.71 3.71 0 0 1 .769-1.334 3.769 3.769 0 0 1 5.556 0c.346.386.608.84.768 1.334.157.562.22 1.146.187 1.728a5.379 5.379 0 0 1-1.373 3.188zm7.641-1.173a1 1 0 0 0-1 1v4.666h-1a3 3 0 1 0 3 3v-7.666a.999.999 0 0 0-1.003-1h.003zm-1 8.666a1 1 0 1 1-1-1h1v1z"></path>
+    </svg>
+  );
+};
+
+export const LoveOutlineIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height="16"
+      width="16"
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      class="Svg-sc-ytk21e-0 gQUQL"
+    >
+      <path d="M1.69 2A4.582 4.582 0 0 1 8 2.023 4.583 4.583 0 0 1 11.88.817h.002a4.618 4.618 0 0 1 3.782 3.65v.003a4.543 4.543 0 0 1-1.011 3.84L9.35 14.629a1.765 1.765 0 0 1-2.093.464 1.762 1.762 0 0 1-.605-.463L1.348 8.309A4.582 4.582 0 0 1 1.689 2zm3.158.252A3.082 3.082 0 0 0 2.49 7.337l.005.005L7.8 13.664a.264.264 0 0 0 .311.069.262.262 0 0 0 .09-.069l5.312-6.33a3.043 3.043 0 0 0 .68-2.573 3.118 3.118 0 0 0-2.551-2.463 3.079 3.079 0 0 0-2.612.816l-.007.007a1.501 1.501 0 0 1-2.045 0l-.009-.008a3.082 3.082 0 0 0-2.121-.861z"></path>
+    </svg>
+  );
+};
+
+export const LoveThinIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height="16"
+      width="16"
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M1.69 2A4.582 4.582 0 0 1 8 2.023 4.583 4.583 0 0 1 11.88.817h.002a4.618 4.618 0 0 1 3.782 3.65v.003a4.543 4.543 0 0 1-1.011 3.84L9.35 14.629a1.765 1.765 0 0 1-2.093.464 1.762 1.762 0 0 1-.605-.463L1.348 8.309A4.582 4.582 0 0 1 1.689 2zm3.158.252A3.082 3.082 0 0 0 2.49 7.337l.005.005L7.8 13.664a.264.264 0 0 0 .311.069.262.262 0 0 0 .09-.069l5.312-6.33a3.043 3.043 0 0 0 .68-2.573 3.118 3.118 0 0 0-2.551-2.463 3.079 3.079 0 0 0-2.612.816l-.007.007a1.501 1.501 0 0 1-2.045 0l-.009-.008a3.082 3.082 0 0 0-2.121-.861z"></path>
+    </svg>
+  );
+};
+export const LoveSolidIcon = ({ height, width, className, fill }) => {
+  return (
+    <svg
+      role="img"
+      height="16"
+      width="16"
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      data-encore-id="icon"
+      fill={fill}
+    >
+      <path d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z"></path>
     </svg>
   );
 };

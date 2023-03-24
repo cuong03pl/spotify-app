@@ -1,0 +1,22 @@
+.wrapper { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 200px);
+    
+}
+.title { 
+    color: var(--text-base);
+    font-size: 3.2rem;
+    font-weight: 700;
+    
+}
+.des { 
+    color: var(--text-base);
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: block;
+    margin: 32px 0;
+}

@@ -2,25 +2,41 @@ import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useConvertDate } from "../../hooks/useConvertDate";
-import { getArtistAlbum, getList } from "../../Services/Services";
 import styles from "./Album.module.scss";
 const cx = classNames.bind(styles);
 
-function AlbumItem({ id, title, description, datetime, imgUrl, artistItem }) {
+function AlbumItem({
+  id,
+  title,
+  description,
+  datetime,
+  imgUrl,
+  artistItem,
+  playlist,
+  show,
+  fallback,
+}) {
   const [year, month, day] = useConvertDate(datetime);
   if (artistItem) {
     var path = `/artists/${id}`;
   }
-
+  if (playlist) {
+    var path = `/playlist/${id}`;
+  }
+  if (show) {
+    var path = `/show/${id}`;
+  }
   return (
     <Link to={path || `/albums/${id}`} className={cx("album-item")}>
       <div className={cx("album-img")}>
-        {imgUrl && (
+        {imgUrl ? (
           <img
             style={artistItem && { borderRadius: "50%" }}
             src={imgUrl}
             alt=""
           />
+        ) : (
+          fallback
         )}
       </div>
       <div className={cx("content")}>

@@ -1,0 +1,33 @@
+.wrapper {
+    padding: 0 32px;
+    min-height: 100vh;
+    background: var(--bg-base);
+    padding-top: 24px;
+}
+.item:not(:first-child) {
+    margin-top: 32px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    
+}
+.title {
+    color: var(--text-base);
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+.link {
+    color: var(--text-base);
+    font-size: 1.4rem;
+    font-weight: 700;
+
+}
+.list {
+    display: grid;
+    gap: 24px;
+    grid-template-columns:repeat(5, minmax(0,1fr));
+    // padding: 0 32px;
+}

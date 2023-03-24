@@ -1,13 +1,14 @@
 .wrapper {
     margin-top: 16px;
     
+
     
 }
 
 .playlist-item {
     display: flex;
     align-items: center;
-    grid-template-columns:  5% 35% 35% 20%  5% ;
+    grid-template-columns:  5% 35% 35% 20% 5% ;
     display: grid;
     color: #b3b3b3;
     padding: 0 16px;
@@ -39,10 +40,10 @@
             display: block;
             cursor: pointer;
             text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;  
-                overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
             &:hover {
                 text-decoration: underline;
             }
@@ -54,11 +55,7 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            text-overflow: ellipsis;
-            // display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;  
-            overflow: hidden;
+            
             .artists {
                 color: #b3b3b3;
             }
@@ -74,10 +71,10 @@
         padding-right: 32px;
 
         text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;  
-                overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
         &:hover {
             text-decoration: underline;
             color: var(--text-base);
@@ -86,7 +83,11 @@
     }
     .release-date {
         font-size: 1.4rem;
-            color: #b3b3b3;
+        color: #b3b3b3;
+        display: flex;
+        align-items: center;   
+        justify-content: space-between;  
+        padding-right: 24px;   
     }
     .total-time {
         font-size: 1.4rem;
@@ -108,5 +109,29 @@
         .album-name {
             color: var(--text-base);
         }
+        .icon {
+            display: flex;
+        }
     }  
+}
+
+.add-track {
+    display: flex;
+    justify-content: end;
+
+}
+
+.durationTime {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    
+}
+.icon {
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    &:hover {
+        color: #fff;
+    }
 }

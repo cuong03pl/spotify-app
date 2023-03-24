@@ -11,10 +11,12 @@
   top: 0;
   align-self: flex-start;
     .header-left {
-        
+        display: flex;
+        align-items: center;
     }
     .icon {
         display: flex;
+        margin-right: 20px;
         &>button:first-child {
             margin-right: 16px;
         }

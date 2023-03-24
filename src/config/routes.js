@@ -1,7 +1,13 @@
 const routes = {
   home: "/",
-  search: "/search",
-  library: "/library",
+  search: "/search/*",
+  search_results: "/search/:id/*",
+  library: {
+    playlist: "/collection/playlists",
+    podcast: "/collection/podcasts",
+    artists: "/collection/artists",
+    albums: "/collection/albums",
+  },
   create_list: "/create-list",
   favourite: "/favourite",
   bookmark: "/bookmark",

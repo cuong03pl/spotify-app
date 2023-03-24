@@ -1,6 +1,7 @@
 .wrapper {
-    height: 121px;
-    background: #000;
+    height: var(--footer-height);
+    background: var(--bg-base);
+
     padding: 8px 32px 40px;
     display: flex;
     align-items: center;

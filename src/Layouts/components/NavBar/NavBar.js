@@ -1,8 +1,9 @@
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getUser, postNewPlaylist } from "Services/Services";
 import { image } from "../../../assets/images";
 import {
-  BookMarkIcon,
   CreateListIcon,
   FavouriteIcon,
   HomeActiveIcon,
@@ -19,6 +20,33 @@ import styles from "./NavBar.module.scss";
 const cx = classNames.bind(styles);
 
 function NavBar() {
+  const [user, setUser] = useState();
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const handleCreatePlaylist = async () => {
+    await postNewPlaylist(
+      user?.id,
+      {
+        name: "New Playlist",
+        description: `Của ${user?.id}`,
+        public: true,
+      },
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((res) => {
+        navigate(`/playlist/${res?.id}`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   const MENU_ITEM_1 = [
     {
       to: config.routes.home,
@@ -27,13 +55,13 @@ function NavBar() {
       activeIcon: <HomeActiveIcon height={24} width={24} />,
     },
     {
-      to: config.routes.search,
+      to: "/search",
       title: "Tìm kiếm",
-      icon: <SearchIcon height={24} width={24} />,
+      icon: <SearchIcon height={24} width={24} fill={"#B3B3B3"} />,
       activeIcon: <SearchActiveIcon height={24} width={24} />,
     },
     {
-      to: config.routes.library,
+      to: config.routes.library.playlist,
       title: "Thư viện",
       icon: <LibraryIcon height={24} width={24} />,
       activeIcon: <LibraryActiveIcon height={24} width={24} />,
@@ -42,24 +70,30 @@ function NavBar() {
 
   const MENU_ITEM_2 = [
     {
-      to: config.routes.create_list,
+      to: "",
       title: "Tạo playlist",
       icon: <CreateListIcon height={24} width={24} />,
       activeIcon: <CreateListIcon height={24} width={24} />,
+      onClick: handleCreatePlaylist,
     },
     {
       to: config.routes.favourite,
       title: "Bài hát đã thích",
-      icon: <FavouriteIcon height={24} width={24} fill={"currentColor"} />,
+      icon: <FavouriteIcon height={24} width={24} />,
       activeIcon: <FavouriteIcon height={24} width={24} />,
     },
-    {
-      to: config.routes.bookmark,
-      title: "Tập của bạn",
-      icon: <BookMarkIcon height={24} width={24} />,
-      activeIcon: <BookMarkIcon height={24} width={24} />,
-    },
   ];
+  useEffect(() => {
+    const fetchApi = async () => {
+      await getUser({
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => setUser(res));
+    };
+    fetchApi();
+  }, [token]);
+
   return (
     <div className={cx("wrapper")}>
       <Link to={"/"} className={cx("logo")}>
