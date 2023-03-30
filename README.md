@@ -30,7 +30,8 @@ setPrev(false);
 } else setPrev(true);
 }, [location.key]);
 
-bug phần xóa bài hát yêu thích ------------
+---------- phát podcast ----------- now
+
 thêm nghệ sĩ yêu thích
 
 thêm playlist yêu thích

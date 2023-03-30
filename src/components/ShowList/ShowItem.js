@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 
 import styles from "./ShowList.module.scss";
@@ -11,12 +11,40 @@ import { useConvertTime } from "../../hooks/useConvertTime";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setPlayingTrack,
+  setPlayPause,
+  setType,
+  setUrlCurrentTrack,
+} from "Layouts/components/PlayingBar/playerSlice";
 const cx = classNames.bind(styles);
 
 function ShowItem({ data }) {
   const [playing, setPlaying] = useState(false);
   const [minute, second] = useConvertTime(data.duration_ms);
   const [year, month, day] = useConvertDate(data.release_date.split("-"));
+  const state = useSelector((state) => state.player);
+
+  const dispatch = useDispatch();
+
+  const handlePlay = () => {
+    dispatch(setPlayPause(true));
+    dispatch(setPlayingTrack(data.id));
+    dispatch(setType("show"));
+    dispatch(setUrlCurrentTrack(data.audio_preview_url));
+  };
+  const handlePause = () => {
+    dispatch(setPlayPause(false));
+    dispatch(setPlayingTrack(data.id));
+  };
+  useEffect(() => {
+    if (state.id === data.id) {
+      setPlaying(true);
+    } else {
+      setPlaying(false);
+    }
+  }, [data.id, state.id]);
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(
       `${window.location.origin}/episode/${data?.id}`
@@ -32,23 +60,25 @@ function ShowItem({ data }) {
       progress: undefined,
     });
   };
+
   return (
-    <Link to={`/episodes/${data?.id}`} className={cx("show-item")}>
-      <div className={cx("intro-img")}>
+    <div className={cx("show-item")}>
+      <Link to={`/episodes/${data?.id}`} className={cx("intro-img")}>
         <img src={data?.images[0].url} alt="" />
-      </div>
+      </Link>
       <div className={cx("content")}>
         <span className={cx("title")}>{data?.name}</span>
         <span className={cx("description")}>{data?.description}</span>
         <div className={cx("action")}>
           <div className={cx("action-left")}>
-            {playing ? (
+            {state?.isPlay && playing ? (
               <Tippy content="Tạm dừng">
                 <div>
                   <Button
                     iconBtnSmall
                     circleBtn
                     playPauseBtn
+                    onClick={handlePause}
                     leftIcon={
                       <PlayIcon height={16} width={16} fill={"currentcolor"} />
                     }
@@ -59,6 +89,7 @@ function ShowItem({ data }) {
               <Tippy content="Phát">
                 <div>
                   <Button
+                    onClick={handlePlay}
                     iconBtnSmall
                     circleBtn
                     playPauseBtn
@@ -99,7 +130,7 @@ function ShowItem({ data }) {
         bodyClassName={cx("toast-container")}
         toastClassName={cx("toast")}
       />
-    </Link>
+    </div>
   );
 }
 

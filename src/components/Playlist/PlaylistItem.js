@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setPlayingTrack,
   setPlayPause,
+  setType,
   setUrlCurrentTrack,
 } from "Layouts/components/PlayingBar/playerSlice";
 import { getCurrentPlayingTrack } from "Services/Services";
@@ -48,6 +49,8 @@ function PlaylistItem({
   const handlePlay = () => {
     dispatch(setPlayPause(true));
     dispatch(setPlayingTrack(trackId));
+    dispatch(setType("track"));
+
     dispatch(setUrlCurrentTrack(preview_url));
   };
   const handlePause = () => {

@@ -28,14 +28,11 @@
         .author {
             font-size: 1.1rem;
             font-weight: 400;
-            text-overflow: ellipsis;
-            overflow: hidden;
+            display: block;
             white-space: nowrap;
             color: var(--text-sub);
             text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;  
+            text-overflow: ellipsis;
             overflow: hidden;
 
             .author-item {

@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import { addTracksThunk } from "pages/FavouritePage/favouriteSlice";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrack } from "Services/Services";
+import { getEpisode, getShow, getTrack } from "Services/Services";
 
 import PlayerControl from "../../../components/PlayerControl/PlayerControl";
 import PlayingBarInfo from "../../../components/PlayingBarInfo/PlayingBarInfo";
@@ -79,25 +79,38 @@ function PlayingBar() {
       audio?.current?.pause();
     }
   }, [state?.isPlay, state?.id, state.url, currentTrack]);
-
   useEffect(() => {
     const fetchApi = async () => {
-      await getTrack(state?.id, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+      if (state.type === "track") {
+        await getTrack(state?.id, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
 
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => {
-          setCurrentTrack(res);
+            Authorization: `Bearer ${token}`,
+          },
         })
-        .catch((err) => console.log(err));
+          .then((res) => {
+            setCurrentTrack(res);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        await getEpisode(state?.id, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((res) => {
+            setCurrentTrack(res);
+          })
+          .catch((err) => console.log(err));
+      }
     };
     fetchApi();
-  }, [state?.id, state?.isPlay]);
-
+  }, [state?.id, state?.isPlay, state.type]);
   return (
     <div className={cx("wrapper")}>
       {currentTrack ? (

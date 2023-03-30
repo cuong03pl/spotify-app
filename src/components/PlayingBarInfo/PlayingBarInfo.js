@@ -18,6 +18,8 @@ function PlayingBarInfo({ data }) {
   const [isLiked, setIsLiked] = useState();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.favourite);
+  const player = useSelector((state) => state.player);
+
   useEffect(() => {
     const fetchApi = async () => {
       await CheckUsersSavedTracks({
@@ -59,7 +61,7 @@ function PlayingBarInfo({ data }) {
     <div className={cx("wrapper")}>
       <img
         className={cx("content-img")}
-        src={data?.album?.images[0].url}
+        src={data?.album?.images[0].url || data?.images[0]?.url}
         alt=""
       />
       <div className={cx("content")}>
@@ -67,50 +69,48 @@ function PlayingBarInfo({ data }) {
           {data?.name}
         </Link>
         <div className={cx("author")}>
-          {data?.artists.map((item, index) => {
-            return (
-              <Link
-                className={cx("author-item")}
-                to={`/artists/${item?.id}`}
-                key={index}
-              >
-                {index < data?.artists.length - 1
-                  ? `${item.name},`
-                  : ` ${item.name}`}
-              </Link>
-            );
-          })}
+          {player.type === "track"
+            ? data?.artists?.map((item, index) => {
+                return (
+                  <Link
+                    className={cx("author-item")}
+                    to={`/artists/${item?.id}`}
+                    key={index}
+                  >
+                    {index < data?.artists.length - 1
+                      ? `${item.name},`
+                      : ` ${item.name}`}
+                  </Link>
+                );
+              })
+            : data?.show?.name}
         </div>
       </div>
-      <div className={cx("icon")}>
-        {isLiked && (
-          <Tippy content="Xóa khỏi thư viện" arrow={false}>
-            <span
-              onClick={() => handleDeleteFavouriteTrack(data?.id, token)}
-              className={cx("icon-item")}
-            >
-              <LoveSolidIcon height={16} width={16} fill={"#1ed760"} />
-            </span>
-          </Tippy>
-        )}
+      {player.type === "track" && (
+        <div className={cx("icon")}>
+          {isLiked && (
+            <Tippy content="Xóa khỏi thư viện" arrow={false}>
+              <span
+                onClick={() => handleDeleteFavouriteTrack(data?.id, token)}
+                className={cx("icon-item")}
+              >
+                <LoveSolidIcon height={16} width={16} fill={"#1ed760"} />
+              </span>
+            </Tippy>
+          )}
 
-        {!isLiked && (
-          <Tippy content="Lưu vào thư viện" arrow={false}>
-            <span
-              onClick={() => handleAddFavouriteTrack(data?.id, token)}
-              className={cx("icon-item")}
-            >
-              <LikeIcon height={16} width={16} fill={"currentcolor"} />
-            </span>
-          </Tippy>
-        )}
-
-        <Tippy content="Hình trong hình" arrow={false}>
-          <span className={cx("icon-item")}>
-            <PictureInPictureIcon height={16} width={16} />
-          </span>
-        </Tippy>
-      </div>
+          {!isLiked && (
+            <Tippy content="Lưu vào thư viện" arrow={false}>
+              <span
+                onClick={() => handleAddFavouriteTrack(data?.id, token)}
+                className={cx("icon-item")}
+              >
+                <LikeIcon height={16} width={16} fill={"currentcolor"} />
+              </span>
+            </Tippy>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -29,10 +29,10 @@ function PlayBackBar({ currentTime, totalTime, onSeek, timeProgress }) {
           <div className={cx("progress-hover")}></div>
         </div>
       </div>
-      {totalTime && state.url ? (
-        <div className={cx("total-time")}>{totalTime}</div>
-      ) : (
-        <div className={cx("total-time")}>{"00:00:00"}</div>
+      {totalTime && (
+        <div className={cx("total-time")}>
+          {state.url ? totalTime : "00:00:00"}
+        </div>
       )}
     </div>
   );
