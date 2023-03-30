@@ -30,7 +30,7 @@ function PlayListPage() {
   const state = useSelector((state) => state.playlist);
   useEffect(() => {
     const fetchApi = async () => {
-      await dispatch(getPlaylistThunk(id))
+      await dispatch(getPlaylistThunk({ id, token }))
         .unwrap()
         .then((res) => {
           setPlaylist(res);
@@ -74,7 +74,7 @@ function PlayListPage() {
   };
 
   const handleAddTrack = async (uris) => {
-    await dispatch(addPlaylistThunk({ id, uris }))
+    await dispatch(addPlaylistThunk({ id, uris, token }))
       .then((res) => {
         setTrackRecommendations(
           trackRecommendations.filter((item) => item.uri !== uris)
@@ -86,10 +86,8 @@ function PlayListPage() {
   };
 
   const handleDeleteTrack = async (uris) => {
-    await dispatch(deletePlaylistThunk({ id, uris }))
-      .then((res) => {
-        console.log(res);
-      })
+    await dispatch(deletePlaylistThunk({ id, uris, token }))
+      .then((res) => {})
       .catch((error) => {
         console.error(error);
       });
@@ -146,7 +144,6 @@ function PlayListPage() {
             {trackRecommendations?.map((item, index) => {
               return (
                 <PlaylistItem
-                  i={index}
                   key={index}
                   imgURL={item?.album?.images[0]?.url}
                   title={item?.name}
@@ -156,6 +153,7 @@ function PlayListPage() {
                   uris={item?.uri}
                   onAdd={handleAddTrack}
                   addTrack
+                  style={{ gridTemplateColumns: "0% 50% 40% 10% " }}
                 />
               );
             })}

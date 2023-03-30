@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { deleteTrack, getPlaylist, postNewTrack } from "Services/Services";
-const token = localStorage.getItem("token");
 
-export const getPlaylistThunk = createAsyncThunk("playlist", async (id) => {
+export const getPlaylistThunk = createAsyncThunk("playlist", async (params) => {
+  const { id, token } = params;
+
   const response = await getPlaylist(id, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -21,7 +22,7 @@ export const addPlaylistThunk = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${params.token}`,
         },
       }
     );
@@ -35,7 +36,7 @@ export const deletePlaylistThunk = createAsyncThunk(
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${params.token}`,
       },
       data: {
         tracks: [

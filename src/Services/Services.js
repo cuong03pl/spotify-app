@@ -48,7 +48,10 @@ export const getSearch = async (path, params) => {
   const res = await get(path, params);
   return res.data;
 };
-
+export const getTrack = async (id, params) => {
+  const res = await get(`tracks/${id}`, params);
+  return res.data;
+};
 export const getCurrentUserPlaylists = async (params) => {
   const res = await get("me/playlists", params);
   return res.data;
@@ -72,6 +75,11 @@ export const getCurrentUserTracks = async (params) => {
 
 export const getRecommendations = async (params) => {
   const res = await get("recommendations", params);
+  return res.data;
+};
+
+export const getCurrentPlayingTrack = async (params) => {
+  const res = await get("me/player/currently-playing", params);
   return res.data;
 };
 
@@ -106,7 +114,10 @@ export const putNewImage = async (id, data, params) => {
 
 export const putFavouriteTrack = async (data, params) => {
   const res = await put(`me/tracks`, data, params);
-  console.log(res);
+  return res.data;
+};
+export const putFollowArtists = async (data, params) => {
+  const res = await put(`me/following`, data, params);
   return res.data;
 };
 

@@ -47,6 +47,8 @@ function Tracks(props) {
               albumId={item?.album?.id}
               artistList={item?.artists}
               albumName={item?.album?.name}
+              preview_url={item?.preview_url}
+              trackId={item?.id}
             />
           );
         })}

@@ -30,7 +30,12 @@ setPrev(false);
 } else setPrev(true);
 }, [location.key]);
 
-truyền lại dữ liệu vào Cpm intro
-Bài hát đã thích ( thêm sửa, xóa dùng redux để call api mỗi khi thêm mới bài hát, )
+thêm prop cho các cpm như tracks, .... như là playlist để có thể lấy được dữ liệu truyền lên playbar ok
+nếu không có url priview thì set total time = 0 ok
+bug phần xóa bài hát yêu thích
+truyền dữ liệu thanh playbar,
+thêm nghệ sĩ yêu thích
+
+thêm playlist yêu thích
 
 danh sách chờ

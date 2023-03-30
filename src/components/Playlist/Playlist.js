@@ -23,6 +23,7 @@ function Playlist({ data, isUserPlaylist, onDelete, onUnlike, isFavourite }) {
             albumName={item?.track.album.name}
             isUserPlaylist={isUserPlaylist}
             uris={item?.track?.uri}
+            preview_url={item?.track?.preview_url}
             onDelete={onDelete}
             onUnlike={onUnlike}
             isFavourite={isFavourite}

@@ -111,6 +111,8 @@ function ArtistPage({}) {
                   title={item?.name}
                   artistList={item?.artists}
                   style={{ gridTemplateColumns: "5% 90% 5%" }}
+                  preview_url={item?.preview_url}
+                  trackId={item?.id}
                 />
               );
             })}

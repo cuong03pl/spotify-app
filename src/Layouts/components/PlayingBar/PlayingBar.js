@@ -1,26 +1,34 @@
+import axios from "axios";
 import classNames from "classnames/bind";
+import { addTracksThunk } from "pages/FavouritePage/favouriteSlice";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrack } from "Services/Services";
 
 import PlayerControl from "../../../components/PlayerControl/PlayerControl";
 import PlayingBarInfo from "../../../components/PlayingBarInfo/PlayingBarInfo";
 import PlayingBarRight from "../../../components/PlayingBarRight/PlayingBarRight";
+import { setPlayPause } from "./playerSlice";
 import styles from "./PlayingBar.module.scss";
 const cx = classNames.bind(styles);
 
 function PlayingBar() {
-  const [playing, setPlaying] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState();
   const [currentTime, setCurrentTime] = useState("00:00:00");
   const [timeProgress, setTimeProgress] = useState("0");
   const [totalTime, setTotalTime] = useState("00:00:00");
   const [durationTime, setDurationTime] = useState();
+  const token = localStorage.getItem("token");
+  const state = useSelector((state) => state.player);
   const audio = useRef(null);
+  const dispatch = useDispatch();
   const handlePlay = () => {
-    audio.current.play();
-    setPlaying(true);
+    dispatch(setPlayPause(true));
+    audio?.current?.play();
   };
   const handlePause = () => {
-    audio.current.pause();
-    setPlaying(false);
+    dispatch(setPlayPause(false));
+    audio?.current?.pause();
   };
   const handleSeekBar = () => {
     setTimeProgress((audio.current?.currentTime * 100) / durationTime);
@@ -64,26 +72,58 @@ function PlayingBar() {
       setCurrentTime(`${hoursCurrent}:${minutesCurrent}:${secondsCurrent}`);
     }, [1000]);
   });
+  useEffect(() => {
+    if (state.isPlay) {
+      audio?.current?.play();
+    } else {
+      audio?.current?.pause();
+    }
+  }, [state?.isPlay, state?.id, state.url, currentTrack]);
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await getTrack(state?.id, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => {
+          setCurrentTrack(res);
+        })
+        .catch((err) => console.log(err));
+    };
+    fetchApi();
+  }, [state?.id, state?.isPlay]);
+
   return (
     <div className={cx("wrapper")}>
-      <PlayingBarInfo />
-      <PlayerControl
-        currentTime={currentTime}
-        totalTime={totalTime}
-        playing={playing}
-        onPause={handlePause}
-        onPlay={handlePlay}
-        timeProgress={timeProgress}
-        audio={audio}
-      />
-      <PlayingBarRight audio={audio} />
-      <audio
-        ref={audio}
-        src="https://p.scdn.co/mp3-preview/4df38b27b145e6e2d180a0790e991af3eef99d86?cid=e5ad9e10b9b342db80cc06db790359f7"
-        controls
-        onTimeUpdate={handleSeekBar}
-        onLoadedMetadata={handleLoadedMetadata}
-      ></audio>
+      {currentTrack ? (
+        <>
+          <PlayingBarInfo data={currentTrack} />
+          <PlayerControl
+            currentTime={currentTime}
+            totalTime={totalTime}
+            playing={state.isPlay}
+            onPause={handlePause}
+            onPlay={handlePlay}
+            timeProgress={timeProgress}
+            audio={audio}
+          />
+          <PlayingBarRight audio={audio} />
+          <audio
+            ref={audio}
+            src={state.url || currentTrack?.preview_url || ""}
+            controls
+            onTimeUpdate={handleSeekBar}
+            onLoadedMetadata={handleLoadedMetadata}
+          ></audio>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

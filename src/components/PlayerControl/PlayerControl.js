@@ -1,5 +1,6 @@
 import Tippy from "@tippyjs/react";
 import classNames from "classnames/bind";
+import { useSelector } from "react-redux";
 import Button from "../Button/Button";
 import {
   NextPlayIcon,
@@ -24,6 +25,7 @@ function PlayerControl({
 
   audio,
 }) {
+  const state = useSelector((state) => state.player);
   const handleSeek = (e, progressRef) => {
     const progressTransform = e.nativeEvent.offsetX;
     const totalWidth = progressRef.current.clientWidth;
@@ -49,7 +51,7 @@ function PlayerControl({
             ></Button>
           </div>
         </Tippy>
-        {playing ? (
+        {state.isPlay ? (
           <Tippy content="Tạm dừng">
             <div>
               <Button

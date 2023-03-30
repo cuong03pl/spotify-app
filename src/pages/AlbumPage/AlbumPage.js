@@ -59,6 +59,8 @@ function AlbumPage({}) {
               artistList={item?.artists}
               i={index}
               key={index}
+              preview_url={item?.preview_url}
+              trackId={item?.id}
             />
           );
         })}
