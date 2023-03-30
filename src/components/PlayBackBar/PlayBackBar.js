@@ -1,10 +1,12 @@
 import classNames from "classnames/bind";
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 import styles from "./PlayBackBar.module.scss";
 const cx = classNames.bind(styles);
 
 function PlayBackBar({ currentTime, totalTime, onSeek, timeProgress }) {
   const progressRef = useRef();
+  const state = useSelector((state) => state.player);
   return (
     <div className={cx("wrapper")}>
       {currentTime && <div className={cx("current-time")}>{currentTime}</div>}
@@ -27,7 +29,11 @@ function PlayBackBar({ currentTime, totalTime, onSeek, timeProgress }) {
           <div className={cx("progress-hover")}></div>
         </div>
       </div>
-      {totalTime && <div className={cx("total-time")}>{totalTime}</div>}
+      {totalTime && state.url ? (
+        <div className={cx("total-time")}>{totalTime}</div>
+      ) : (
+        <div className={cx("total-time")}>{"00:00:00"}</div>
+      )}
     </div>
   );
 }

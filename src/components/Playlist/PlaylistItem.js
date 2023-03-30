@@ -2,12 +2,19 @@ import classNames from "classnames/bind";
 import styles from "./Playlist.module.scss";
 import PropTypes from "prop-types";
 import { LoveSolidIcon, PauseIcon, PlayIcon } from "../Icon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useConvertDate } from "../../hooks/useConvertDate";
 import { useConvertTime } from "../../hooks/useConvertTime";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setPlayingTrack,
+  setPlayPause,
+  setUrlCurrentTrack,
+} from "Layouts/components/PlayingBar/playerSlice";
+import { getCurrentPlayingTrack } from "Services/Services";
 
 const cx = classNames.bind(styles);
 
@@ -21,6 +28,7 @@ function PlaylistItem({
   datetime,
   artistList,
   albumName,
+  preview_url,
   addTrack,
   onAdd,
   onDelete,
@@ -33,20 +41,32 @@ function PlaylistItem({
   const [playing, setPlaying] = useState(false);
   const [minute, second] = useConvertTime(durationTime);
   const [year, month, day] = useConvertDate(datetime);
+  const state = useSelector((state) => state.player);
+
+  const dispatch = useDispatch();
 
   const handlePlay = () => {
-    setPlaying(true);
+    dispatch(setPlayPause(true));
+    dispatch(setPlayingTrack(trackId));
+    dispatch(setUrlCurrentTrack(preview_url));
   };
   const handlePause = () => {
-    setPlaying(false);
+    dispatch(setPlayPause(false));
+    dispatch(setPlayingTrack(trackId));
   };
-
+  useEffect(() => {
+    if (state.id === trackId) {
+      setPlaying(true);
+    } else {
+      setPlaying(false);
+    }
+  }, [trackId, state.id]);
   return (
     <div style={style} className={cx("playlist-item")}>
       <div className={cx("numerical-order")}>
         {<span className={cx("index")}>{i + 1}</span>}
         <span className={cx("btn")}>
-          {playing ? (
+          {state?.isPlay && playing ? (
             <Button
               onClick={handlePause}
               leftIcon={<PlayIcon height={16} width={16} fill={"#fff"} />}
@@ -59,6 +79,7 @@ function PlaylistItem({
           )}
         </span>
       </div>
+
       <div className={cx("info")}>
         {imgURL && <img src={imgURL} alt="" />}
 

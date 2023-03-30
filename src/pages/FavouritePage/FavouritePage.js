@@ -5,10 +5,9 @@ import { ClockIcon, PlaylistFallBackIcon } from "components/Icon";
 import Intro from "components/Intro/Intro";
 import Playlist from "components/Playlist/Playlist";
 import NoAlbumsFound from "pages/LibraryPage/components/NoAlbumsFound";
-import { deletePlaylistThunk } from "pages/PlayListPage/playlistSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUserTracks, getUser } from "Services/Services";
+import { getUser } from "Services/Services";
 import styles from "./FavouritePage.module.scss";
 import { deleteTracksThunk, getTracksThunk } from "./favouriteSlice";
 const cx = classNames.bind(styles);
@@ -18,10 +17,9 @@ function FavouritePage() {
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const state = useSelector((state) => state.favourite);
-  console.log(state);
   useEffect(() => {
     const fetchApi = async () => {
-      await dispatch(getTracksThunk())
+      await dispatch(getTracksThunk(token))
         .unwrap()
         .then((res) => {
           setTracks(res?.items);
@@ -31,7 +29,7 @@ function FavouritePage() {
         });
     };
     fetchApi();
-  }, [state.total]);
+  }, [state.total, token]);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -44,7 +42,7 @@ function FavouritePage() {
     fetchApi();
   }, [token]);
   const handleUnlike = async (trackId) => {
-    await dispatch(deleteTracksThunk(trackId))
+    await dispatch(deleteTracksThunk({ trackId, token }))
       .unwrap()
       .then((res) => {})
       .catch((error) => {

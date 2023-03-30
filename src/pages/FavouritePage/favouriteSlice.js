@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
-  CheckUsersSavedTracks,
   deleteFavouriteTrack,
   getCurrentUserTracks,
   putFavouriteTrack,
 } from "Services/Services";
-const token = localStorage.getItem("token");
 
-export const getTracksThunk = createAsyncThunk("get/tracks", async () => {
+export const getTracksThunk = createAsyncThunk("get/tracks", async (token) => {
   const response = await getCurrentUserTracks({
     headers: {
       Authorization: `Bearer ${token}`,
@@ -16,42 +14,44 @@ export const getTracksThunk = createAsyncThunk("get/tracks", async () => {
   return response;
 });
 
-export const addTracksThunk = createAsyncThunk("add/tracks", async (id) => {
+export const addTracksThunk = createAsyncThunk("add/tracks", async (params) => {
   const response = await putFavouriteTrack("", {
     params: {
-      ids: id,
+      ids: params.id,
     },
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${params.token}`,
     },
   });
   return response;
 });
 export const deleteTracksThunk = createAsyncThunk(
   "delete/tracks",
-  async (id) => {
+  async (params) => {
     const response = await deleteFavouriteTrack({
       params: {
-        ids: id,
+        ids: params.id,
       },
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${params.token}`,
       },
     });
     return response;
   }
 );
 
-const initialState = "";
-
 export const favouriteSlice = createSlice({
   name: "favourite",
-  initialState,
-  reducers: {},
+  initialState: { id: null },
+  reducers: {
+    addTrack: (state, actions) => {
+      return { ...state, id: actions.payload };
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getTracksThunk.fulfilled, (state, action) => {
@@ -66,6 +66,6 @@ export const favouriteSlice = createSlice({
   },
 });
 
-export const { updateDetails } = favouriteSlice.actions;
+export const { addTrack } = favouriteSlice.actions;
 
 export default favouriteSlice.reducer;

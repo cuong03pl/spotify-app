@@ -61,7 +61,7 @@ function Header() {
   const [user, setUser] = useState();
   var response_type = "token";
   const scopes =
-    "user-library-read user-follow-read playlist-modify-public playlist-modify-private user-library-modify";
+    "user-library-read user-follow-read playlist-modify-public playlist-modify-private user-library-modify user-follow-modify user-read-playback-state user-modify-playback-state user-read-currently-playing user-read-recently-played";
   const currentPath = window.location.pathname;
   useEffect(() => {
     const fetchApi = async () => {

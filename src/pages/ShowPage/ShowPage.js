@@ -45,7 +45,6 @@ function ShowPage() {
     };
     fetchApi();
   }, [id, token]);
-
   const handleFollow = () => {
     setFollowed(true);
   };
