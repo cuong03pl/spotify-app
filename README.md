@@ -30,10 +30,7 @@ setPrev(false);
 } else setPrev(true);
 }, [location.key]);
 
-thêm prop cho các cpm như tracks, .... như là playlist để có thể lấy được dữ liệu truyền lên playbar ok
-nếu không có url priview thì set total time = 0 ok
-bug phần xóa bài hát yêu thích
-truyền dữ liệu thanh playbar,
+bug phần xóa bài hát yêu thích ------------
 thêm nghệ sĩ yêu thích
 
 thêm playlist yêu thích

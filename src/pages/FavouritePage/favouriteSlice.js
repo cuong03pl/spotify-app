@@ -30,9 +30,10 @@ export const addTracksThunk = createAsyncThunk("add/tracks", async (params) => {
 export const deleteTracksThunk = createAsyncThunk(
   "delete/tracks",
   async (params) => {
+    console.log(params);
     const response = await deleteFavouriteTrack({
       params: {
-        ids: params.id,
+        ids: params.trackId,
       },
       headers: {
         Accept: "application/json",
