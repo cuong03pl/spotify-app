@@ -9,7 +9,12 @@ import Menu from "../../components/Proper/Menu/Menu";
 import ShowList from "../../components/ShowList/ShowList";
 import ShowIntro from "../../components/ShowIntro/ShowIntro";
 import { useParams } from "react-router-dom";
-import { getShow } from "../../Services/Services";
+import {
+  CheckUsersSavedShows,
+  deleteFavouriteShow,
+  getShow,
+  putFollowShows,
+} from "../../Services/Services";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS_1 = [
@@ -45,11 +50,41 @@ function ShowPage() {
     };
     fetchApi();
   }, [id, token]);
-  const handleFollow = () => {
-    setFollowed(true);
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await CheckUsersSavedShows({
+        params: {
+          ids: id,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => setFollowed(res[0]));
+    };
+    fetchApi();
+  }, [id, token]);
+
+  const handleFollow = async () => {
+    await putFollowShows("", {
+      params: {
+        ids: id,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => setFollowed(true));
   };
-  const handleUnFollow = () => {
-    setFollowed(false);
+
+  const handleUnFollow = async () => {
+    await deleteFavouriteShow({
+      params: {
+        ids: id,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => setFollowed(false));
   };
   return (
     <div className={cx("wrapper")}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import styles from "./Action.module.scss";
@@ -12,6 +12,12 @@ import {
   PlayIcon,
 } from "../Icon";
 import Tippy from "@tippyjs/react";
+import {
+  setPlayingTrack,
+  setPlayPause,
+  setUrlCurrentTrack,
+} from "Layouts/components/PlayingBar/playerSlice";
+import { useDispatch, useSelector } from "react-redux";
 const cx = classNames.bind(styles);
 const MENU_ITEMS_1 = [
   {
@@ -29,18 +35,12 @@ const MENU_ITEMS_2 = [
     title: "Mở trong ứng dụng máy tính",
   },
 ];
-function Action(props) {
-  const [followed, setFollowed] = useState(true);
+function Action({ id, url }) {
   const [playing, setPlaying] = useState(true);
   const [liked, setLiked] = useState(true);
-  const handlePlay = () => {
-    // audio.current.play();
-    setPlaying(true);
-  };
-  const handlePause = () => {
-    // audio.current.pause();
-    setPlaying(false);
-  };
+  const state = useSelector((state) => state.player);
+
+  const dispatch = useDispatch();
   const handleLike = () => {
     // audio.current.pause();
     setLiked(true);
@@ -49,9 +49,26 @@ function Action(props) {
     // audio.current.pause();
     setLiked(false);
   };
+
+  const handlePlay = () => {
+    dispatch(setPlayPause(true));
+    dispatch(setPlayingTrack(id));
+    dispatch(setUrlCurrentTrack(url));
+  };
+  const handlePause = () => {
+    dispatch(setPlayPause(false));
+    dispatch(setPlayingTrack(id));
+  };
+  useEffect(() => {
+    if (state.id === id) {
+      setPlaying(true);
+    } else {
+      setPlaying(false);
+    }
+  }, [id, state.id]);
   return (
     <div className={cx("action")}>
-      {playing ? (
+      {state?.isPlay && playing ? (
         <Tippy content="Tạm dừng">
           <div>
             <Button

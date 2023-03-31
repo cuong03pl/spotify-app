@@ -10,6 +10,7 @@ import PlayingBarInfo from "../../../components/PlayingBarInfo/PlayingBarInfo";
 import PlayingBarRight from "../../../components/PlayingBarRight/PlayingBarRight";
 import { setPlayPause } from "./playerSlice";
 import styles from "./PlayingBar.module.scss";
+
 const cx = classNames.bind(styles);
 
 function PlayingBar() {
@@ -35,6 +36,9 @@ function PlayingBar() {
   };
   const handleLoadedMetadata = () => {
     setDurationTime(audio.current.duration);
+  };
+  const handleEnded = () => {
+    dispatch(setPlayPause(false));
   };
   useEffect(() => {
     const hours =
@@ -112,8 +116,8 @@ function PlayingBar() {
     fetchApi();
   }, [state?.id, state?.isPlay, state.type]);
   return (
-    <div className={cx("wrapper")}>
-      {currentTrack ? (
+    currentTrack && (
+      <div className={cx("wrapper")}>
         <>
           <PlayingBarInfo data={currentTrack} />
           <PlayerControl
@@ -132,12 +136,11 @@ function PlayingBar() {
             controls
             onTimeUpdate={handleSeekBar}
             onLoadedMetadata={handleLoadedMetadata}
+            onEnded={handleEnded}
           ></audio>
         </>
-      ) : (
-        ""
-      )}
-    </div>
+      </div>
+    )
   );
 }
 

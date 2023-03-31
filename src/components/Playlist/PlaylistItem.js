@@ -87,7 +87,13 @@ function PlaylistItem({
         {imgURL && <img src={imgURL} alt="" />}
 
         <div>
-          {title && <span className={cx("title")}>{title}</span>}
+          {playing ? (
+            <span style={{ color: "#1db954" }} className={cx("title")}>
+              {title}
+            </span>
+          ) : (
+            <span className={cx("title")}>{title}</span>
+          )}
           {artistList && (
             <div className={cx("author")}>
               {artistList.map((item, index) => {

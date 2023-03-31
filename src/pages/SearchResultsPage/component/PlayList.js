@@ -31,16 +31,7 @@ function PlayList(props) {
     };
     fetchApi();
   }, [searchValue]);
-  useEffect(() => {
-    const fetchApi = async () => {
-      await getUser("me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => setUser(res));
-    };
-    fetchApi();
-  }, [token]);
+
   return (
     <div className={cx("item")}>
       <div className={cx("header")}>

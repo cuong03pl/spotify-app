@@ -36,19 +36,19 @@ function PlayingBarInfo({ data }) {
     fetchApi();
   }, [data?.id, dispatch, state]);
 
-  const handleAddFavouriteTrack = async (id, token) => {
-    await dispatch(addTracksThunk({ id, token }))
+  const handleAddFavouriteTrack = async (trackId, token) => {
+    await dispatch(addTracksThunk({ trackId, token }))
       .unwrap()
       .then((res) => {
-        dispatch(addTrack(id));
+        dispatch(addTrack(trackId));
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
-  const handleDeleteFavouriteTrack = async (id, token) => {
-    await dispatch(deleteTracksThunk({ id, token }))
+  const handleDeleteFavouriteTrack = async (trackId, token) => {
+    await dispatch(deleteTracksThunk({ trackId, token }))
       .unwrap()
       .then((res) => {
         // setTracks(res?.items);

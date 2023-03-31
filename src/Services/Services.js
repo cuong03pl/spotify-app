@@ -87,7 +87,10 @@ export const CheckUsersSavedTracks = async (params) => {
   const res = await get("me/tracks/contains", params);
   return res.data;
 };
-
+export const CheckUsersSavedShows = async (params) => {
+  const res = await get("me/shows/contains", params);
+  return res.data;
+};
 // post
 export const postNewPlaylist = async (id, data, params) => {
   const res = await post(`users/${id}/playlists`, data, params);
@@ -120,7 +123,10 @@ export const putFollowArtists = async (data, params) => {
   const res = await put(`me/following`, data, params);
   return res.data;
 };
-
+export const putFollowShows = async (data, params) => {
+  const res = await put(`me/shows`, data, params);
+  return res.data;
+};
 // delete
 
 export const deleteTrack = async (id, data) => {
@@ -130,5 +136,10 @@ export const deleteTrack = async (id, data) => {
 
 export const deleteFavouriteTrack = async (data) => {
   const res = await deleteMethod(`me/tracks`, data);
+  return res.data;
+};
+
+export const deleteFavouriteShow = async (data, params) => {
+  const res = await deleteMethod(`me/shows`, data, params);
   return res.data;
 };

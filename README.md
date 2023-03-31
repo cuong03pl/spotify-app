@@ -30,10 +30,11 @@ setPrev(false);
 } else setPrev(true);
 }, [location.key]);
 
----------- phát podcast ----------- now
+thêm podcast vào search result page
 
 thêm nghệ sĩ yêu thích
 
+trang nào cần yêu thích thì mới thêm cái tym vào
 thêm playlist yêu thích
 
 danh sách chờ

@@ -38,7 +38,7 @@ function EpisodePage({}) {
         totalTracks={episodes?.tracks?.total}
         show
       />
-      <Action />
+      <Action id={episodes?.id} url={episodes?.audio_preview_url} />
       <div className={cx("content")}>
         <div style={{ maxWidth: "672px" }}>
           <ShowIntro data={episodes} title={"Mô tả tập"} />

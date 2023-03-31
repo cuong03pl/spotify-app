@@ -17,7 +17,7 @@ export const getTracksThunk = createAsyncThunk("get/tracks", async (token) => {
 export const addTracksThunk = createAsyncThunk("add/tracks", async (params) => {
   const response = await putFavouriteTrack("", {
     params: {
-      ids: params.id,
+      ids: params.trackId,
     },
     headers: {
       Accept: "application/json",

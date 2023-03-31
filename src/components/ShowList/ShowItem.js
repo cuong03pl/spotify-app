@@ -28,13 +28,16 @@ function ShowItem({ data }) {
 
   const dispatch = useDispatch();
 
-  const handlePlay = () => {
+  const handlePlay = (e) => {
+    e.preventDefault();
     dispatch(setPlayPause(true));
     dispatch(setPlayingTrack(data.id));
     dispatch(setType("show"));
     dispatch(setUrlCurrentTrack(data.audio_preview_url));
   };
-  const handlePause = () => {
+  const handlePause = (e) => {
+    e.preventDefault();
+
     dispatch(setPlayPause(false));
     dispatch(setPlayingTrack(data.id));
   };
@@ -45,7 +48,9 @@ function ShowItem({ data }) {
       setPlaying(false);
     }
   }, [data.id, state.id]);
-  const handleCopyToClipboard = () => {
+  const handleCopyToClipboard = (e) => {
+    e.preventDefault();
+
     navigator.clipboard.writeText(
       `${window.location.origin}/episode/${data?.id}`
     );
@@ -62,12 +67,19 @@ function ShowItem({ data }) {
   };
 
   return (
-    <div className={cx("show-item")}>
-      <Link to={`/episodes/${data?.id}`} className={cx("intro-img")}>
+    <Link to={`/episodes/${data?.id}`} className={cx("show-item")}>
+      <div className={cx("intro-img")}>
         <img src={data?.images[0].url} alt="" />
-      </Link>
+      </div>
       <div className={cx("content")}>
-        <span className={cx("title")}>{data?.name}</span>
+        {playing ? (
+          <span style={{ color: "#1db954" }} className={cx("title")}>
+            {data?.name}
+          </span>
+        ) : (
+          <span className={cx("title")}>{data?.name}</span>
+        )}
+
         <span className={cx("description")}>{data?.description}</span>
         <div className={cx("action")}>
           <div className={cx("action-left")}>
@@ -116,13 +128,6 @@ function ShowItem({ data }) {
                 />
               </Tippy>
             </div>
-            <div className={cx("icon")}>
-              <Tippy content={"Lưu vào thư viện"}>
-                <Button
-                  leftIcon={<SaveIcon height={24} width={24} fill={"#fff"} />}
-                />
-              </Tippy>
-            </div>
           </Link>
         </div>
       </div>
@@ -130,7 +135,7 @@ function ShowItem({ data }) {
         bodyClassName={cx("toast-container")}
         toastClassName={cx("toast")}
       />
-    </div>
+    </Link>
   );
 }
 
