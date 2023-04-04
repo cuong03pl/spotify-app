@@ -102,3 +102,12 @@
 
     
 }
+
+
+.action {
+    padding: 24px 0;
+    display: flex;
+    .action-btn {
+        margin-right: 32px;
+    }
+}

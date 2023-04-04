@@ -5,7 +5,12 @@ import styles from "./AlbumPage.module.scss";
 import Intro from "../../components/Intro/Intro";
 import Action from "../../components/Action/Action";
 import { ClockIcon } from "../../components/Icon";
-import { getAlbum } from "../../Services/Services";
+import {
+  CheckUsersFollowsAlbums,
+  getAlbum,
+  putFollowAlbums,
+  unfollowAlbums,
+} from "../../Services/Services";
 import { useParams } from "react-router-dom";
 import AlbumList from "../../components/Album/Album";
 import PlaylistItem from "../../components/Playlist/PlaylistItem";
@@ -15,6 +20,8 @@ function AlbumPage({}) {
   const token = localStorage.getItem("token");
   const [album, setAlbum] = useState();
   const [albumTracks, setAlbumTracks] = useState();
+  const [followed, setFollowed] = useState();
+
   useEffect(() => {
     const fetchApi = async () => {
       await getAlbum(id, {
@@ -28,6 +35,43 @@ function AlbumPage({}) {
     };
     fetchApi();
   }, [id]);
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await CheckUsersFollowsAlbums({
+        params: {
+          ids: id,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => {
+        setFollowed(res[0]);
+      });
+    };
+    fetchApi();
+  }, [id, token]);
+  const handleFollow = async () => {
+    await putFollowAlbums("", {
+      params: {
+        ids: id,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => setFollowed(true));
+  };
+  const handleUnfollow = async () => {
+    await unfollowAlbums({
+      params: {
+        ids: id,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => setFollowed(false));
+  };
+
   return (
     <div className={cx("wrapper")}>
       <Intro
@@ -40,7 +84,11 @@ function AlbumPage({}) {
         followers={album?.followers}
         totalTracks={album?.total_tracks}
       />
-      <Action />
+      <Action
+        isFollow={followed}
+        onFollow={handleFollow}
+        onUnfollow={handleUnfollow}
+      />
       <div className={cx("content")}>
         <div className={cx("header")}>
           <span>#</span>

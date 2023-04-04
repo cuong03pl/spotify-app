@@ -30,11 +30,16 @@ setPrev(false);
 } else setPrev(true);
 }, [location.key]);
 
-thêm podcast vào search result page
-
-thêm nghệ sĩ yêu thích
-
+thêm podcast vào search result page ---------- ok
+clamp phần nghệ sĩ -------- ok
+thêm nghệ sĩ yêu thích ------------ ok
+thêm playlist yêu thích ------- ok
+thêm album yêu thích ------- ok
+làm page hiển thị thêm các mục tìm kiếm
 trang nào cần yêu thích thì mới thêm cái tym vào
-thêm playlist yêu thích
-
+chuyển tiếp, prev, replay, nghe ngẫu nhiên
 danh sách chờ
+
+lazy page, skeleton
+
+responsive

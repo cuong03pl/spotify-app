@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import styles from "./ArtistPage.module.scss";
-import Action from "../../components/Action/Action";
 import {
+  CheckUsersFollowsArtists,
   getArtist,
   getRelatedArtists,
   getTopTracks,
+  putFollowArtists,
+  unfollowArtists,
 } from "../../Services/Services";
 import { useParams } from "react-router-dom";
 import PlaylistItem from "../../components/Playlist/PlaylistItem";
 import AlbumItem from "../../components/Album/AlbumItem";
 import AlbumList from "../../components/Album/Album";
+import Button from "components/Button/Button";
 const cx = classNames.bind(styles);
 function ArtistPage({}) {
   const { id } = useParams();
@@ -22,6 +25,8 @@ function ArtistPage({}) {
   const [relatedArtists, setRelatedArtists] = useState();
   const [seeAll, setSeeAll] = useState(false);
   const [size, setSize] = useState(5);
+  const [followed, setFollowed] = useState(false);
+
   // const top
   // useEffect(() => {
   //   if (name.length > 20) {
@@ -76,6 +81,45 @@ function ArtistPage({}) {
     setSeeAll(false);
     setSize(5);
   };
+  useEffect(() => {
+    const fetchApi = async () => {
+      await CheckUsersFollowsArtists({
+        params: {
+          type: "artist",
+          ids: id,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => setFollowed(res[0]));
+    };
+    fetchApi();
+  }, []);
+  const handleFollow = async () => {
+    await putFollowArtists("", {
+      params: {
+        type: "artist",
+        ids: id,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      setFollowed(true);
+    });
+  };
+
+  const handleUnFollow = async () => {
+    await unfollowArtists({
+      params: {
+        type: "artist",
+        ids: id,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => setFollowed(false));
+  };
   return (
     <div className={cx("wrapper")}>
       <div
@@ -99,7 +143,20 @@ function ArtistPage({}) {
         </div>
 
         <div className={cx("content")}>
-          <Action />
+          <div className={cx("action")}>
+            <div className={cx("action-btn")}>
+              {followed ? (
+                <Button onClick={handleUnFollow} unfollowBtn>
+                  ĐANG THEO DÕI
+                </Button>
+              ) : (
+                <Button onClick={handleFollow} followBtn>
+                  THEO DÕI
+                </Button>
+              )}
+            </div>
+          </div>
+
           <div className={cx("track")}>
             <span className={cx("track-title")}>Phổ biến</span>
             {topTracks?.tracks.slice(0, size).map((item, index) => {

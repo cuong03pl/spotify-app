@@ -35,19 +35,20 @@ const MENU_ITEMS_2 = [
     title: "Mở trong ứng dụng máy tính",
   },
 ];
-function Action({ id, url }) {
+function Action({ id, url, onFollow, onUnfollow, isFollow }) {
   const [playing, setPlaying] = useState(true);
-  const [liked, setLiked] = useState(true);
   const state = useSelector((state) => state.player);
 
   const dispatch = useDispatch();
-  const handleLike = () => {
-    // audio.current.pause();
-    setLiked(true);
+  const handleFollow = () => {
+    if (onFollow) {
+      onFollow();
+    }
   };
-  const handleDislike = () => {
-    // audio.current.pause();
-    setLiked(false);
+  const handleUnfollow = () => {
+    if (onUnfollow) {
+      onUnfollow();
+    }
   };
 
   const handlePlay = () => {
@@ -100,16 +101,16 @@ function Action({ id, url }) {
         </Tippy>
       )}
 
-      {liked ? (
+      {isFollow ? (
         <>
           <Button
-            onClick={handleDislike}
+            onClick={handleUnfollow}
             leftIcon={<FavouriteIcon fill={"#1ed760"} height={32} width={32} />}
           ></Button>
         </>
       ) : (
         <Button
-          onClick={handleLike}
+          onClick={handleFollow}
           leftIcon={<LikeThinIcon fill={"#fff"} height={32} width={32} />}
         ></Button>
       )}

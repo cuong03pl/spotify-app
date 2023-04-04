@@ -6,7 +6,13 @@ import PlaylistItem from "components/Playlist/PlaylistItem";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getRecommendations, getUser } from "Services/Services";
+import {
+  CheckUsersFollowsPlaylists,
+  getRecommendations,
+  getUser,
+  putFollowPlaylists,
+  unfollowPlaylists,
+} from "Services/Services";
 import Action from "../../components/Action/Action";
 import { ClockIcon, PlaylistFallBackIcon } from "../../components/Icon";
 import Intro from "../../components/Intro/Intro";
@@ -23,9 +29,10 @@ function PlayListPage() {
   const { id } = useParams();
   const token = localStorage.getItem("token");
   const [playlist, setPlaylist] = useState();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [trackRecommendations, setTrackRecommendations] = useState([]);
+  const [followed, setFollowed] = useState();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.playlist);
   useEffect(() => {
@@ -92,6 +99,36 @@ function PlayListPage() {
         console.error(error);
       });
   };
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await CheckUsersFollowsPlaylists(id, {
+        params: {
+          ids: user?.id,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => {
+        setFollowed(res[0]);
+      });
+    };
+    fetchApi();
+  }, [id, token, user]);
+  const handleFollow = async () => {
+    await putFollowPlaylists(id, "", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => setFollowed(true));
+  };
+  const handleUnfollow = async () => {
+    await unfollowPlaylists(id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => setFollowed(false));
+  };
   return (
     <div className={cx("wrapper")}>
       <Intro
@@ -119,7 +156,11 @@ function PlayListPage() {
         isOpen={isOpen}
         onClick={handleCloseModal}
       />
-      <Action />
+      <Action
+        isFollow={followed}
+        onFollow={handleFollow}
+        onUnfollow={handleUnfollow}
+      />
       <div className={cx("content")}>
         {playlist?.tracks.items.length > 0 && (
           <div className={cx("header")}>

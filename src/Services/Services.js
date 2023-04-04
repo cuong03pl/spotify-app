@@ -91,6 +91,20 @@ export const CheckUsersSavedShows = async (params) => {
   const res = await get("me/shows/contains", params);
   return res.data;
 };
+
+export const CheckUsersFollowsArtists = async (params) => {
+  const res = await get("me/following/contains", params);
+  return res.data;
+};
+export const CheckUsersFollowsPlaylists = async (id, params) => {
+  const res = await get(`playlists/${id}/followers/contains`, params);
+  return res.data;
+};
+
+export const CheckUsersFollowsAlbums = async (params) => {
+  const res = await get(`me/albums/contains`, params);
+  return res.data;
+};
 // post
 export const postNewPlaylist = async (id, data, params) => {
   const res = await post(`users/${id}/playlists`, data, params);
@@ -105,6 +119,7 @@ export const postFavouriteTracks = async (data, params) => {
   return res.data;
 };
 // put
+
 export const putNewPlaylistDetails = async (id, data, params) => {
   const res = await put(`playlists/${id}`, data, params);
   return res.data;
@@ -119,12 +134,23 @@ export const putFavouriteTrack = async (data, params) => {
   const res = await put(`me/tracks`, data, params);
   return res.data;
 };
+
 export const putFollowArtists = async (data, params) => {
   const res = await put(`me/following`, data, params);
   return res.data;
 };
 export const putFollowShows = async (data, params) => {
   const res = await put(`me/shows`, data, params);
+  return res.data;
+};
+
+export const putFollowAlbums = async (data, params) => {
+  const res = await put(`me/albums`, data, params);
+  return res.data;
+};
+
+export const putFollowPlaylists = async (id, data, params) => {
+  const res = await put(`playlists/${id}/followers`, data, params);
   return res.data;
 };
 // delete
@@ -141,5 +167,19 @@ export const deleteFavouriteTrack = async (data) => {
 
 export const deleteFavouriteShow = async (data, params) => {
   const res = await deleteMethod(`me/shows`, data, params);
+  return res.data;
+};
+
+export const unfollowArtists = async (data, params) => {
+  const res = await deleteMethod(`me/following`, data, params);
+  return res.data;
+};
+export const unfollowPlaylists = async (id, data, params) => {
+  const res = await deleteMethod(`playlists/${id}/followers`, data, params);
+  return res.data;
+};
+
+export const unfollowAlbums = async (data, params) => {
+  const res = await deleteMethod(`me/albums`, data, params);
   return res.data;
 };

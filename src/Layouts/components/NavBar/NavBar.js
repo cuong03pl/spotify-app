@@ -51,20 +51,20 @@ function NavBar() {
     {
       to: config.routes.home,
       title: "Trang chủ",
-      icon: <HomeIcon height={24} width={24} />,
-      activeIcon: <HomeActiveIcon height={24} width={24} />,
+      icon: <HomeIcon height={24} width={24} fill={"#B3B3B3"} />,
+      activeIcon: <HomeActiveIcon height={24} width={24} fill={"#fff"} />,
     },
     {
       to: "/search",
       title: "Tìm kiếm",
       icon: <SearchIcon height={24} width={24} fill={"#B3B3B3"} />,
-      activeIcon: <SearchActiveIcon height={24} width={24} />,
+      activeIcon: <SearchActiveIcon height={24} width={24} fill={"#fff"} />,
     },
     {
       to: config.routes.library.playlist,
       title: "Thư viện",
-      icon: <LibraryIcon height={24} width={24} />,
-      activeIcon: <LibraryActiveIcon height={24} width={24} />,
+      icon: <LibraryIcon height={24} width={24} fill={"#B3B3B3"} />,
+      activeIcon: <LibraryActiveIcon height={24} width={24} fill={"#fff"} />,
     },
   ];
 
@@ -72,15 +72,15 @@ function NavBar() {
     {
       to: "",
       title: "Tạo playlist",
-      icon: <CreateListIcon height={24} width={24} />,
-      activeIcon: <CreateListIcon height={24} width={24} />,
+      icon: <CreateListIcon height={24} width={24} fill={"#B3B3B3"} />,
+      activeIcon: <CreateListIcon height={24} width={24} fill={"#fff"} />,
       onClick: handleCreatePlaylist,
     },
     {
       to: config.routes.favourite,
       title: "Bài hát đã thích",
-      icon: <FavouriteIcon height={24} width={24} />,
-      activeIcon: <FavouriteIcon height={24} width={24} />,
+      icon: <FavouriteIcon height={24} width={24} fill={"#B3B3B3"} />,
+      activeIcon: <FavouriteIcon height={24} width={24} fill={"#fff"} />,
     },
   ];
   useEffect(() => {
