@@ -157,6 +157,7 @@ function PlayListPage() {
         onClick={handleCloseModal}
       />
       <Action
+        isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
         isFollow={followed}
         onFollow={handleFollow}
         onUnfollow={handleUnfollow}

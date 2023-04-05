@@ -13,14 +13,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setCurrentIndex,
   setPlayingTrack,
   setPlayPause,
+  setTrackList,
   setType,
   setUrlCurrentTrack,
 } from "Layouts/components/PlayingBar/playerSlice";
 const cx = classNames.bind(styles);
 
-function ShowItem({ data }) {
+function ShowItem({ data, index, showList }) {
   const [playing, setPlaying] = useState(false);
   const [minute, second] = useConvertTime(data.duration_ms);
   const [year, month, day] = useConvertDate(data.release_date.split("-"));
@@ -34,12 +36,12 @@ function ShowItem({ data }) {
     dispatch(setPlayingTrack(data.id));
     dispatch(setType("show"));
     dispatch(setUrlCurrentTrack(data.audio_preview_url));
+    dispatch(setTrackList(showList));
+    dispatch(setCurrentIndex(index));
   };
   const handlePause = (e) => {
     e.preventDefault();
-
     dispatch(setPlayPause(false));
-    dispatch(setPlayingTrack(data.id));
   };
   useEffect(() => {
     if (state.id === data.id) {

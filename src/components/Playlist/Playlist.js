@@ -24,6 +24,7 @@ function Playlist({ data, isUserPlaylist, onDelete, onUnlike, isFavourite }) {
             isUserPlaylist={isUserPlaylist}
             uris={item?.track?.uri}
             preview_url={item?.track?.preview_url}
+            trackList={data}
             onDelete={onDelete}
             onUnlike={onUnlike}
             isFavourite={isFavourite}

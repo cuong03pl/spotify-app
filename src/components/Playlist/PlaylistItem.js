@@ -10,12 +10,13 @@ import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setCurrentIndex,
   setPlayingTrack,
   setPlayPause,
+  setTrackList,
   setType,
   setUrlCurrentTrack,
 } from "Layouts/components/PlayingBar/playerSlice";
-import { getCurrentPlayingTrack } from "Services/Services";
 
 const cx = classNames.bind(styles);
 
@@ -34,6 +35,7 @@ function PlaylistItem({
   onAdd,
   onDelete,
   uris,
+  trackList,
   isUserPlaylist,
   onUnlike,
   isFavourite,
@@ -45,25 +47,25 @@ function PlaylistItem({
   const state = useSelector((state) => state.player);
 
   const dispatch = useDispatch();
-
   const handlePlay = () => {
     dispatch(setPlayPause(true));
     dispatch(setPlayingTrack(trackId));
     dispatch(setType("track"));
-
     dispatch(setUrlCurrentTrack(preview_url));
+    dispatch(setTrackList(trackList));
+    dispatch(setCurrentIndex(i));
   };
   const handlePause = () => {
     dispatch(setPlayPause(false));
-    dispatch(setPlayingTrack(trackId));
   };
+
   useEffect(() => {
     if (state.id === trackId) {
       setPlaying(true);
     } else {
       setPlaying(false);
     }
-  }, [trackId, state.id]);
+  }, [trackId, state.id, state.index]);
   return (
     <div style={style} className={cx("playlist-item")}>
       <div className={cx("numerical-order")}>

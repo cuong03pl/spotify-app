@@ -8,7 +8,7 @@ import { getEpisode, getShow, getTrack } from "Services/Services";
 import PlayerControl from "../../../components/PlayerControl/PlayerControl";
 import PlayingBarInfo from "../../../components/PlayingBarInfo/PlayingBarInfo";
 import PlayingBarRight from "../../../components/PlayingBarRight/PlayingBarRight";
-import { setPlayPause } from "./playerSlice";
+import { setCurrentIndex, setPlayingTrack, setPlayPause } from "./playerSlice";
 import styles from "./PlayingBar.module.scss";
 
 const cx = classNames.bind(styles);
@@ -31,6 +31,31 @@ function PlayingBar() {
     dispatch(setPlayPause(false));
     audio?.current?.pause();
   };
+
+  const handlePrev = () => {
+    if (state?.index - 1 >= 0) {
+      dispatch(setCurrentIndex(state?.index - 1));
+      dispatch(
+        setPlayingTrack(
+          state?.trackList[state?.index - 1]?.track?.id ||
+            state?.trackList[state?.index + 1]?.id
+        )
+      );
+    }
+  };
+
+  const handleNext = () => {
+    if (state?.index != state?.trackList.length - 1) {
+      dispatch(setCurrentIndex(state?.index + 1));
+      dispatch(
+        setPlayingTrack(
+          state?.trackList[state?.index + 1]?.track?.id ||
+            state?.trackList[state?.index + 1]?.id
+        )
+      );
+    }
+  };
+
   const handleSeekBar = () => {
     setTimeProgress((audio.current?.currentTime * 100) / durationTime);
   };
@@ -40,6 +65,7 @@ function PlayingBar() {
   const handleEnded = () => {
     dispatch(setPlayPause(false));
   };
+
   useEffect(() => {
     const hours =
       Math.floor(durationTime / 3600) < 10
@@ -86,7 +112,7 @@ function PlayingBar() {
   useEffect(() => {
     const fetchApi = async () => {
       if (state.type === "track") {
-        await getTrack(state?.id, {
+        await getTrack(state?.trackList[state?.index]?.track?.id || state?.id, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -99,7 +125,7 @@ function PlayingBar() {
           })
           .catch((err) => console.log(err));
       } else {
-        await getEpisode(state?.id, {
+        await getEpisode(state?.trackList[state?.index]?.id || state?.id, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -114,7 +140,7 @@ function PlayingBar() {
       }
     };
     fetchApi();
-  }, [state?.id, state?.isPlay, state.type]);
+  }, [state?.id, state?.isPlay, state.type, state?.index]);
   return (
     currentTrack && (
       <div className={cx("wrapper")}>
@@ -126,13 +152,21 @@ function PlayingBar() {
             playing={state.isPlay}
             onPause={handlePause}
             onPlay={handlePlay}
+            onPrev={handlePrev}
+            onNext={handleNext}
             timeProgress={timeProgress}
             audio={audio}
           />
           <PlayingBarRight audio={audio} />
           <audio
             ref={audio}
-            src={state.url || currentTrack?.preview_url || ""}
+            src={
+              state.trackList[state.index]?.track?.preview_url ||
+              state?.trackList[state?.index]?.audio_preview_url ||
+              currentTrack?.preview_url ||
+              // state.url ||
+              ""
+            }
             controls
             onTimeUpdate={handleSeekBar}
             onLoadedMetadata={handleLoadedMetadata}

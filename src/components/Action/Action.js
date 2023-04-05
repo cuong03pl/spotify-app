@@ -35,7 +35,7 @@ const MENU_ITEMS_2 = [
     title: "Mở trong ứng dụng máy tính",
   },
 ];
-function Action({ id, url, onFollow, onUnfollow, isFollow }) {
+function Action({ id, url, onFollow, onUnfollow, isFollow, isUserPlaylist }) {
   const [playing, setPlaying] = useState(true);
   const state = useSelector((state) => state.player);
 
@@ -101,19 +101,26 @@ function Action({ id, url, onFollow, onUnfollow, isFollow }) {
         </Tippy>
       )}
 
-      {isFollow ? (
+      {!isUserPlaylist && (
         <>
-          <Button
-            onClick={handleUnfollow}
-            leftIcon={<FavouriteIcon fill={"#1ed760"} height={32} width={32} />}
-          ></Button>
+          {isFollow ? (
+            <>
+              <Button
+                onClick={handleUnfollow}
+                leftIcon={
+                  <FavouriteIcon fill={"#1ed760"} height={32} width={32} />
+                }
+              ></Button>
+            </>
+          ) : (
+            <Button
+              onClick={handleFollow}
+              leftIcon={<LikeThinIcon fill={"#fff"} height={32} width={32} />}
+            ></Button>
+          )}
         </>
-      ) : (
-        <Button
-          onClick={handleFollow}
-          leftIcon={<LikeThinIcon fill={"#fff"} height={32} width={32} />}
-        ></Button>
       )}
+
       <Menu moreMenu placement={"bottom-start"} data={MENU_ITEMS_2}>
         <Button
           leftIcon={<MoreIcon height={32} width={32} fill={"#ffffff99"} />}

@@ -12,7 +12,9 @@ function ShowList({ data }) {
     <div className={cx("wrapper")}>
       <h3 className={cx("header")}>Tất cả các tập</h3>
       {data?.map((item, index) => {
-        return <ShowItem data={item} key={index} />;
+        return (
+          <ShowItem data={item} key={index} index={index} showList={data} />
+        );
       })}
     </div>
   );

@@ -2,7 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const playerSlice = createSlice({
   name: "player",
-  initialState: { id: null, isPlay: false, url: null, type: null },
+  initialState: {
+    id: null,
+    isPlay: false,
+    url: null,
+    type: null,
+    trackList: null,
+    index: null,
+  },
   reducers: {
     setPlayingTrack: (state, actions) => {
       return { ...state, id: actions.payload };
@@ -16,9 +23,21 @@ const playerSlice = createSlice({
     setType: (state, actions) => {
       return { ...state, type: actions.payload };
     },
+    setTrackList: (state, actions) => {
+      return { ...state, trackList: actions.payload };
+    },
+    setCurrentIndex: (state, actions) => {
+      return { ...state, index: actions.payload };
+    },
   },
 });
-export const { setPlayingTrack, setPlayPause, setUrlCurrentTrack, setType } =
-  playerSlice.actions;
+export const {
+  setPlayingTrack,
+  setPlayPause,
+  setUrlCurrentTrack,
+  setType,
+  setTrackList,
+  setCurrentIndex,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;

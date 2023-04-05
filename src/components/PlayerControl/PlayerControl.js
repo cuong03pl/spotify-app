@@ -18,11 +18,11 @@ const cx = classNames.bind(styles);
 function PlayerControl({
   currentTime,
   totalTime,
-  playing,
   timeProgress,
   onPause,
   onPlay,
-
+  onPrev,
+  onNext,
   audio,
 }) {
   const state = useSelector((state) => state.player);
@@ -47,6 +47,7 @@ function PlayerControl({
           <div className={cx("player-btn-icon")}>
             <Button
               iconBtnSmall
+              onClick={onPrev}
               leftIcon={<PrevPlayIcon height={16} width={16} fill={"#fff"} />}
             ></Button>
           </div>
@@ -84,6 +85,7 @@ function PlayerControl({
           <div className={cx("player-btn-icon")}>
             <Button
               iconBtnSmall
+              onClick={onNext}
               leftIcon={<NextPlayIcon height={16} width={16} fill={"#fff"} />}
             ></Button>
           </div>
