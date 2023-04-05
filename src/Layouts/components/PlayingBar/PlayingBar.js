@@ -19,6 +19,7 @@ function PlayingBar() {
   const [timeProgress, setTimeProgress] = useState("0");
   const [totalTime, setTotalTime] = useState("00:00:00");
   const [durationTime, setDurationTime] = useState();
+  const [isReplay, setIsReplay] = useState(false);
   const token = localStorage.getItem("token");
   const state = useSelector((state) => state.player);
   const audio = useRef(null);
@@ -38,12 +39,11 @@ function PlayingBar() {
       dispatch(
         setPlayingTrack(
           state?.trackList[state?.index - 1]?.track?.id ||
-            state?.trackList[state?.index + 1]?.id
+            state?.trackList[state?.index - 1]?.id
         )
       );
     }
   };
-
   const handleNext = () => {
     if (state?.index != state?.trackList.length - 1) {
       dispatch(setCurrentIndex(state?.index + 1));
@@ -55,7 +55,13 @@ function PlayingBar() {
       );
     }
   };
-
+  const handleReplay = () => {
+    if (isReplay) {
+      setIsReplay(false);
+    } else {
+      setIsReplay(true);
+    }
+  };
   const handleSeekBar = () => {
     setTimeProgress((audio.current?.currentTime * 100) / durationTime);
   };
@@ -63,7 +69,8 @@ function PlayingBar() {
     setDurationTime(audio.current.duration);
   };
   const handleEnded = () => {
-    dispatch(setPlayPause(false));
+    // dispatch(setPlayPause(false));
+    handleNext();
   };
 
   useEffect(() => {
@@ -154,7 +161,9 @@ function PlayingBar() {
             onPlay={handlePlay}
             onPrev={handlePrev}
             onNext={handleNext}
+            onReplay={handleReplay}
             timeProgress={timeProgress}
+            isReplay={isReplay}
             audio={audio}
           />
           <PlayingBarRight audio={audio} />
@@ -164,10 +173,10 @@ function PlayingBar() {
               state.trackList[state.index]?.track?.preview_url ||
               state?.trackList[state?.index]?.audio_preview_url ||
               currentTrack?.preview_url ||
-              // state.url ||
               ""
             }
             controls
+            loop={isReplay}
             onTimeUpdate={handleSeekBar}
             onLoadedMetadata={handleLoadedMetadata}
             onEnded={handleEnded}

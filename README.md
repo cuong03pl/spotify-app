@@ -1,5 +1,7 @@
-chuyển tiếp, prev bài hát or podcast -------- ok
-replay
+replay -------- ok
+disable nút prev or next -------- ok
+nếu hết tự chuyển bài ----------- ok
+
 danh sách chờ
 
 lazy page, skeleton

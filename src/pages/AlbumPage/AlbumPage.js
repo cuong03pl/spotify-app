@@ -109,6 +109,7 @@ function AlbumPage({}) {
               key={index}
               preview_url={item?.preview_url}
               trackId={item?.id}
+              trackList={albumTracks}
             />
           );
         })}

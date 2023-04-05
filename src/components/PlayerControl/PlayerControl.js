@@ -23,9 +23,12 @@ function PlayerControl({
   onPlay,
   onPrev,
   onNext,
+  onReplay,
+  isReplay,
   audio,
 }) {
   const state = useSelector((state) => state.player);
+
   const handleSeek = (e, progressRef) => {
     const progressTransform = e.nativeEvent.offsetX;
     const totalWidth = progressRef.current.clientWidth;
@@ -43,15 +46,27 @@ function PlayerControl({
             ></Button>
           </div>
         </Tippy>
-        <Tippy content="Trước">
+        {state?.index - 1 >= 0 ? (
+          <Tippy content="Trước">
+            <div className={cx("player-btn-icon")}>
+              <Button
+                iconBtnSmall
+                onClick={onPrev}
+                leftIcon={<PrevPlayIcon height={16} width={16} fill={"#fff"} />}
+              ></Button>
+            </div>
+          </Tippy>
+        ) : (
           <div className={cx("player-btn-icon")}>
             <Button
               iconBtnSmall
+              disableBtn
               onClick={onPrev}
               leftIcon={<PrevPlayIcon height={16} width={16} fill={"#fff"} />}
             ></Button>
           </div>
-        </Tippy>
+        )}
+
         {state.isPlay ? (
           <Tippy content="Tạm dừng">
             <div>
@@ -81,23 +96,52 @@ function PlayerControl({
             </div>
           </Tippy>
         )}
-        <Tippy content="Tiếp">
+        {state?.index != state?.trackList.length - 1 ? (
+          <Tippy content="Tiếp">
+            <div className={cx("player-btn-icon")}>
+              <Button
+                iconBtnSmall
+                onClick={onNext}
+                leftIcon={<NextPlayIcon height={16} width={16} fill={"#fff"} />}
+              ></Button>
+            </div>
+          </Tippy>
+        ) : (
           <div className={cx("player-btn-icon")}>
             <Button
               iconBtnSmall
+              disableBtn
               onClick={onNext}
               leftIcon={<NextPlayIcon height={16} width={16} fill={"#fff"} />}
             ></Button>
           </div>
-        </Tippy>
-        <Tippy content="Kích hoạt chế độ lặp lại">
-          <div className={cx("player-btn-icon")}>
-            <Button
-              iconBtnSmall
-              leftIcon={<RepeatPlayIcon height={16} width={16} fill={"#fff"} />}
-            ></Button>
-          </div>
-        </Tippy>
+        )}
+
+        {isReplay ? (
+          <Tippy content="Hủy chế độ lặp lại">
+            <div className={cx("player-btn-icon")}>
+              <Button
+                iconBtnSmall
+                onClick={onReplay}
+                leftIcon={
+                  <RepeatPlayIcon height={16} width={16} fill={"#1ed760"} />
+                }
+              ></Button>
+            </div>
+          </Tippy>
+        ) : (
+          <Tippy content="Kích hoạt chế độ lặp lại">
+            <div className={cx("player-btn-icon")}>
+              <Button
+                iconBtnSmall
+                onClick={onReplay}
+                leftIcon={
+                  <RepeatPlayIcon height={16} width={16} fill={"#fff"} />
+                }
+              ></Button>
+            </div>
+          </Tippy>
+        )}
       </div>
       <PlayBackBar
         timeProgress={timeProgress}

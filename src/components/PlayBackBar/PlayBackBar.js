@@ -32,9 +32,9 @@ function PlayBackBar({ currentTime, totalTime, onSeek, timeProgress }) {
 
       {totalTime && (
         <div className={cx("total-time")}>
-          {state.url &&
-          (state.trackList[state.index]?.track?.preview_url ||
-            state?.trackList[state?.index]?.audio_preview_url)
+          {state.trackList[state.index]?.track?.preview_url ||
+          state.trackList[state.index]?.preview_url ||
+          state?.trackList[state?.index]?.audio_preview_url
             ? totalTime
             : "00:00:00"}
         </div>

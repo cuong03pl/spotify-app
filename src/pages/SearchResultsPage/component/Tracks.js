@@ -49,6 +49,7 @@ function Tracks(props) {
               albumName={item?.album?.name}
               preview_url={item?.preview_url}
               trackId={item?.id}
+              trackList={tracks?.tracks?.items}
             />
           );
         })}
