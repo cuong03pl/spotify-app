@@ -1,8 +1,9 @@
 .wrapper {
     padding: 0 32px;
-    min-height: 100vh;
     background: var(--bg-base);
     padding-top: 24px;
+    min-height: 100vh;
+
 }
 .item:not(:first-child) {
     margin-top: 32px;

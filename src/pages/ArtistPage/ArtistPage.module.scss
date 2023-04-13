@@ -1,6 +1,8 @@
 .wrapper {
     position: relative;
     background: var(--bg-base);
+    min-height: 100vh;
+
 
     .bg-img {
     background-image: url("https://i.scdn.co/image/ab67618600001016e01805fb5b1ff726da9546cf");

@@ -1,0 +1,35 @@
+.wrapper {
+    padding: 24px 32px;
+    background: var(--bg-base);
+    min-height: 100vh;
+
+}
+
+.header {
+    font-size: 2.4rem;
+    color: var(--text-base);
+    font-weight: 700;
+    margin-bottom: 16px;
+
+}
+.now-playing {
+    .title {
+        font-size:  1.6rem;
+        color: #b3b3b3;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 12px;
+    }
+}
+
+.next-list {
+    margin-top: 32px;
+    .title {
+        font-size:  1.6rem;
+        color: #b3b3b3;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: block;
+
+    }
+}

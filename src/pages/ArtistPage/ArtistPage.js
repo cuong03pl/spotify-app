@@ -134,7 +134,7 @@ function ArtistPage({}) {
 
           <div className={cx("sub")}>
             <span className={cx("total")}>
-              {artist?.followers.total
+              {artist?.followers?.total
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
               người theo dõi
@@ -159,7 +159,7 @@ function ArtistPage({}) {
 
           <div className={cx("track")}>
             <span className={cx("track-title")}>Phổ biến</span>
-            {topTracks?.tracks.slice(0, size).map((item, index) => {
+            {topTracks?.tracks?.slice(0, size).map((item, index) => {
               return (
                 <PlaylistItem
                   key={index}
@@ -194,7 +194,7 @@ function ArtistPage({}) {
                   id={item?.id}
                   title={item?.name}
                   description={item?.type}
-                  imgUrl={item?.images[0].url}
+                  imgUrl={item?.images[0]?.url}
                   artistItem
                 />
               );

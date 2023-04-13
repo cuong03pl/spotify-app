@@ -35,7 +35,6 @@ function PlayingBarRight({ audio }) {
           <Button
             iconBtnSmall
             leftIcon={<LyricsIcon height={16} width={16} fill={"#fff"} />}
-            to={"/lyrics"}
           ></Button>
         </div>
       </Tippy>

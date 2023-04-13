@@ -1,12 +1,4 @@
-replay -------- ok
-disable nút prev or next -------- ok
-nếu hết tự chuyển bài ----------- ok
-
-danh sách chờ
-
 lazy page, skeleton
 
 responsive
-
-khi ấn nghe bài hát list danh sách bài hát + bài hát hiện tại rồi lấy
-index của nó trong list đấy khi ấn chuyển bài sẽ tăng index lên
+kiểm tra xem token hết hạn chưa, nếu hết hạn thì yêu cầu đăng nhập ....
