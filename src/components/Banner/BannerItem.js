@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getList } from "../../Services/Services";
 
 import styles from "./Banner.module.scss";
+import { Skeleton } from "@mui/material";
 
 const cx = classNames.bind(styles);
 
@@ -11,8 +12,11 @@ function BannerItem({ path }) {
   const token = localStorage.getItem("token");
   const [album, setAlbum] = useState();
   const [isShow, setIsShow] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     const fetchApi = async () => {
       await getList(path, {
         headers: {
@@ -21,6 +25,7 @@ function BannerItem({ path }) {
       })
         .then((res) => {
           setAlbum(res);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -28,23 +33,37 @@ function BannerItem({ path }) {
     };
     fetchApi();
   }, [token]);
+
   useEffect(() => {
     if (path.includes("shows")) {
       setIsShow(true);
     } else setIsShow(false);
   }, [path]);
   return (
-    <Link
-      to={isShow ? `/show/${album?.id}` : `/playlist/${album?.id}`}
-      className={cx("banner-item")}
-    >
-      <div className={cx("banner-img")}>
-        <img src={album?.images[0].url} />
-      </div>
-      <div className={cx("banner-content")}>
-        <span>{album?.name}</span>
-      </div>
-    </Link>
+    <>
+      {isLoading && (
+        <Skeleton
+          sx={{ bgcolor: "#ffffff1a" }}
+          variant="rounded"
+          width={368}
+          height={80}
+          animation="wave"
+        />
+      )}
+      {!isLoading && (
+        <Link
+          to={isShow ? `/show/${album?.id}` : `/playlist/${album?.id}`}
+          className={cx("banner-item")}
+        >
+          <div className={cx("banner-img")}>
+            <img src={album?.images[0].url} />
+          </div>
+          <div className={cx("banner-content")}>
+            <span>{album?.name}</span>
+          </div>
+        </Link>
+      )}
+    </>
   );
 }
 

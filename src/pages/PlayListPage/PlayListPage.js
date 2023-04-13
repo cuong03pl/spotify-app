@@ -35,6 +35,7 @@ function PlayListPage() {
   const [followed, setFollowed] = useState();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.playlist);
+
   useEffect(() => {
     const fetchApi = async () => {
       await dispatch(getPlaylistThunk({ id, token }))
@@ -130,7 +131,7 @@ function PlayListPage() {
     }).then((res) => setFollowed(false));
   };
   return (
-    <div className={cx("wrapper")}>
+    <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       <Intro
         category={playlist?.type}
         imgUrl={playlist?.images[0]?.url}

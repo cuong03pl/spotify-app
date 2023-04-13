@@ -15,6 +15,7 @@ import {
   getShow,
   putFollowShows,
 } from "../../Services/Services";
+import Spinner from "components/Spinner/Spinner";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS_1 = [
@@ -39,14 +40,19 @@ function ShowPage() {
   const [shows, setShows] = useState();
   const { id } = useParams();
   const token = localStorage.getItem("token");
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const fetchApi = async () => {
       await getShow(id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then((res) => setShows(res));
+      }).then((res) => {
+        setLoading(false);
+        setShows(res);
+      });
     };
     fetchApi();
   }, [id, token]);
@@ -88,46 +94,53 @@ function ShowPage() {
   };
   return (
     <div className={cx("wrapper")}>
-      <Intro
-        category={shows?.type == "show" ? "podcast" : shows?.type}
-        data={shows}
-        imgUrl={shows?.images[0]?.url}
-        title={shows?.name}
-        publisher={shows?.publisher}
-        description={shows?.description}
-        followers={shows?.followers}
-        totalTracks={shows?.tracks?.total}
-        show
-      />
-      <div className={cx("action")}>
-        <div className={cx("action-btn")}>
-          {followed ? (
-            <Button onClick={handleUnFollow} unfollowBtn>
-              ĐANG THEO DÕI
-            </Button>
-          ) : (
-            <Button onClick={handleFollow} followBtn>
-              THEO DÕI
-            </Button>
-          )}
-        </div>
+      {isLoading && <Spinner />}
+      {!isLoading && (
+        <>
+          <Intro
+            category={shows?.type == "show" ? "podcast" : shows?.type}
+            data={shows}
+            imgUrl={shows?.images[0]?.url}
+            title={shows?.name}
+            publisher={shows?.publisher}
+            description={shows?.description}
+            followers={shows?.followers}
+            totalTracks={shows?.tracks?.total}
+            show
+          />
+          <div className={cx("action")}>
+            <div className={cx("action-btn")}>
+              {followed ? (
+                <Button onClick={handleUnFollow} unfollowBtn>
+                  ĐANG THEO DÕI
+                </Button>
+              ) : (
+                <Button onClick={handleFollow} followBtn>
+                  THEO DÕI
+                </Button>
+              )}
+            </div>
 
-        <Menu
-          moreMenu
-          placement={"bottom-start"}
-          data={!followed ? MENU_ITEMS_1 : MENU_ITEMS_2}
-        >
-          <Button
-            leftIcon={<MoreIcon height={32} width={32} fill={"#ffffff99"} />}
-          ></Button>
-        </Menu>
-      </div>
-      <div className={cx("content")}>
-        <ShowList data={shows?.episodes.items} />
-        <div style={{ maxWidth: "30%" }}>
-          <ShowIntro data={shows} title={"Giới thiệu"} />
-        </div>
-      </div>
+            <Menu
+              moreMenu
+              placement={"bottom-start"}
+              data={!followed ? MENU_ITEMS_1 : MENU_ITEMS_2}
+            >
+              <Button
+                leftIcon={
+                  <MoreIcon height={32} width={32} fill={"#ffffff99"} />
+                }
+              ></Button>
+            </Menu>
+          </div>
+          <div className={cx("content")}>
+            <ShowList data={shows?.episodes.items} />
+            <div style={{ maxWidth: "30%" }}>
+              <ShowIntro data={shows} title={"Giới thiệu"} />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

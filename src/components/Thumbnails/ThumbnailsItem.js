@@ -3,13 +3,18 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getList } from "../../Services/Services";
 import styles from "./Thumbnails.module.scss";
+import { Skeleton } from "@mui/material";
 const cx = classNames.bind(styles);
 
 function ThumbnailsItem({ path, data }) {
   const token = localStorage.getItem("token");
   const [thumbnail, setThumbnail] = useState();
   const [isShow, setIsShow] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
+
     const fetchApi = async () => {
       await getList(path, {
         headers: {
@@ -18,6 +23,7 @@ function ThumbnailsItem({ path, data }) {
       })
         .then((res) => {
           setThumbnail(res);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -31,20 +37,33 @@ function ThumbnailsItem({ path, data }) {
     } else setIsShow(false);
   }, [path]);
   return (
-    <Link
-      to={isShow ? `/show/${thumbnail?.id}` : `/playlist/${thumbnail?.id}`}
-      className={cx("thumbnail-item")}
-    >
-      <div className={cx("thumbnail-img")}>
-        <img src={thumbnail?.images[0].url} alt="" />
-      </div>
-      <div className={cx("content")}>
-        <div className={cx("title")}>{thumbnail?.name}</div>
-        <div className={cx("full-name")}>
-          {thumbnail?.publisher || thumbnail?.description}
-        </div>
-      </div>
-    </Link>
+    <>
+      {!isLoading && (
+        <Link
+          to={isShow ? `/show/${thumbnail?.id}` : `/playlist/${thumbnail?.id}`}
+          className={cx("thumbnail-item")}
+        >
+          <div className={cx("thumbnail-img")}>
+            <img src={thumbnail?.images[0].url} alt="" />
+          </div>
+          <div className={cx("content")}>
+            <div className={cx("title")}>{thumbnail?.name}</div>
+            <div className={cx("full-name")}>
+              {thumbnail?.publisher || thumbnail?.description}
+            </div>
+          </div>
+        </Link>
+      )}
+      {isLoading && (
+        <Skeleton
+          sx={{ bgcolor: "#ffffff1a", minWidth: "218px" }}
+          variant="rounded"
+          width={218}
+          height={308}
+          animation="wave"
+        />
+      )}
+    </>
   );
 }
 

@@ -50,7 +50,7 @@ function FavouritePage() {
       });
   };
   return (
-    <div className={cx("wrapper")}>
+    <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       <Intro
         category={"playlist"}
         title={"Bài hát đã thích"}

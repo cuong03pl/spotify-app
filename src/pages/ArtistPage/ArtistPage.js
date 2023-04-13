@@ -15,6 +15,7 @@ import PlaylistItem from "../../components/Playlist/PlaylistItem";
 import AlbumItem from "../../components/Album/AlbumItem";
 import AlbumList from "../../components/Album/Album";
 import Button from "components/Button/Button";
+import Spinner from "components/Spinner/Spinner";
 const cx = classNames.bind(styles);
 function ArtistPage({}) {
   const { id } = useParams();
@@ -26,6 +27,7 @@ function ArtistPage({}) {
   const [seeAll, setSeeAll] = useState(false);
   const [size, setSize] = useState(5);
   const [followed, setFollowed] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   // const top
   // useEffect(() => {
@@ -34,6 +36,7 @@ function ArtistPage({}) {
   //   }
   // }, [name]);
   useEffect(() => {
+    setLoading(true);
     const fetchApi = async () => {
       await getTopTracks(id, {
         params: {
@@ -44,11 +47,14 @@ function ArtistPage({}) {
         },
       }).then((res) => {
         setTopTracks(res);
+        setLoading(false);
       });
     };
     fetchApi();
   }, [id, token]);
   useEffect(() => {
+    setLoading(true);
+
     const fetchApi = async () => {
       await getArtist(id, {
         headers: {
@@ -56,11 +62,14 @@ function ArtistPage({}) {
         },
       }).then((res) => {
         setArtist(res);
+        setLoading(false);
       });
     };
     fetchApi();
   }, [id, token]);
   useEffect(() => {
+    setLoading(true);
+
     const fetchApi = async () => {
       await getRelatedArtists(id, {
         headers: {
@@ -68,6 +77,7 @@ function ArtistPage({}) {
         },
       }).then((res) => {
         setRelatedArtists(res);
+        setLoading(false);
       });
     };
     fetchApi();
@@ -121,93 +131,101 @@ function ArtistPage({}) {
     }).then((res) => setFollowed(false));
   };
   return (
-    <div className={cx("wrapper")}>
-      <div
-        style={{ backgroundImage: `url(${artist?.images[0]?.url})` }}
-        className={cx("bg-img")}
-      ></div>
-      <div className={cx("main")}>
-        <div className={cx("header")}>
-          <span style={{ fontSize: fontSize + "px" }} className={cx("title")}>
-            {artist?.name}
-          </span>
+    <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
+      {isLoading && <Spinner />}
+      {!isLoading && (
+        <>
+          <div
+            style={{ backgroundImage: `url(${artist?.images[0]?.url})` }}
+            className={cx("bg-img")}
+          ></div>
+          <div className={cx("main")}>
+            <div className={cx("header")}>
+              <span
+                style={{ fontSize: fontSize + "px" }}
+                className={cx("title")}
+              >
+                {artist?.name}
+              </span>
 
-          <div className={cx("sub")}>
-            <span className={cx("total")}>
-              {artist?.followers?.total
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
-              người theo dõi
-            </span>
-          </div>
-        </div>
+              <div className={cx("sub")}>
+                <span className={cx("total")}>
+                  {artist?.followers?.total
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
+                  người theo dõi
+                </span>
+              </div>
+            </div>
 
-        <div className={cx("content")}>
-          <div className={cx("action")}>
-            <div className={cx("action-btn")}>
-              {followed ? (
-                <Button onClick={handleUnFollow} unfollowBtn>
-                  ĐANG THEO DÕI
-                </Button>
-              ) : (
-                <Button onClick={handleFollow} followBtn>
-                  THEO DÕI
-                </Button>
-              )}
+            <div className={cx("content")}>
+              <div className={cx("action")}>
+                <div className={cx("action-btn")}>
+                  {followed ? (
+                    <Button onClick={handleUnFollow} unfollowBtn>
+                      ĐANG THEO DÕI
+                    </Button>
+                  ) : (
+                    <Button onClick={handleFollow} followBtn>
+                      THEO DÕI
+                    </Button>
+                  )}
+                </div>
+              </div>
+
+              <div className={cx("track")}>
+                <span className={cx("track-title")}>Phổ biến</span>
+                {topTracks?.tracks?.slice(0, size).map((item, index) => {
+                  return (
+                    <PlaylistItem
+                      key={index}
+                      i={index}
+                      durationTime={item?.duration_ms}
+                      title={item?.name}
+                      artistList={item?.artists}
+                      style={{ gridTemplateColumns: "5% 90% 5%" }}
+                      preview_url={item?.preview_url}
+                      trackId={item?.id}
+                      trackList={topTracks?.tracks}
+                    />
+                  );
+                })}
+                {seeAll ? (
+                  <span onClick={handleSeeLess} className={cx("see-more")}>
+                    Ẩn bớt
+                  </span>
+                ) : (
+                  <span onClick={handleSeeMore} className={cx("see-more")}>
+                    Xem thêm
+                  </span>
+                )}
+              </div>
+
+              <span className={cx("title")}>Fan cũng thích</span>
+              <div className={cx("artist-list")}>
+                {relatedArtists?.artists.slice(0, 5).map((item, index) => {
+                  return (
+                    <AlbumItem
+                      key={index}
+                      id={item?.id}
+                      title={item?.name}
+                      description={item?.type}
+                      imgUrl={item?.images[0]?.url}
+                      artistItem
+                    />
+                  );
+                })}
+              </div>
+
+              <AlbumList
+                id={id}
+                title={`Album của  ${artist?.name}`}
+                artistID={artist?.id}
+              />
             </div>
           </div>
-
-          <div className={cx("track")}>
-            <span className={cx("track-title")}>Phổ biến</span>
-            {topTracks?.tracks?.slice(0, size).map((item, index) => {
-              return (
-                <PlaylistItem
-                  key={index}
-                  i={index}
-                  durationTime={item?.duration_ms}
-                  title={item?.name}
-                  artistList={item?.artists}
-                  style={{ gridTemplateColumns: "5% 90% 5%" }}
-                  preview_url={item?.preview_url}
-                  trackId={item?.id}
-                  trackList={topTracks?.tracks}
-                />
-              );
-            })}
-            {seeAll ? (
-              <span onClick={handleSeeLess} className={cx("see-more")}>
-                Ẩn bớt
-              </span>
-            ) : (
-              <span onClick={handleSeeMore} className={cx("see-more")}>
-                Xem thêm
-              </span>
-            )}
-          </div>
-
-          <span className={cx("title")}>Fan cũng thích</span>
-          <div className={cx("artist-list")}>
-            {relatedArtists?.artists.slice(0, 5).map((item, index) => {
-              return (
-                <AlbumItem
-                  key={index}
-                  id={item?.id}
-                  title={item?.name}
-                  description={item?.type}
-                  imgUrl={item?.images[0]?.url}
-                  artistItem
-                />
-              );
-            })}
-          </div>
-
-          <AlbumList
-            id={id}
-            title={`Album của  ${artist?.name}`}
-            artistID={artist?.id}
-          />
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }

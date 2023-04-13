@@ -26,7 +26,7 @@ function EpisodePage({}) {
     fetchApi();
   }, []);
   return (
-    <div className={cx("wrapper")}>
+    <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       <Intro
         category={episodes?.type == "show" ? "podcast" : episodes?.type}
         data={episodes}

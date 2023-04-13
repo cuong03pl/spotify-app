@@ -14,6 +14,7 @@ import {
 import { useParams } from "react-router-dom";
 import AlbumList from "../../components/Album/Album";
 import PlaylistItem from "../../components/Playlist/PlaylistItem";
+import Spinner from "components/Spinner/Spinner";
 const cx = classNames.bind(styles);
 function AlbumPage({}) {
   const { id } = useParams();
@@ -21,8 +22,10 @@ function AlbumPage({}) {
   const [album, setAlbum] = useState();
   const [albumTracks, setAlbumTracks] = useState();
   const [followed, setFollowed] = useState();
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const fetchApi = async () => {
       await getAlbum(id, {
         headers: {
@@ -31,6 +34,7 @@ function AlbumPage({}) {
       }).then((res) => {
         setAlbum(res);
         setAlbumTracks(res.tracks.items);
+        setLoading(false);
       });
     };
     fetchApi();
@@ -73,53 +77,58 @@ function AlbumPage({}) {
   };
 
   return (
-    <div className={cx("wrapper")}>
-      <Intro
-        category={album?.album_type}
-        data={album}
-        imgUrl={album?.images[0]?.url}
-        title={album?.name}
-        publisher={album?.publisher}
-        description={album?.description}
-        followers={album?.followers}
-        totalTracks={album?.total_tracks}
-      />
-      <Action
-        isFollow={followed}
-        onFollow={handleFollow}
-        onUnfollow={handleUnfollow}
-      />
-      <div className={cx("content")}>
-        <div className={cx("header")}>
-          <span>#</span>
-          <span>TIÊU ĐỀ</span>
-          <span>
-            <ClockIcon height={16} width={16} fill={"#b3b3b3"} />{" "}
-          </span>
-        </div>
-        {/* <AlbumTrack data={albumTracks} /> */}
-        {albumTracks?.map((item, index) => {
-          return (
-            <PlaylistItem
-              style={{ gridTemplateColumns: "5% 90% 5%" }}
-              durationTime={item?.duration_ms}
-              title={item?.name}
-              artistList={item?.artists}
-              i={index}
-              key={index}
-              preview_url={item?.preview_url}
-              trackId={item?.id}
-              trackList={albumTracks}
-            />
-          );
-        })}
+    <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
+      {isLoading && <Spinner />}
+      {!isLoading && (
+        <>
+          <Intro
+            category={album?.album_type}
+            data={album}
+            imgUrl={album?.images[0]?.url}
+            title={album?.name}
+            publisher={album?.publisher}
+            description={album?.description}
+            followers={album?.followers}
+            totalTracks={album?.total_tracks}
+          />
+          <Action
+            isFollow={followed}
+            onFollow={handleFollow}
+            onUnfollow={handleUnfollow}
+          />
+          <div className={cx("content")}>
+            <div className={cx("header")}>
+              <span>#</span>
+              <span>TIÊU ĐỀ</span>
+              <span>
+                <ClockIcon height={16} width={16} fill={"#b3b3b3"} />{" "}
+              </span>
+            </div>
+            {/* <AlbumTrack data={albumTracks} /> */}
+            {albumTracks?.map((item, index) => {
+              return (
+                <PlaylistItem
+                  style={{ gridTemplateColumns: "5% 90% 5%" }}
+                  durationTime={item?.duration_ms}
+                  title={item?.name}
+                  artistList={item?.artists}
+                  i={index}
+                  key={index}
+                  preview_url={item?.preview_url}
+                  trackId={item?.id}
+                  trackList={albumTracks}
+                />
+              );
+            })}
 
-        <AlbumList
-          id={id}
-          artistID={album?.artists[0].id}
-          title={`Album khác của ${album?.artists[0].name} `}
-        />
-      </div>
+            <AlbumList
+              id={id}
+              artistID={album?.artists[0].id}
+              title={`Album khác của ${album?.artists[0].name} `}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
