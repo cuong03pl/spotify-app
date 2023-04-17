@@ -15,6 +15,8 @@ import LibraryPlayListPage from "../pages/LibraryPage/features/LibraryPlayListPa
 import LibraryAlbumPage from "pages/LibraryPage/features/LibraryAlbumPage";
 import LibraryPodcastPage from "pages/LibraryPage/features/LibraryPodcastPage";
 import LibraryArtistPage from "pages/LibraryPage/features/LibraryArtistPage";
+import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
+import ProfilePage from "pages/ProfilePage/ProfilePage";
 
 export const publicRoutes = [
   {
@@ -82,5 +84,14 @@ export const publicRoutes = [
   {
     path: config.routes.album,
     component: <AlbumPage />,
+  },
+  {
+    path: config.routes.error,
+    component: <NotFoundPage />,
+    layout: null,
+  },
+  {
+    path: config.routes.profile,
+    component: <ProfilePage />,
   },
 ];

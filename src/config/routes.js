@@ -18,5 +18,7 @@ const routes = {
   artist: "/artists/:id",
   album: "/albums/:id",
   track: "/tracks/:id",
+  profile: "/profile",
+  error: "*",
 };
 export default routes;

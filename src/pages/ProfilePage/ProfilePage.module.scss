@@ -1,0 +1,21 @@
+.wrapper {
+    min-height: 100vh;
+    background: var(--bg-base);
+}
+
+.content{
+    padding: 0 32px 32px;
+}
+.title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-base);
+    margin-bottom: 16px;
+    display: block;
+    margin-top: 56px;
+}
+
+.list {
+    display: flex;
+    gap: 24px;
+}

@@ -55,7 +55,7 @@ function PlayListPage() {
       }).then((res) => setUser(res));
     };
     fetchApi();
-  }, [token]);
+  }, [token, id]);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -100,7 +100,7 @@ function PlayListPage() {
         console.error(error);
       });
   };
-
+  console.log(user);
   useEffect(() => {
     const fetchApi = async () => {
       await CheckUsersFollowsPlaylists(id, {

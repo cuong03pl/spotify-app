@@ -8,7 +8,9 @@ const cx = classNames.bind(styles);
 function Menu({ children, data, placement, moreMenu }) {
   const renderItem = () => {
     return data.map((item, index) => {
-      return <MenuItem item={item} key={index} onClick={item.onclick} />;
+      return (
+        <MenuItem item={item} key={index} onClick={item.onclick} to={item.to} />
+      );
     });
   };
   let classes = cx("wrapper", {

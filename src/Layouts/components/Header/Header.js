@@ -28,6 +28,7 @@ const MENU_ITEMS = [
   {
     title: "Hồ sơ",
     icon: null,
+    to: "/profile",
   },
   {
     title: "Nâng cấp lên Premium",
@@ -61,7 +62,7 @@ function Header() {
   const [user, setUser] = useState();
   var response_type = "token";
   const scopes =
-    "user-library-read user-follow-read playlist-modify-public playlist-modify-private user-library-modify user-follow-modify user-read-playback-state user-modify-playback-state user-read-currently-playing user-read-recently-played";
+    "user-library-read user-follow-read playlist-modify-public playlist-modify-private user-library-modify user-follow-modify user-read-playback-state user-modify-playback-state user-read-currently-playing user-read-recently-played user-top-read";
   const currentPath = window.location.pathname;
   useEffect(() => {
     const fetchApi = async () => {

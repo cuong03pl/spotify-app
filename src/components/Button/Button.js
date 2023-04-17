@@ -17,6 +17,7 @@ function Button(
     followBtn,
     unfollowBtn,
     signUpBtn,
+    goHomeBtn,
     leftIcon,
     rightIcon,
     to,
@@ -40,6 +41,7 @@ function Button(
     primaryBtn,
     followBtn,
     unfollowBtn,
+    goHomeBtn,
   });
   const props = { onClick, ...passProps };
   if (to) {

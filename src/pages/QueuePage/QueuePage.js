@@ -14,15 +14,22 @@ function QueuePage() {
       <div className={cx("now-playing")}>
         <span className={cx("title")}>Bài hát hiện tại</span>
         <PlaylistItem
-          durationTime={currentTrack?.track.duration_ms}
-          imgURL={currentTrack?.track.album.images[0].url}
-          title={currentTrack?.track.name}
-          albumId={currentTrack?.track.album.id}
-          trackId={currentTrack?.track?.id}
-          artistList={currentTrack?.track.artists}
-          albumName={currentTrack?.track.album.name}
-          uris={currentTrack?.track?.uri}
-          preview_url={currentTrack?.track?.preview_url}
+          durationTime={
+            currentTrack?.track?.duration_ms || currentTrack?.duration_ms
+          }
+          imgURL={
+            currentTrack?.track?.album?.images[0].url ||
+            "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
+          }
+          title={currentTrack?.track?.name || currentTrack?.name}
+          albumId={currentTrack?.track?.album.id || currentTrack?.album?.id}
+          trackId={currentTrack?.track?.id || currentTrack?.id}
+          artistList={currentTrack?.track?.artists || currentTrack?.artists}
+          albumName={currentTrack?.track?.album || currentTrack?.album?.name}
+          uris={currentTrack?.track?.uri || currentTrack?.uri}
+          preview_url={
+            currentTrack?.track?.preview_url || currentTrack?.preview_url
+          }
           style={{ gridTemplateColumns: "0% 40% 40% 20% " }}
         />
       </div>

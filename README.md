@@ -1,8 +1,5 @@
-skeleton -----------ok
-spinner page ----- ok
-
-khi play nut play o action thif phats 1 list
-
-tối ưu hóa web
+trang not found ---------- ok
+trang user ----- ok
+xử lý fallback img link https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930
 responsive
-kiểm tra xem token hết hạn chưa, nếu hết hạn thì yêu cầu đăng nhập ....
+tối ưu hóa web

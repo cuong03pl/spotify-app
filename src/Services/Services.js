@@ -82,7 +82,18 @@ export const getCurrentPlayingTrack = async (params) => {
   const res = await get("me/player/currently-playing", params);
   return res.data;
 };
-
+export const getProfile = async (params) => {
+  const res = await get("me", params);
+  return res.data;
+};
+export const getProfileTopArtists = async (params) => {
+  const res = await get("me/top/artists", params);
+  return res.data;
+};
+export const getProfileTopTracks = async (params) => {
+  const res = await get("me/top/tracks", params);
+  return res.data;
+};
 export const CheckUsersSavedTracks = async (params) => {
   const res = await get("me/tracks/contains", params);
   return res.data;
