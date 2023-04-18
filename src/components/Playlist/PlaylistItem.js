@@ -17,6 +17,8 @@ import {
   setType,
   setUrlCurrentTrack,
 } from "Layouts/components/PlayingBar/playerSlice";
+import ImageFallBack from "components/ImageFallBack/ImageFallBack";
+import { image } from "assets/images";
 
 const cx = classNames.bind(styles);
 
@@ -86,7 +88,9 @@ function PlaylistItem({
       </div>
 
       <div className={cx("info")}>
-        {imgURL && <img src={imgURL} alt="" />}
+        {imgURL && (
+          <ImageFallBack fallBack={image.fallback} src={imgURL} alt="" />
+        )}
 
         <div>
           {playing ? (

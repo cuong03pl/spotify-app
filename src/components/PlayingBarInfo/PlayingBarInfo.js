@@ -9,8 +9,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CheckUsersSavedTracks } from "Services/Services";
-import { LikeIcon, LoveSolidIcon, PictureInPictureIcon } from "../Icon";
+import { LikeIcon, LoveSolidIcon } from "../Icon";
 import styles from "./PlayingBarInfo.module.scss";
+import ImageFallBack from "components/ImageFallBack/ImageFallBack";
+import { image } from "assets/images";
 const cx = classNames.bind(styles);
 
 function PlayingBarInfo({ data }) {
@@ -59,7 +61,8 @@ function PlayingBarInfo({ data }) {
   };
   return (
     <div className={cx("wrapper")}>
-      <img
+      <ImageFallBack
+        fallBack={image.fallback}
         className={cx("content-img")}
         src={data?.album?.images[0].url || data?.images[0]?.url}
         alt=""

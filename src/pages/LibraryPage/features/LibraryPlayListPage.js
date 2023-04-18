@@ -12,8 +12,8 @@ import AlbumItem from "../../../components/Album/AlbumItem";
 import NoAlbumsFound from "../components/NoAlbumsFound";
 import { useNavigate } from "react-router-dom";
 import { PlaylistFallBackIcon } from "components/Icon";
-import ImageFallBack from "components/FallBack/ImageFallBack";
 import Spinner from "components/Spinner/Spinner";
+import FallBack from "components/FallBack/FallBack";
 
 const cx = classNames.bind(styles);
 function LibraryPlayListPage(props) {
@@ -102,7 +102,7 @@ function LibraryPlayListPage(props) {
                       imgUrl={item?.images[0]?.url}
                       playlist
                       fallback={
-                        <ImageFallBack
+                        <FallBack
                           icon={
                             <PlaylistFallBackIcon
                               height={64}

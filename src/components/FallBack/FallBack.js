@@ -4,11 +4,11 @@ import classNames from "classnames/bind";
 
 import styles from "./FallBack.module.scss";
 const cx = classNames.bind(styles);
-function ImageFallBack({ icon, artist, playlist }) {
+function FallBack({ icon, artist, playlist }) {
   let classes = cx("wrapper", { artist, playlist });
   return <div className={classes}>{icon}</div>;
 }
 
-ImageFallBack.propTypes = {};
+FallBack.propTypes = {};
 
-export default ImageFallBack;
+export default FallBack;

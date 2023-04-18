@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { getList } from "../../Services/Services";
 import styles from "./Thumbnails.module.scss";
 import { Skeleton } from "@mui/material";
+import ImageFallBack from "components/ImageFallBack/ImageFallBack";
+import { image } from "assets/images";
 const cx = classNames.bind(styles);
 
 function ThumbnailsItem({ path, data }) {
@@ -44,7 +46,11 @@ function ThumbnailsItem({ path, data }) {
           className={cx("thumbnail-item")}
         >
           <div className={cx("thumbnail-img")}>
-            <img src={thumbnail?.images[0].url} alt="" />
+            <ImageFallBack
+              fallBack={image.fallback}
+              src={thumbnail?.images[0].url}
+              alt=""
+            />
           </div>
           <div className={cx("content")}>
             <div className={cx("title")}>{thumbnail?.name}</div>

@@ -1,6 +1,5 @@
 import classNames from "classnames/bind";
-import Action from "components/Action/Action";
-import ImageFallBack from "components/FallBack/ImageFallBack";
+import FallBack from "components/FallBack/FallBack";
 import { ClockIcon, PlaylistFallBackIcon } from "components/Icon";
 import Intro from "components/Intro/Intro";
 import Playlist from "components/Playlist/Playlist";
@@ -56,7 +55,7 @@ function FavouritePage() {
         title={"Bài hát đã thích"}
         description={user?.display_name}
         fallback={
-          <ImageFallBack
+          <FallBack
             icon={
               <PlaylistFallBackIcon height={64} width={64} fill={"#b3b3b3"} />
             }

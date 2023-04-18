@@ -5,6 +5,8 @@ import { getList } from "../../Services/Services";
 
 import styles from "./Banner.module.scss";
 import { Skeleton } from "@mui/material";
+import ImageFallBack from "components/ImageFallBack/ImageFallBack";
+import { image } from "assets/images";
 
 const cx = classNames.bind(styles);
 
@@ -56,7 +58,10 @@ function BannerItem({ path }) {
           className={cx("banner-item")}
         >
           <div className={cx("banner-img")}>
-            <img src={album?.images[0].url} />
+            <ImageFallBack
+              src={album?.images[0].url}
+              fallBack={image.fallback}
+            />
           </div>
           <div className={cx("banner-content")}>
             <span>{album?.name}</span>

@@ -7,8 +7,8 @@ import styles from "./../LibraryPage.module.scss";
 import AlbumItem from "../../../components/Album/AlbumItem";
 import NoAlbumsFound from "../components/NoAlbumsFound";
 import { ArtistFallBackIcon } from "components/Icon";
-import ImageFallBack from "components/FallBack/ImageFallBack";
 import Spinner from "components/Spinner/Spinner";
+import FallBack from "components/FallBack/FallBack";
 
 const cx = classNames.bind(styles);
 function LibraryPlayListPage(props) {
@@ -61,7 +61,7 @@ function LibraryPlayListPage(props) {
                       })}
                       imgUrl={item?.album?.images[0]?.url}
                       fallback={
-                        <ImageFallBack
+                        <FallBack
                           icon={
                             <ArtistFallBackIcon
                               height={64}

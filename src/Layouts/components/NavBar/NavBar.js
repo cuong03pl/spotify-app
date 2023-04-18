@@ -17,6 +17,7 @@ import { config } from "../../../config";
 import Menu from "./Menu/Menu";
 
 import styles from "./NavBar.module.scss";
+import ImageFallBack from "components/ImageFallBack/ImageFallBack";
 const cx = classNames.bind(styles);
 
 function NavBar() {
@@ -97,7 +98,7 @@ function NavBar() {
   return (
     <div className={cx("wrapper")}>
       <Link to={"/"} className={cx("logo")}>
-        <img src={image.logo} alt="" />
+        <ImageFallBack fallBack={image.fallback} src={image.logo} alt="" />
       </Link>
 
       <div className={cx("menu-1")}>

@@ -1,13 +1,13 @@
 import classNames from "classnames/bind";
 import styles from "./ProfilePage.module.scss";
 import Intro from "components/Intro/Intro";
-import ImageFallBack from "components/FallBack/ImageFallBack";
 import { ArtistFallBackIcon } from "components/Icon";
 import { getProfile, getProfileTopArtists } from "Services/Services";
 import { useEffect, useState } from "react";
 import AlbumItem from "components/Album/AlbumItem";
 import { getProfileTopTracks } from "Services/Services";
 import PlaylistItem from "components/Playlist/PlaylistItem";
+import FallBack from "components/FallBack/FallBack";
 const cx = classNames.bind(styles);
 
 function ProfilePage(props) {
@@ -60,7 +60,7 @@ function ProfilePage(props) {
         category={"Hồ sơ"}
         title={profile?.display_name}
         fallback={
-          <ImageFallBack
+          <FallBack
             icon={
               <ArtistFallBackIcon height={64} width={64} fill={"#b3b3b3"} />
             }

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./Intro.module.scss";
 import PropTypes from "prop-types";
+import ImageFallBack from "components/ImageFallBack/ImageFallBack";
+import { image } from "assets/images";
 const cx = classNames.bind(styles);
 
 function Intro({
@@ -27,7 +29,11 @@ function Intro({
   return (
     <div className={cx("wrapper")}>
       <div className={cx("intro-img")}>
-        {imgUrl ? <img src={imgUrl} alt="" /> : fallback}
+        {imgUrl ? (
+          <ImageFallBack src={imgUrl} fallBack={image.fallback} alt="" />
+        ) : (
+          fallback
+        )}
       </div>
       <div className={cx("content")}>
         {category && <span className={cx("category")}>{category}</span>}

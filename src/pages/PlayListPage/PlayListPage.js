@@ -1,7 +1,6 @@
 import axios from "axios";
 import classNames from "classnames/bind";
 import AlertDialog from "components/Dialog/Dialog";
-import ImageFallBack from "components/FallBack/ImageFallBack";
 import PlaylistItem from "components/Playlist/PlaylistItem";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +22,7 @@ import {
   deletePlaylistThunk,
   getPlaylistThunk,
 } from "./playlistSlice";
+import FallBack from "components/FallBack/FallBack";
 const cx = classNames.bind(styles);
 
 function PlayListPage() {
@@ -143,7 +143,7 @@ function PlayListPage() {
         onClick={handleOpenModal}
         isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
         fallback={
-          <ImageFallBack
+          <FallBack
             icon={
               <PlaylistFallBackIcon height={64} width={64} fill={"#b3b3b3"} />
             }

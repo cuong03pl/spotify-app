@@ -7,8 +7,9 @@ import { Link } from "react-router-dom";
 import styles from "./../SearchResultsPage.module.scss";
 import AlbumItem from "../../../components/Album/AlbumItem";
 import { getSearch, getUser } from "../../../Services/Services";
-import ImageFallBack from "components/FallBack/ImageFallBack";
+import ImageFallBack from "components/FallBack/FallBack";
 import { PlaylistFallBackIcon } from "components/Icon";
+import FallBack from "components/FallBack/FallBack";
 const cx = classNames.bind(styles);
 function PlayList(props) {
   const [playlist, setPlaylist] = useState([]);
@@ -47,7 +48,7 @@ function PlayList(props) {
               description={`Của ${item?.owner.display_name} `}
               imgUrl={item?.images[0]?.url}
               fallback={
-                <ImageFallBack
+                <FallBack
                   icon={
                     <PlaylistFallBackIcon
                       height={64}

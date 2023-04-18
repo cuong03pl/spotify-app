@@ -3,12 +3,13 @@ import classNames from "classnames/bind";
 import styles from "./EditDetails.module.scss";
 import PropTypes from "prop-types";
 import { CloseIcon, PenIcon, PlaylistFallBackIcon } from "components/Icon";
-import { TextField } from "@mui/material";
 import Button from "components/Button/Button";
-import { putNewImage, putNewPlaylistDetails } from "Services/Services";
+import { putNewPlaylistDetails } from "Services/Services";
 import { useDispatch, useSelector } from "react-redux";
 import { updateDetails } from "pages/PlayListPage/playlistSlice";
-import ImageFallBack from "components/FallBack/ImageFallBack";
+import FallBack from "components/FallBack/FallBack";
+import ImageFallBack from "components/ImageFallBack/ImageFallBack";
+import { image } from "assets/images";
 const cx = classNames.bind(styles);
 
 function EditDetails({ onClose, id, data }) {
@@ -52,10 +53,14 @@ function EditDetails({ onClose, id, data }) {
 
       <div className={cx("content")}>
         <div className={cx("image")}>
-          {playlist?.images.length > 0 ? (
-            <img src={playlist?.images[0]?.url} alt="" />
-          ) : (
+          {playlist?.images.length <= 0 ? (
             <ImageFallBack
+              src={playlist?.images[0]?.url}
+              fallBack={image.fallback}
+              alt=""
+            />
+          ) : (
+            <FallBack
               icon={
                 <PlaylistFallBackIcon height={64} width={64} fill={"#b3b3b3"} />
               }
