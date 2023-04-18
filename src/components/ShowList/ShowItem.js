@@ -5,7 +5,7 @@ import styles from "./ShowList.module.scss";
 import PropTypes from "prop-types";
 import Tippy from "@tippyjs/react";
 import Button from "../Button/Button";
-import { PauseIcon, PlayIcon, SaveIcon, UploadIcon } from "../Icon";
+import { PauseIcon, PlayIcon, UploadIcon } from "../Icon";
 import { useConvertDate } from "../../hooks/useConvertDate";
 import { useConvertTime } from "../../hooks/useConvertTime";
 import { toast, ToastContainer } from "react-toastify";
@@ -20,6 +20,8 @@ import {
   setType,
   setUrlCurrentTrack,
 } from "Layouts/components/PlayingBar/playerSlice";
+import ImageFallBack from "components/ImageFallBack/ImageFallBack";
+import { image } from "assets/images";
 const cx = classNames.bind(styles);
 
 function ShowItem({ data, index, showList }) {
@@ -71,7 +73,11 @@ function ShowItem({ data, index, showList }) {
   return (
     <Link to={`/episodes/${data?.id}`} className={cx("show-item")}>
       <div className={cx("intro-img")}>
-        <img src={data?.images[0].url} alt="" />
+        <ImageFallBack
+          fallBack={image.fallback}
+          src={data?.images[0].url}
+          alt=""
+        />
       </div>
       <div className={cx("content")}>
         {playing ? (
