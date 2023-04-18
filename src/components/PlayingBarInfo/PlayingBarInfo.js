@@ -61,8 +61,7 @@ function PlayingBarInfo({ data }) {
   };
   return (
     <div className={cx("wrapper")}>
-      <ImageFallBack
-        fallBack={image.fallback}
+      <img
         className={cx("content-img")}
         src={data?.album?.images[0].url || data?.images[0]?.url}
         alt=""

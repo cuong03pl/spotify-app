@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import Banner from "../../components/Banner/Banner";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import styles from "./HomePage.module.scss";
+
 const cx = classNames.bind(styles);
 
 const PATH_LISTS = [
@@ -77,6 +78,7 @@ function HomePage() {
   return (
     <div className={cx("wrapper")}>
       <Banner path={PATH_LISTS} />
+
       {PATH_LISTS1.map((item, index) => {
         return <Thumbnails key={index} path={item?.path} title={item.title} />;
       })}

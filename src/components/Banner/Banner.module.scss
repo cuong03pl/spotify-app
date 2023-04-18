@@ -16,8 +16,6 @@
 
         .banner-item {
             height: 80px;
-            width: 376px;
-            max-width: 31%;
             display: flex;
             align-items: center;
             background-color: hsla(0,0%,100%,.1);
@@ -42,8 +40,14 @@
                 display: flex;
                 align-items: center;
                 width: 100%;
-                justify-content: space-between;
-                
+                span{
+                    justify-content: space-between;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;  
+                display: -webkit-box;
+                overflow: hidden;
+                }
                 .banner-btn {
                     display: none;
                     margin-left: 8px;
@@ -62,3 +66,44 @@
     }
     
 }
+
+@media ( min-width: 1280px ) {
+    .content {
+        column-gap: 24px; 
+
+        .banner-item {
+            width: 31px ;
+            max-width: 31%;
+            width: 376px;
+            .banner-content {
+
+            }
+        }
+    }
+}
+@media ( max-width: 1280px ) and ( min-width: 1025px ) {
+    .content {
+        column-gap: 24px; 
+
+        .banner-item {
+            width: 45% ;
+            max-width: 31%;
+            .banner-content {
+
+            }
+        }
+    }
+ }
+@media  ( max-width: 1025px ){ 
+    .content {
+        column-gap: 10% ;
+        .banner-item {
+            width: 45% ;
+            max-width: 50% ;
+            .banner-content {
+                font-size: 1.4rem !important;
+            }
+        }
+    } 
+}
+

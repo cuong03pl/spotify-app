@@ -51,15 +51,6 @@ function Action({ id, url, onFollow, onUnfollow, isFollow, isUserPlaylist }) {
     }
   };
 
-  const handlePlay = () => {
-    dispatch(setPlayPause(true));
-    dispatch(setPlayingTrack(id));
-    dispatch(setUrlCurrentTrack(url));
-  };
-  const handlePause = () => {
-    dispatch(setPlayPause(false));
-    dispatch(setPlayingTrack(id));
-  };
   useEffect(() => {
     if (state.id === id) {
       setPlaying(true);
@@ -69,38 +60,6 @@ function Action({ id, url, onFollow, onUnfollow, isFollow, isUserPlaylist }) {
   }, [id, state.id]);
   return (
     <div className={cx("action")}>
-      {state?.isPlay && playing ? (
-        <Tippy content="Tạm dừng">
-          <div>
-            <Button
-              bigBtn
-              iconBtnSmall
-              circleBtn
-              playPauseBtn
-              onClick={handlePause}
-              leftIcon={
-                <PlayIcon height={16} width={16} fill={"currentcolor"} />
-              }
-            ></Button>
-          </div>
-        </Tippy>
-      ) : (
-        <Tippy content="Phát">
-          <div>
-            <Button
-              onClick={handlePlay}
-              iconBtnSmall
-              circleBtn
-              playPauseBtn
-              bigBtn
-              leftIcon={
-                <PauseIcon height={16} width={16} fill={"currentcolor"} />
-              }
-            ></Button>
-          </div>
-        </Tippy>
-      )}
-
       {!isUserPlaylist && (
         <>
           {isFollow ? (

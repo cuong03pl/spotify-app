@@ -1,3 +1,15 @@
-xử lý fallback img link https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930 ------ ok
-responsive
+responsive --- now
+
+// Laptops and Desktops
+@media ( max-width: 1280px ) and ( min-width: 1025px ) { }
+
+// Tablets iPads
+@media ( min-width: 970px ) and ( max-width: 1024px ){
+
+}
+// phone ....
+@media ( max-width: 970px) {
+
+}
+sử dụng swiper
 tối ưu hóa web

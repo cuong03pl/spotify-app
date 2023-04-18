@@ -4,3 +4,10 @@
 
     min-height: 100vh;
 }
+
+
+@media  ( max-width: 970px)  {
+    .wrapper {
+        padding: 24px 16px;
+    }
+}
