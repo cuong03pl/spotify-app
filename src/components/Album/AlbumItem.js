@@ -27,19 +27,16 @@ function AlbumItem({
   if (show) {
     var path = `/show/${id}`;
   }
+
   return (
     <Link to={path || `/albums/${id}`} className={cx("album-item")}>
       <div className={cx("album-img")}>
-        {imgUrl ? (
-          <ImageFallBack
-            style={artistItem && { borderRadius: "50%" }}
-            src={imgUrl}
-            fallBack={image.fallback}
-            alt=""
-          />
-        ) : (
-          fallback
-        )}
+        <ImageFallBack
+          style={artistItem && { borderRadius: "50%" }}
+          src={imgUrl ? imgUrl : ""}
+          fallBack={image?.fallback}
+          alt=""
+        />
       </div>
       <div className={cx("content")}>
         {title && <div className={cx("title")}>{title}</div>}

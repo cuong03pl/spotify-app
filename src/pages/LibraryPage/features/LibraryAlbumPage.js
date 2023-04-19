@@ -45,7 +45,7 @@ function LibraryPlayListPage(props) {
           ) : (
             <>
               <div className={cx("header")}>
-                <span className={cx("title")}>Nghệ sĩ</span>
+                <span className={cx("title")}>Album</span>
               </div>
               <div className={cx("list")}>
                 {albums?.map((item, index) => {
