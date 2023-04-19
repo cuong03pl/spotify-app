@@ -16,6 +16,8 @@ import AlbumItem from "../../components/Album/AlbumItem";
 import AlbumList from "../../components/Album/Album";
 import Button from "components/Button/Button";
 import Spinner from "components/Spinner/Spinner";
+import SwiperList from "components/Swiper/Swiper";
+import { SwiperSlide } from "swiper/react";
 const cx = classNames.bind(styles);
 function ArtistPage({}) {
   const { id } = useParams();
@@ -203,18 +205,22 @@ function ArtistPage({}) {
 
               <span className={cx("title")}>Fan cũng thích</span>
               <div className={cx("artist-list")}>
-                {relatedArtists?.artists.slice(0, 5).map((item, index) => {
-                  return (
-                    <AlbumItem
-                      key={index}
-                      id={item?.id}
-                      title={item?.name}
-                      description={item?.type}
-                      imgUrl={item?.images[0]?.url}
-                      artistItem
-                    />
-                  );
-                })}
+                <SwiperList>
+                  {relatedArtists?.artists.slice(0, 5).map((item, index) => {
+                    return (
+                      <SwiperSlide>
+                        <AlbumItem
+                          key={index}
+                          id={item?.id}
+                          title={item?.name}
+                          description={item?.type}
+                          imgUrl={item?.images[0]?.url}
+                          artistItem
+                        />
+                      </SwiperSlide>
+                    );
+                  })}
+                </SwiperList>
               </div>
 
               <AlbumList

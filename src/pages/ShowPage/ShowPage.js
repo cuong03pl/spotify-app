@@ -135,7 +135,7 @@ function ShowPage() {
           </div>
           <div className={cx("content")}>
             <ShowList data={shows?.episodes.items} />
-            <div style={{ maxWidth: "30%" }}>
+            <div className={cx("show-intro")}>
               <ShowIntro data={shows} title={"Giới thiệu"} />
             </div>
           </div>

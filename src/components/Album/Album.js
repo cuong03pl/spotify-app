@@ -4,8 +4,9 @@ import { getArtistAlbum } from "../../Services/Services";
 
 import styles from "./Album.module.scss";
 import AlbumItem from "./AlbumItem";
-import { FreeMode } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperList from "components/Swiper/Swiper";
+import { SwiperSlide } from "swiper/react";
+
 const cx = classNames.bind(styles);
 
 function AlbumList({ id, title = "", artistID }) {
@@ -32,32 +33,7 @@ function AlbumList({ id, title = "", artistID }) {
       )}
 
       <div className={cx("album-list")}>
-        <Swiper
-          slidesPerView={5}
-          spaceBetween={10}
-          freeMode={true}
-          modules={[FreeMode]}
-          breakpoints={{
-            480: {
-              slidesPerView: 1,
-            },
-            740: { slidesPerView: 2, spaceBetween: 20 },
-
-            840: {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
-            970: {
-              slidesPerView: 4,
-              spaceBetween: 20,
-            },
-
-            1280: {
-              slidesPerView: 5,
-              spaceBetween: 24,
-            },
-          }}
-        >
+        <SwiperList>
           {artistAlbum?.map((item, index) => {
             return (
               <SwiperSlide>
@@ -71,7 +47,7 @@ function AlbumList({ id, title = "", artistID }) {
               </SwiperSlide>
             );
           })}
-        </Swiper>
+        </SwiperList>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ function PlayingBarRight({ audio }) {
   const [minVolume, setMinVolume] = useState(true);
   const [currentVolume, setCurrentVolume] = useState("0.5");
   const state = useSelector((state) => state.player);
-  console.log(state.type);
+
   const handleSeek = (e, progressRef) => {
     const progressTransform = e.nativeEvent.offsetX;
     const totalWidth = progressRef.current.clientWidth;

@@ -10,6 +10,8 @@ import { getSearch, getUser } from "../../../Services/Services";
 import ImageFallBack from "components/FallBack/FallBack";
 import { PlaylistFallBackIcon } from "components/Icon";
 import FallBack from "components/FallBack/FallBack";
+import SwiperList from "components/Swiper/Swiper";
+import { SwiperSlide } from "swiper/react";
 const cx = classNames.bind(styles);
 function PlayList(props) {
   const [playlist, setPlaylist] = useState([]);
@@ -39,30 +41,34 @@ function PlayList(props) {
         <span className={cx("title")}>Playlist</span>
       </div>
       <div className={cx("list")}>
-        {playlist?.playlists?.items?.slice(0, 5).map((item, index) => {
-          return (
-            <AlbumItem
-              key={index}
-              id={item?.id}
-              title={item?.name}
-              description={`Của ${item?.owner.display_name} `}
-              imgUrl={item?.images[0]?.url}
-              fallback={
-                <FallBack
-                  icon={
-                    <PlaylistFallBackIcon
-                      height={64}
-                      width={64}
-                      fill={"#b3b3b3"}
+        <SwiperList>
+          {playlist?.playlists?.items?.slice(0, 10).map((item, index) => {
+            return (
+              <SwiperSlide>
+                <AlbumItem
+                  key={index}
+                  id={item?.id}
+                  title={item?.name}
+                  description={`Của ${item?.owner.display_name} `}
+                  imgUrl={item?.images[0]?.url}
+                  fallback={
+                    <FallBack
+                      icon={
+                        <PlaylistFallBackIcon
+                          height={64}
+                          width={64}
+                          fill={"#b3b3b3"}
+                        />
+                      }
+                      playlist
                     />
                   }
                   playlist
                 />
-              }
-              playlist
-            />
-          );
-        })}
+              </SwiperSlide>
+            );
+          })}
+        </SwiperList>
       </div>
     </div>
   );

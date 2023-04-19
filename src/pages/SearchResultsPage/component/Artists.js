@@ -8,6 +8,8 @@ import AlbumItem from "../../../components/Album/AlbumItem";
 import { getSearch } from "../../../Services/Services";
 import { ArtistFallBackIcon } from "components/Icon";
 import FallBack from "components/FallBack/FallBack";
+import SwiperList from "components/Swiper/Swiper";
+import { SwiperSlide } from "swiper/react";
 const cx = classNames.bind(styles);
 function Artists(props) {
   const [artist, setArtist] = useState([]);
@@ -37,30 +39,34 @@ function Artists(props) {
         <span className={cx("title")}>Nghệ sĩ</span>
       </div>
       <div className={cx("list")}>
-        {artist?.artists?.items.slice(0, 5).map((item, index) => {
-          return (
-            <AlbumItem
-              key={index}
-              id={item?.id}
-              title={item?.name}
-              description={item?.type}
-              imgUrl={item?.images[0]?.url}
-              artistItem
-              fallback={
-                <FallBack
-                  icon={
-                    <ArtistFallBackIcon
-                      height={64}
-                      width={64}
-                      fill={"#b3b3b3"}
+        <SwiperList>
+          {artist?.artists?.items.slice(0, 10).map((item, index) => {
+            return (
+              <SwiperSlide>
+                <AlbumItem
+                  key={index}
+                  id={item?.id}
+                  title={item?.name}
+                  description={item?.type}
+                  imgUrl={item?.images[0]?.url}
+                  artistItem
+                  fallback={
+                    <FallBack
+                      icon={
+                        <ArtistFallBackIcon
+                          height={64}
+                          width={64}
+                          fill={"#b3b3b3"}
+                        />
+                      }
+                      artist
                     />
                   }
-                  artist
                 />
-              }
-            />
-          );
-        })}
+              </SwiperSlide>
+            );
+          })}
+        </SwiperList>
       </div>
     </div>
   );

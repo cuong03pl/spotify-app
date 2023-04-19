@@ -11,5 +11,5 @@ responsive --- now
 @media ( max-width: 970px) {
 
 }
-sử dụng swiper
+
 tối ưu hóa web

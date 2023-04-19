@@ -47,13 +47,11 @@ function ProfilePage(props) {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        // console.log(res);
         setTopTracks(res?.items?.slice(0, 5));
       });
     };
     fetchApi();
   }, [token]);
-  console.log(topTracks);
   return (
     <div className={cx("wrapper")}>
       <Intro

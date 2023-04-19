@@ -16,5 +16,25 @@
         display: flex;
         gap: 5%;
         padding: 0 32px;
+        .show-intro {
+            max-width: 30%;
+        }
     }
 }
+
+
+
+
+@media   (max-width: 1260px)  {
+    .content {
+        max-width: 790px;
+    }
+    .content {
+        flex-direction: column-reverse;
+    }
+    .show-intro {
+        width: 100% ;
+        max-width: 100% !important;
+    }
+}
+

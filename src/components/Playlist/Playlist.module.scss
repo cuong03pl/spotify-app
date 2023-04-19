@@ -4,7 +4,25 @@
 
     
 }
-
+.header {
+    color: #fff;
+    grid-template-columns:  5% 35% 35% 20%  5% ;
+    display: grid;
+    color: #b3b3b3;
+    padding: 0 16px;
+    height: 36px;
+    border-bottom: 1px solid hsla(0,0%,100%,.1);
+    span:first-child {
+        font-size: 1.6rem;
+    }
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+}  
 .playlist-item {
     display: flex;
     align-items: center;
@@ -53,7 +71,12 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            
+            cursor: pointer;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
             .artists {
                 color: #b3b3b3;
             }
@@ -132,4 +155,91 @@
     &:hover {
         color: #fff;
     }
+}
+.addTrack {
+    grid-template-columns:  0% 50% 40% 10%  ;
+}
+.queueTrack {
+    grid-template-columns:  0% 40% 40% 20% ;
+}
+
+
+
+
+
+@media ( min-width: 1000px ) and ( max-width: 1024px ){ 
+    .header {
+        grid-template-columns:  5% 35% 35% 20%  5% ;
+    }
+}
+// tablet
+@media  ( max-width: 1000px) and (min-width: 768px)  {
+    .playlist-item {
+        grid-template-columns:  10% 45% 40% 0% 5% ;
+    }
+    .release-date  {
+        display: none !important;
+    }
+    .author {
+        text-overflow: ellipsis;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
+    .header {
+        grid-template-columns:  10% 45% 40% 0% 5% !important;
+    }
+    
+    .release-date {
+        display: none !important;
+    }
+    .clock-icon {
+        width: 20px;
+    }
+    .addTrack {
+        grid-template-columns:  0% 50% 40% 10%  ;
+    }
+    .queueTrack {
+        grid-template-columns:  0% 60% 30% 10%  ;
+    }
+}
+
+@media   (max-width: 768px)  {
+    
+        .playlist-item {
+            grid-template-columns:  10% 85% 0% 0%  5% !important;
+        }
+        .release-date  {
+            display: none !important;
+        }
+        .album-name {
+            display: none !important;
+        }
+        .author {
+            text-overflow: ellipsis;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+
+        .header {
+            grid-template-columns:  10% 85% 0% 0%  5% !important;
+        }
+        .release-date {
+            display: none !important;
+        }
+        .clock-icon {
+            width: 20px;
+        }
+        .album {
+            display: none !important;
+        }
+        .addTrack {
+            grid-template-columns:  0% 70% 0% 30%  !important;
+        }
+        .queueTrack {
+            grid-template-columns:  0% 90% 10% 0%  !important;
+        }
 }

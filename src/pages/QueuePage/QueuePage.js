@@ -5,7 +5,7 @@ import PlaylistItem from "components/Playlist/PlaylistItem";
 const cx = classNames.bind(styles);
 function QueuePage() {
   const state = useSelector((state) => state.player);
-  const currentTrack = state.trackList[state.index];
+  const currentTrack = state?.trackList[state.index];
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header")}>
@@ -14,23 +14,16 @@ function QueuePage() {
       <div className={cx("now-playing")}>
         <span className={cx("title")}>Bài hát hiện tại</span>
         <PlaylistItem
-          durationTime={
-            currentTrack?.track?.duration_ms || currentTrack?.duration_ms
-          }
-          imgURL={
-            currentTrack?.track?.album?.images[0].url ||
-            "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
-          }
-          title={currentTrack?.track?.name || currentTrack?.name}
-          albumId={currentTrack?.track?.album.id || currentTrack?.album?.id}
-          trackId={currentTrack?.track?.id || currentTrack?.id}
-          artistList={currentTrack?.track?.artists || currentTrack?.artists}
-          albumName={currentTrack?.track?.album || currentTrack?.album?.name}
-          uris={currentTrack?.track?.uri || currentTrack?.uri}
-          preview_url={
-            currentTrack?.track?.preview_url || currentTrack?.preview_url
-          }
-          style={{ gridTemplateColumns: "0% 40% 40% 20% " }}
+          durationTime={currentTrack?.track?.duration_ms}
+          imgURL={currentTrack?.track?.album?.images[0].url}
+          title={currentTrack?.track?.name}
+          albumId={currentTrack?.track?.album.id}
+          trackId={currentTrack?.track?.id}
+          artistList={currentTrack?.track?.artists}
+          albumName={currentTrack?.track?.album?.name}
+          uris={currentTrack?.track?.uri}
+          preview_url={currentTrack?.track?.preview_url}
+          queueTrack
         />
       </div>
 
@@ -40,7 +33,6 @@ function QueuePage() {
         {state?.trackList?.slice(state.index + 1)?.map((item, index) => {
           return (
             <PlaylistItem
-              style={{ gridTemplateColumns: "0% 40% 40% 20%  " }}
               i={index}
               key={index}
               durationTime={item?.track.duration_ms}
@@ -53,6 +45,7 @@ function QueuePage() {
               uris={item?.track?.uri}
               preview_url={item?.track?.preview_url}
               trackList={state?.trackList}
+              queueTrack
             />
           );
         })}

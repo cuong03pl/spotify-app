@@ -27,8 +27,6 @@
 
 }
 .list {
-    display: grid;
-    gap: 24px;
-    grid-template-columns:repeat(5, minmax(0,1fr));
-    // padding: 0 32px;
+    display: flex;
+    
 }

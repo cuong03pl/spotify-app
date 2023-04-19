@@ -108,3 +108,24 @@
     
     
 }
+
+
+@media   (max-width: 1260px) and (min-width: 870px) {
+    .wrapper {
+        max-width: 100%;
+    }
+}
+
+
+@media  (max-width: 870px)  {
+    .wrapper {
+        max-width: 100%;
+    }
+    .release_date {
+        display: none;
+    }
+    .intro-img{
+        width: 90px !important;
+        height: 90px !important;
+    }
+}

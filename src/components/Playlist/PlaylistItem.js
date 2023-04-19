@@ -34,6 +34,7 @@ function PlaylistItem({
   albumName,
   preview_url,
   addTrack,
+  queueTrack,
   onAdd,
   onDelete,
   uris,
@@ -69,7 +70,10 @@ function PlaylistItem({
     }
   }, [trackId, state.id, state.index]);
   return (
-    <div style={style} className={cx("playlist-item")}>
+    <div
+      style={style}
+      className={cx("playlist-item", { addTrack, queueTrack })}
+    >
       <div className={cx("numerical-order")}>
         {<span className={cx("index")}>{i + 1}</span>}
         <span className={cx("btn")}>

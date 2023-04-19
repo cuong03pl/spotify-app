@@ -23,6 +23,7 @@ import {
   getPlaylistThunk,
 } from "./playlistSlice";
 import FallBack from "components/FallBack/FallBack";
+import Header from "components/Playlist/Header";
 const cx = classNames.bind(styles);
 
 function PlayListPage() {
@@ -100,7 +101,7 @@ function PlayListPage() {
         console.error(error);
       });
   };
-  console.log(user);
+
   useEffect(() => {
     const fetchApi = async () => {
       await CheckUsersFollowsPlaylists(id, {
@@ -164,17 +165,7 @@ function PlayListPage() {
         onUnfollow={handleUnfollow}
       />
       <div className={cx("content")}>
-        {playlist?.tracks.items.length > 0 && (
-          <div className={cx("header")}>
-            <span>#</span>
-            <span>TIÊU ĐỀ</span>
-            <span>ALBUM</span>
-            <span>NGÀY THÊM</span>
-            <span>
-              <ClockIcon height={16} width={16} fill={"#b3b3b3"} />{" "}
-            </span>
-          </div>
-        )}
+        {playlist?.tracks.items.length > 0 && <Header />}
 
         <Playlist
           data={playlist?.tracks?.items}
@@ -196,7 +187,6 @@ function PlayListPage() {
                   uris={item?.uri}
                   onAdd={handleAddTrack}
                   addTrack
-                  style={{ gridTemplateColumns: "0% 50% 40% 10% " }}
                 />
               );
             })}

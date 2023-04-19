@@ -8,6 +8,8 @@ import AlbumItem from "../../../components/Album/AlbumItem";
 import { getSearch } from "../../../Services/Services";
 import { ArtistFallBackIcon } from "components/Icon";
 import FallBack from "components/FallBack/FallBack";
+import { SwiperSlide } from "swiper/react";
+import SwiperList from "components/Swiper/Swiper";
 
 const cx = classNames.bind(styles);
 function Show(props) {
@@ -38,30 +40,34 @@ function Show(props) {
         <span className={cx("title")}>Podcast và chương trình</span>
       </div>
       <div className={cx("list")}>
-        {shows?.shows?.items.slice(0, 5).map((item, index) => {
-          return (
-            <AlbumItem
-              key={index}
-              id={item?.id}
-              title={item?.name}
-              description={item?.publisher}
-              imgUrl={item?.images[0]?.url}
-              show
-              fallback={
-                <FallBack
-                  icon={
-                    <ArtistFallBackIcon
-                      height={64}
-                      width={64}
-                      fill={"#b3b3b3"}
+        <SwiperList>
+          {shows?.shows?.items.slice(0, 10).map((item, index) => {
+            return (
+              <SwiperSlide>
+                <AlbumItem
+                  key={index}
+                  id={item?.id}
+                  title={item?.name}
+                  description={item?.publisher}
+                  imgUrl={item?.images[0]?.url}
+                  show
+                  fallback={
+                    <FallBack
+                      icon={
+                        <ArtistFallBackIcon
+                          height={64}
+                          width={64}
+                          fill={"#b3b3b3"}
+                        />
+                      }
+                      artist
                     />
                   }
-                  artist
                 />
-              }
-            />
-          );
-        })}
+              </SwiperSlide>
+            );
+          })}
+        </SwiperList>
       </div>
     </div>
   );

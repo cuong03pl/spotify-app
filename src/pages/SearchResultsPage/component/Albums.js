@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import styles from "./../SearchResultsPage.module.scss";
 import AlbumItem from "../../../components/Album/AlbumItem";
 import { getSearch } from "../../../Services/Services";
+import SwiperList from "components/Swiper/Swiper";
+import { SwiperSlide } from "swiper/react";
 const cx = classNames.bind(styles);
 function Album(props) {
   const [albums, setAlbums] = useState([]);
@@ -35,17 +36,21 @@ function Album(props) {
         <span className={cx("title")}>Album</span>
       </div>
       <div className={cx("list")}>
-        {albums?.albums?.items.slice(0, 5).map((item, index) => {
-          return (
-            <AlbumItem
-              key={index}
-              id={item?.id}
-              title={item?.name}
-              datetime={item?.release_date.slice(0, 10).split("-")}
-              imgUrl={item?.images[0].url}
-            />
-          );
-        })}
+        <SwiperList>
+          {albums?.albums?.items.slice(0, 10).map((item, index) => {
+            return (
+              <SwiperSlide>
+                <AlbumItem
+                  key={index}
+                  id={item?.id}
+                  title={item?.name}
+                  datetime={item?.release_date.slice(0, 10).split("-")}
+                  imgUrl={item?.images[0].url}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </SwiperList>
       </div>
     </div>
   );

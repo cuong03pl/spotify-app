@@ -6,23 +6,27 @@
     padding: 0 32px;
 
 }
-.header {
-    color: #fff;
-    grid-template-columns:  5% 35% 35% 20%  5% ;
-    display: grid;
-    color: #b3b3b3;
-    padding: 0 16px;
-    height: 36px;
-    border-bottom: 1px solid hsla(0,0%,100%,.1);
-    span:first-child {
-        font-size: 1.6rem;
-    }
-    span {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        font-size: 1.2rem;
-        letter-spacing: 1px;
-    }
-}  
 
+
+
+@media ( min-width: 1000px ) and ( max-width: 1024px ){ 
+    
+}
+// tablet
+@media  ( max-width: 999px) and (min-width: 768px)  {
+    .content {
+        padding: 0 16px;
+    
+    }
+}
+
+@media   (max-width: 768px)  {
+    
+}
+
+@media    (max-width: 800px)  {
+    .content {
+        padding: 0 8px;
+    
+    }
+}

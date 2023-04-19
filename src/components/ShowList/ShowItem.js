@@ -127,16 +127,15 @@ function ShowItem({ data, index, showList }) {
               second == "0" ? "" : second + "giây"
             } `}</span>
           </div>
-          <Link to={""} className={cx("action-right")}>
-            <div className={cx("icon")}>
-              <Tippy content={"Chia sẻ"}>
-                <Button
-                  onClick={handleCopyToClipboard}
-                  leftIcon={<UploadIcon height={24} width={24} fill={"#fff"} />}
-                />
-              </Tippy>
-            </div>
-          </Link>
+
+          <div className={cx("icon")}>
+            <Tippy content={"Chia sẻ"}>
+              <Button
+                onClick={handleCopyToClipboard}
+                leftIcon={<UploadIcon height={24} width={24} fill={"#fff"} />}
+              />
+            </Tippy>
+          </div>
         </div>
       </div>
       <ToastContainer

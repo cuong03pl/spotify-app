@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "Services/Services";
 import styles from "./FavouritePage.module.scss";
 import { deleteTracksThunk, getTracksThunk } from "./favouriteSlice";
+import Header from "components/Playlist/Header";
 const cx = classNames.bind(styles);
 function FavouritePage() {
   const [user, setUser] = useState();
@@ -65,15 +66,7 @@ function FavouritePage() {
       />
       {tracks?.length > 0 ? (
         <div className={cx("content")}>
-          <div className={cx("header")}>
-            <span>#</span>
-            <span>TIÊU ĐỀ</span>
-            <span>ALBUM</span>
-            <span>NGÀY THÊM</span>
-            <span>
-              <ClockIcon height={16} width={16} fill={"#b3b3b3"} />{" "}
-            </span>
-          </div>
+          <Header />
           <Playlist onUnlike={handleUnlike} data={tracks} isFavourite={true} />
         </div>
       ) : (
