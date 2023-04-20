@@ -31,3 +31,11 @@
     display: flex;
     align-items: center;
 }
+
+
+@media  (max-width: 800px)  {
+    .wrapper {
+        width: 300px !important;
+    }
+    
+}

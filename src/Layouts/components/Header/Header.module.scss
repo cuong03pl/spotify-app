@@ -71,3 +71,41 @@
         position: sticky;
     }
 }
+
+
+@media  ( max-width: 1145px) and (min-width: 960px)  {
+    .update-btn {
+        display: none;
+    }
+    
+}
+
+@media   (max-width: 960px) and (min-width: 800px)  {
+    .wrapper {
+        padding: 16px !important;
+    }
+    .update-btn {
+        display: none;
+    }
+    .user {
+        width: 54px !important;
+    }
+    .user-id {
+        display: none;
+    }
+}
+
+@media  (max-width: 800px)  {
+    .wrapper {
+        padding: 16px !important;
+    }
+    .update-btn {
+        display: none;
+    }
+    .user {
+        width: 54px !important;
+    }
+    .user-id {
+        display: none;
+    }
+}

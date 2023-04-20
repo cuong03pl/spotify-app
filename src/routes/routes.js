@@ -7,7 +7,6 @@ import QueuePage from "../pages/QueuePage/QueuePage";
 import ShowPage from "../pages/ShowPage/ShowPage";
 import PlayListPage from "../pages/PlayListPage/PlayListPage";
 import EpisodePage from "../pages/EpisodePage/EpisodePage";
-import TrackPage from "../pages/TrackPage/TrackPage";
 import ArtistPage from "../pages/ArtistPage/ArtistPage";
 import AlbumPage from "../pages/AlbumPage/AlbumPage";
 import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage";
@@ -73,10 +72,7 @@ export const publicRoutes = [
     path: config.routes.episode,
     component: <EpisodePage />,
   },
-  {
-    path: config.routes.track,
-    component: <TrackPage />,
-  },
+
   {
     path: config.routes.artist,
     component: <ArtistPage />,
