@@ -33,7 +33,7 @@ function AlbumItem({
       <div className={cx("album-img")}>
         <ImageFallBack
           style={artistItem && { borderRadius: "50%" }}
-          src={imgUrl ? imgUrl : ""}
+          src={imgUrl}
           fallBack={image?.fallback}
           alt=""
         />

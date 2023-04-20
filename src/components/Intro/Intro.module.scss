@@ -82,10 +82,12 @@
 @media  ( max-width: 1145px) and (min-width: 960px)  {
     .wrapper  {
         padding: 24px 16px;
+        align-items: center;
     }
     .title {
-        -webkit-line-clamp: 1 !important;
-        font-size: 5rem !important; 
+        -webkit-line-clamp: 2 !important;
+        font-size: 4rem !important; 
+        max-height: 130px !important;
     }
     .intro-img {
         max-width: 192px;
@@ -99,6 +101,7 @@
     }
     .title {
         font-size: 4rem !important;
+        max-height: 130px !important;
     }
     .intro-img {
         max-width: 192px;

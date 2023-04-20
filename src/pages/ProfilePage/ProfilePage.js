@@ -8,6 +8,8 @@ import AlbumItem from "components/Album/AlbumItem";
 import { getProfileTopTracks } from "Services/Services";
 import PlaylistItem from "components/Playlist/PlaylistItem";
 import FallBack from "components/FallBack/FallBack";
+import SwiperList from "components/Swiper/Swiper";
+import { SwiperSlide } from "swiper/react";
 const cx = classNames.bind(styles);
 
 function ProfilePage(props) {
@@ -35,7 +37,7 @@ function ProfilePage(props) {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        setTopArtists(res?.items?.slice(0, 5));
+        setTopArtists(res?.items?.slice(0, 10));
       });
     };
     fetchApi();
@@ -69,18 +71,22 @@ function ProfilePage(props) {
       <div className={cx("content")}>
         <span className={cx("title")}>Nghệ sĩ hàng đầu tháng này</span>
         <div className={cx("list")}>
-          {topArtists?.map((item, index) => {
-            return (
-              <AlbumItem
-                key={index}
-                id={item?.id}
-                title={item?.name}
-                description={item?.type}
-                imgUrl={item?.images[1]?.url}
-                artistItem
-              />
-            );
-          })}
+          <SwiperList>
+            {topArtists?.map((item, index) => {
+              return (
+                <SwiperSlide>
+                  <AlbumItem
+                    key={index}
+                    id={item?.id}
+                    title={item?.name}
+                    description={item?.type}
+                    imgUrl={item?.images[0]?.url}
+                    artistItem
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </SwiperList>
         </div>
 
         <span className={cx("title")}>Bản nhạc hàng đầu tháng này</span>

@@ -1,15 +1,7 @@
-responsive --- now
+fix bug web ----- now
 
-// Laptops and Desktops
-@media ( max-width: 1280px ) and ( min-width: 1025px ) { }
+album page,arrtist
 
-// Tablets iPads
-@media ( min-width: 970px ) and ( max-width: 1024px ){
-
-}
-// phone ....
-@media ( max-width: 970px) {
-
-}
-
+responsive header, profilepage
+theem skeleton cho cac page
 tối ưu hóa web

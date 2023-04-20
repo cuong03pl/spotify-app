@@ -32,23 +32,21 @@ function AlbumList({ id, title = "", artistID }) {
         </div>
       )}
 
-      <div className={cx("album-list")}>
-        <SwiperList>
-          {artistAlbum?.map((item, index) => {
-            return (
-              <SwiperSlide>
-                <AlbumItem
-                  id={item?.id}
-                  title={item?.name}
-                  datetime={item?.release_date.slice(0, 10).split("-")}
-                  imgUrl={item?.images[0].url}
-                  key={index}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </SwiperList>
-      </div>
+      <SwiperList>
+        {artistAlbum?.map((item, index) => {
+          return (
+            <SwiperSlide>
+              <AlbumItem
+                id={item?.id}
+                title={item?.name}
+                datetime={item?.release_date.slice(0, 10).split("-")}
+                imgUrl={item?.images[0].url}
+                key={index}
+              />
+            </SwiperSlide>
+          );
+        })}
+      </SwiperList>
     </div>
   );
 }

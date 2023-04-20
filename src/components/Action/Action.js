@@ -4,19 +4,8 @@ import classNames from "classnames/bind";
 import styles from "./Action.module.scss";
 import Button from "../Button/Button";
 import Menu from "../Proper/Menu/Menu";
-import {
-  FavouriteIcon,
-  LikeThinIcon,
-  MoreIcon,
-  PauseIcon,
-  PlayIcon,
-} from "../Icon";
-import Tippy from "@tippyjs/react";
-import {
-  setPlayingTrack,
-  setPlayPause,
-  setUrlCurrentTrack,
-} from "Layouts/components/PlayingBar/playerSlice";
+import { FavouriteIcon, LikeThinIcon, MoreIcon } from "../Icon";
+
 import { useDispatch, useSelector } from "react-redux";
 const cx = classNames.bind(styles);
 const MENU_ITEMS_1 = [

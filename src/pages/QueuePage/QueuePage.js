@@ -14,15 +14,24 @@ function QueuePage() {
       <div className={cx("now-playing")}>
         <span className={cx("title")}>Bài hát hiện tại</span>
         <PlaylistItem
-          durationTime={currentTrack?.track?.duration_ms}
-          imgURL={currentTrack?.track?.album?.images[0].url}
-          title={currentTrack?.track?.name}
-          albumId={currentTrack?.track?.album.id}
-          trackId={currentTrack?.track?.id}
-          artistList={currentTrack?.track?.artists}
-          albumName={currentTrack?.track?.album?.name}
-          uris={currentTrack?.track?.uri}
-          preview_url={currentTrack?.track?.preview_url}
+          durationTime={
+            currentTrack?.track?.duration_ms || currentTrack?.duration_ms
+          }
+          imgURL={
+            currentTrack?.track?.album?.images[0].url ||
+            currentTrack?.album?.images[0].url
+          }
+          title={currentTrack?.track?.name || currentTrack?.name}
+          albumId={currentTrack?.track?.album.id || currentTrack?.album?.id}
+          trackId={currentTrack?.track?.id || currentTrack?.id}
+          artistList={currentTrack?.track?.artists || currentTrack?.artists}
+          albumName={
+            currentTrack?.track?.album.name || currentTrack?.album?.name
+          }
+          uris={currentTrack?.track?.uri || currentTrack?.uri}
+          preview_url={
+            currentTrack?.track?.preview_url || currentTrack?.preview_url
+          }
           queueTrack
         />
       </div>
@@ -35,15 +44,18 @@ function QueuePage() {
             <PlaylistItem
               i={index}
               key={index}
-              durationTime={item?.track.duration_ms}
-              imgURL={item?.track.album.images[0].url}
-              title={item?.track.name}
-              albumId={item?.track.album.id}
-              trackId={item?.track?.id}
-              artistList={item?.track.artists}
-              albumName={item?.track.album.name}
-              uris={item?.track?.uri}
-              preview_url={item?.track?.preview_url}
+              durationTime={item?.track?.duration_ms || item?.duration_ms}
+              imgURL={
+                item?.track?.album?.images[0]?.url ||
+                item?.album?.images[0]?.url
+              }
+              title={item?.track?.name || item?.name}
+              albumId={item?.track?.album?.id || item?.album?.id}
+              trackId={item?.track?.id || item?.id}
+              artistList={item?.track?.artists || item?.artists}
+              albumName={item?.track?.album?.name || item?.album?.name}
+              uris={item?.track?.uri || item?.uri}
+              preview_url={item?.track?.preview_url || item?.preview_url}
               trackList={state?.trackList}
               queueTrack
             />

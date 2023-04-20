@@ -5,9 +5,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .artist {
     border-radius: 100%;
 }
 
+
+
+@media  ( max-width: 1280px) and (min-width: 1145px)  {
+    .wrapper {
+        width: 192px;
+        height: 192px;
+    }
+    
+}
+
+@media  ( max-width: 1145px) and (min-width: 960px)  {
+    .wrapper {
+        min-width: 192px;
+    }
+    
+}
+
+@media   (max-width: 960px) and (min-width: 800px)  {
+    .wrapper {
+        min-width: 192px;
+    }
+    
+}
+
+@media  (max-width: 800px)  {
+    .wrapper {
+        min-width: 192px;
+    }
+    
+}
