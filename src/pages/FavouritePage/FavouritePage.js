@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import FallBack from "components/FallBack/FallBack";
-import { ClockIcon, PlaylistFallBackIcon } from "components/Icon";
+import { PlaylistFallBackIcon } from "components/Icon";
 import Intro from "components/Intro/Intro";
 import Playlist from "components/Playlist/Playlist";
 import NoAlbumsFound from "pages/LibraryPage/components/NoAlbumsFound";
@@ -49,6 +49,10 @@ function FavouritePage() {
         console.error(error);
       });
   };
+
+  useEffect(() => {
+    window.document.title = `Spotify - Bài hát đã thích `;
+  }, []);
   return (
     <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       <Intro

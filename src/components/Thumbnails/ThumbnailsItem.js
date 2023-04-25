@@ -62,11 +62,12 @@ function ThumbnailsItem({ path, data }) {
       )}
       {isLoading && (
         <Skeleton
-          sx={{ bgcolor: "#ffffff1a", minWidth: "218px" }}
+          sx={{ bgcolor: "#ffffff1a" }}
           variant="rounded"
           width={218}
           height={308}
           animation="wave"
+          className={cx("skeleton")}
         />
       )}
     </>

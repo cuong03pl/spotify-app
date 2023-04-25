@@ -1,6 +1,6 @@
 .wrapper {
     // padding: 0 32px;
-    max-width: 65%;
+    width: 65%;
     .header {
         font-size: 24px;
         font-weight: 700;
@@ -112,14 +112,14 @@
 
 @media   (max-width: 1260px) and (min-width: 870px) {
     .wrapper {
-        max-width: 100%;
+        width: 100%;
     }
 }
 
 
 @media  (max-width: 870px)  {
     .wrapper {
-        max-width: 100%;
+        width: 100%;
     }
     .release_date {
         display: none;

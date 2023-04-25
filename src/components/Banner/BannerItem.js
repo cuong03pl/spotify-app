@@ -50,6 +50,7 @@ function BannerItem({ path }) {
           width={368}
           height={80}
           animation="wave"
+          className={cx("skeleton")}
         />
       )}
       {!isLoading && (

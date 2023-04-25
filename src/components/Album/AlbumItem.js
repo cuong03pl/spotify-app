@@ -15,7 +15,7 @@ function AlbumItem({
   artistItem,
   playlist,
   show,
-  fallback,
+  isLoading,
 }) {
   const [year, month, day] = useConvertDate(datetime);
   if (artistItem) {

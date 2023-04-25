@@ -51,18 +51,6 @@ function PlayList(props) {
                   title={item?.name}
                   description={`Của ${item?.owner.display_name} `}
                   imgUrl={item?.images[0]?.url}
-                  fallback={
-                    <FallBack
-                      icon={
-                        <PlaylistFallBackIcon
-                          height={64}
-                          width={64}
-                          fill={"#b3b3b3"}
-                        />
-                      }
-                      playlist
-                    />
-                  }
                   playlist
                 />
               </SwiperSlide>

@@ -55,6 +55,10 @@ function AlbumPage({}) {
     };
     fetchApi();
   }, [id, token]);
+
+  useEffect(() => {
+    window.document.title = `Spotify - ${album?.name}`;
+  }, [album?.name]);
   const handleFollow = async () => {
     await putFollowAlbums("", {
       params: {

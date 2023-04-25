@@ -24,6 +24,7 @@ import {
 } from "./playlistSlice";
 import FallBack from "components/FallBack/FallBack";
 import Header from "components/Playlist/Header";
+import Spinner from "components/Spinner/Spinner";
 const cx = classNames.bind(styles);
 
 function PlayListPage() {
@@ -34,15 +35,19 @@ function PlayListPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [trackRecommendations, setTrackRecommendations] = useState([]);
   const [followed, setFollowed] = useState();
+  const [isLoading, setLoading] = useState(true);
+
   const dispatch = useDispatch();
   const state = useSelector((state) => state.playlist);
 
   useEffect(() => {
+    setLoading(true);
     const fetchApi = async () => {
       await dispatch(getPlaylistThunk({ id, token }))
         .unwrap()
         .then((res) => {
           setPlaylist(res);
+          setLoading(false);
         });
     };
     fetchApi();
@@ -74,7 +79,9 @@ function PlayListPage() {
     };
     fetchApi();
   }, []);
-
+  useEffect(() => {
+    window.document.title = `${playlist?.name} | Spotify Playlist`;
+  }, [playlist?.name, id]);
   const handleOpenModal = () => {
     setIsOpen(true);
   };
@@ -133,66 +140,75 @@ function PlayListPage() {
   };
   return (
     <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
-      <Intro
-        category={playlist?.type}
-        imgUrl={playlist?.images[0]?.url}
-        title={playlist?.name}
-        publisher={playlist?.publisher}
-        description={playlist?.description}
-        followers={playlist?.followers?.total}
-        totalTracks={playlist?.tracks?.total}
-        onClick={handleOpenModal}
-        isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
-        fallback={
-          <FallBack
-            icon={
-              <PlaylistFallBackIcon height={64} width={64} fill={"#b3b3b3"} />
+      {isLoading && <Spinner />}
+      {!isLoading && (
+        <>
+          <Intro
+            category={playlist?.type}
+            imgUrl={playlist?.images[0]?.url}
+            title={playlist?.name}
+            publisher={playlist?.publisher}
+            description={playlist?.description}
+            followers={playlist?.followers?.total}
+            totalTracks={playlist?.tracks?.total}
+            onClick={handleOpenModal}
+            isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
+            fallback={
+              <FallBack
+                icon={
+                  <PlaylistFallBackIcon
+                    height={64}
+                    width={64}
+                    fill={"#b3b3b3"}
+                  />
+                }
+                playlist
+              />
             }
-            playlist
           />
-        }
-      />
-      <AlertDialog
-        data={playlist}
-        id={id}
-        isOpen={isOpen}
-        onClick={handleCloseModal}
-      />
-      <Action
-        isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
-        isFollow={followed}
-        onFollow={handleFollow}
-        onUnfollow={handleUnfollow}
-      />
-      <div className={cx("content")}>
-        {playlist?.tracks.items.length > 0 && <Header />}
+          <AlertDialog
+            data={playlist}
+            id={id}
+            isOpen={isOpen}
+            onClick={handleCloseModal}
+          />
+          <Action
+            isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
+            isFollow={followed}
+            onFollow={handleFollow}
+            onUnfollow={handleUnfollow}
+          />
+          <div className={cx("content")}>
+            {playlist?.tracks.items.length > 0 && <Header />}
 
-        <Playlist
-          data={playlist?.tracks?.items}
-          onDelete={handleDeleteTrack}
-          isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
-        />
-        {playlist?.owner?.display_name?.includes(user?.id) && (
-          <div className={cx("recommend")}>
-            <div className={cx("recommend-header")}>Đề xuất</div>
-            {trackRecommendations?.map((item, index) => {
-              return (
-                <PlaylistItem
-                  key={index}
-                  imgURL={item?.album?.images[0]?.url}
-                  title={item?.name}
-                  albumId={item?.album?.id}
-                  artistList={item?.artists}
-                  albumName={item?.album?.name}
-                  uris={item?.uri}
-                  onAdd={handleAddTrack}
-                  addTrack
-                />
-              );
-            })}
+            <Playlist
+              data={playlist?.tracks?.items}
+              onDelete={handleDeleteTrack}
+              isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
+            />
+            {playlist?.owner?.display_name?.includes(user?.id) && (
+              <div className={cx("recommend")}>
+                <div className={cx("recommend-header")}>Đề xuất</div>
+                {trackRecommendations?.map((item, index) => {
+                  return (
+                    <PlaylistItem
+                      key={index}
+                      imgURL={item?.album?.images[0]?.url}
+                      title={item?.name}
+                      albumId={item?.album?.id}
+                      artistList={item?.artists}
+                      albumName={item?.album?.name}
+                      uris={item?.uri}
+                      onAdd={handleAddTrack}
+                      addTrack
+                    />
+                  );
+                })}
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 }

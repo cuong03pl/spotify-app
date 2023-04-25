@@ -69,7 +69,7 @@
 
 @media ( min-width: 1280px ) {
     .content {
-        column-gap: 24px; 
+        column-gap: 10%; 
 
         .banner-item {
             width: 31px ;
@@ -80,11 +80,14 @@
             }
         }
     }
+
+    .skeleton {
+            max-width: 45%;
+    }
 }
 @media ( max-width: 1280px ) and ( min-width: 1025px ) {
     .content {
-        column-gap: 24px; 
-
+        column-gap: 0;
         .banner-item {
             width: 45% ;
             max-width: 31%;
@@ -93,10 +96,14 @@
             }
         }
     }
+    .skeleton {
+        max-width: 31%;
+    }
  }
-@media  ( max-width: 1025px ){ 
+@media  ( max-width: 1025px ) and (min-width: 769px){ 
     .content {
-        column-gap: 10% ;
+        column-gap: 0;
+
         .banner-item {
             width: 45% ;
             max-width: 50% ;
@@ -105,5 +112,14 @@
             }
         }
     } 
+    .skeleton {
+        max-width: 45%;
+    }
+    
+}
+@media (max-width: 768px) {
+    .skeleton {
+        min-width: 100%;
+    }
 }
 

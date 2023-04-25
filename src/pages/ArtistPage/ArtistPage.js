@@ -84,7 +84,9 @@ function ArtistPage({}) {
     };
     fetchApi();
   }, [id]);
-
+  useEffect(() => {
+    window.document.title = `${artist?.name} | Spotify `;
+  }, [artist?.name]);
   const handleSeeMore = () => {
     setSeeAll(true);
     setSize(10);
@@ -206,7 +208,7 @@ function ArtistPage({}) {
               <span className={cx("title")}>Fan cũng thích</span>
               <div className={cx("artist-list")}>
                 <SwiperList>
-                  {relatedArtists?.artists.slice(0, 5).map((item, index) => {
+                  {relatedArtists?.artists.slice(0, 10).map((item, index) => {
                     return (
                       <SwiperSlide>
                         <AlbumItem

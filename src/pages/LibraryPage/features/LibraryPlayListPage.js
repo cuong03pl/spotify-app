@@ -47,7 +47,9 @@ function LibraryPlayListPage(props) {
     };
     fetchApi();
   }, [token]);
-
+  useEffect(() => {
+    window.document.title = `Spotify thư viện`;
+  }, []);
   const handleCreatePlaylist = async () => {
     await postNewPlaylist(
       user?.id,

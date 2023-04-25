@@ -19,7 +19,7 @@ function AlbumList({ id, title = "", artistID }) {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        setArtistAlbum(res?.items.slice(2, 7));
+        setArtistAlbum(res?.items.slice(0, 10));
       });
     };
     fetchApi();

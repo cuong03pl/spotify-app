@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import Banner from "../../components/Banner/Banner";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import styles from "./HomePage.module.scss";
+import { useEffect } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -75,6 +76,9 @@ const PATH_LISTS1 = [
   },
 ];
 function HomePage() {
+  useEffect(() => {
+    window.document.title = `Spotify - Web Player: Music for everyone `;
+  }, []);
   return (
     <div className={cx("wrapper")}>
       <Banner path={PATH_LISTS} />

@@ -81,12 +81,15 @@
     
     
 }
-
+.skeleton {
+    width: 100% !important;
+  }
 
 @media ( min-width: 970px ) and ( max-width: 1024px ){ 
     .full-name {
         -webkit-line-clamp: 1 !important;
     } 
+    
 }
 // tablet
 @media  ( max-width: 970px)  {
@@ -100,6 +103,5 @@
         width: 100% !important;
 
     }
-    .thumbnail-img  {
-    }
+    
 }
