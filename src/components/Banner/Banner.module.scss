@@ -119,9 +119,12 @@
     }
     
 }
-@media (max-width: 768px) {
+@media (max-width: 769px) {
     .skeleton {
         min-width: 100%;
+    }
+    .banner-item {
+        width: 100%;
     }
 }
 
