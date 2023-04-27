@@ -84,7 +84,7 @@ function Header() {
       dispatch(clearInputValue());
     }
   }, [currentPath]);
-
+  console.log(user);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header-left")}>
@@ -109,7 +109,7 @@ function Header() {
       </div>
 
       <div className={cx("header-right")}>
-        {user ? (
+        {token ? (
           <>
             <div className={cx("update-btn")}>
               <Button transparentBtn>Nâng cấp</Button>

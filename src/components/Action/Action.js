@@ -47,27 +47,28 @@ function Action({ id, url, onFollow, onUnfollow, isFollow, isUserPlaylist }) {
       setPlaying(false);
     }
   }, [id, state.id]);
+  console.log(isUserPlaylist);
   return (
     <div className={cx("action")}>
-      {!isUserPlaylist && (
-        <>
-          {isFollow ? (
-            <>
-              <Button
-                onClick={handleUnfollow}
-                leftIcon={
-                  <FavouriteIcon fill={"#1ed760"} height={32} width={32} />
-                }
-              ></Button>
-            </>
-          ) : (
+      {/* {!isUserPlaylist && ( */}
+      <>
+        {isFollow ? (
+          <>
             <Button
-              onClick={handleFollow}
-              leftIcon={<LikeThinIcon fill={"#fff"} height={32} width={32} />}
+              onClick={handleUnfollow}
+              leftIcon={
+                <FavouriteIcon fill={"#1ed760"} height={32} width={32} />
+              }
             ></Button>
-          )}
-        </>
-      )}
+          </>
+        ) : (
+          <Button
+            onClick={handleFollow}
+            leftIcon={<LikeThinIcon fill={"#fff"} height={32} width={32} />}
+          ></Button>
+        )}
+      </>
+      {/* )} */}
 
       <Menu moreMenu placement={"bottom-start"} data={MENU_ITEMS_2}>
         <Button

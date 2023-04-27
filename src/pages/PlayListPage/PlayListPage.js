@@ -129,6 +129,8 @@ function PlayListPage() {
       },
     }).then((res) => setFollowed(false));
   };
+  console.log(playlist);
+  console.log(user?.id);
   return (
     <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       {isLoading && <Spinner />}
@@ -143,7 +145,7 @@ function PlayListPage() {
             followers={playlist?.followers?.total}
             totalTracks={playlist?.tracks?.total}
             onClick={handleOpenModal}
-            isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
+            isUserPlaylist={playlist?.owner?.id?.includes(user?.id)}
             fallback={
               <FallBack
                 icon={
@@ -164,7 +166,7 @@ function PlayListPage() {
             onClick={handleCloseModal}
           />
           <Action
-            isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
+            isUserPlaylist={playlist?.owner?.id?.includes(user?.id)}
             isFollow={followed}
             onFollow={handleFollow}
             onUnfollow={handleUnfollow}
@@ -175,9 +177,9 @@ function PlayListPage() {
             <Playlist
               data={playlist?.tracks?.items}
               onDelete={handleDeleteTrack}
-              isUserPlaylist={playlist?.owner?.display_name?.includes(user?.id)}
+              isUserPlaylist={playlist?.owner?.id?.includes(user?.id)}
             />
-            {playlist?.owner?.display_name?.includes(user?.id) && (
+            {playlist?.owner?.id?.includes(user?.id) && (
               <div className={cx("recommend")}>
                 <div className={cx("recommend-header")}>Đề xuất</div>
                 {trackRecommendations?.map((item, index) => {
