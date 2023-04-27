@@ -109,7 +109,7 @@ function Header() {
       </div>
 
       <div className={cx("header-right")}>
-        {token ? (
+        {user ? (
           <>
             <div className={cx("update-btn")}>
               <Button transparentBtn>Nâng cấp</Button>
