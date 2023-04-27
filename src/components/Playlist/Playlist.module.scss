@@ -62,6 +62,8 @@
             -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;  
             overflow: hidden;
+            white-space: unset;
+            word-break: break-all;
             
         }
         .author {
@@ -72,13 +74,15 @@
             display: flex;
             align-items: center;
             cursor: pointer;
-            // text-overflow: ellipsis;
-            // display: -webkit-box;
-            // -webkit-line-clamp: 1;
-            // -webkit-box-orient: vertical;  
-            // overflow: hidden;
+             text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            white-space: unset;
+            word-break: break-all;
             .artists {
                 color: #b3b3b3;
+            
             }
             .artists:hover {
                 text-decoration: underline;
@@ -96,6 +100,8 @@
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;  
         overflow: hidden;
+        white-space: unset;
+        word-break: break-all;
         &:hover {
             text-decoration: underline;
             color: var(--text-base);
@@ -186,6 +192,8 @@
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;  
         overflow: hidden;
+        white-space: unset;
+        word-break: break-all;
     }
     .header {
         grid-template-columns:  10% 45% 40% 0% 5% !important;
@@ -222,6 +230,8 @@
             -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;  
             overflow: hidden;
+            white-space: unset;
+            word-break: break-all;
         }
 
         .header {

@@ -31,7 +31,7 @@ function PlayListPage() {
   const { id } = useParams();
   const token = localStorage.getItem("token");
   const [playlist, setPlaylist] = useState();
-  const [user, setUser] = useState("");
+
   const [isOpen, setIsOpen] = useState(false);
   const [trackRecommendations, setTrackRecommendations] = useState([]);
   const [followed, setFollowed] = useState();
@@ -39,6 +39,7 @@ function PlayListPage() {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.playlist);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     setLoading(true);
@@ -52,16 +53,6 @@ function PlayListPage() {
     };
     fetchApi();
   }, [state.description, state.name, id]);
-  useEffect(() => {
-    const fetchApi = async () => {
-      await getUser({
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => setUser(res));
-    };
-    fetchApi();
-  }, [token, id]);
 
   useEffect(() => {
     const fetchApi = async () => {

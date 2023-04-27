@@ -15,10 +15,12 @@ function AuthContext({ children }) {
           .split("=")[1];
         localStorage.setItem("token", token);
         window.location.hash = "";
+        window.location.reload();
       }
+      console.log(hash);
     };
     getToken();
-  }, []);
+  });
 
   return <TokenContext.Provider value={null}>{children}</TokenContext.Provider>;
 }

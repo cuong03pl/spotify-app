@@ -29,32 +29,35 @@ function Tracks(props) {
     };
     fetchApi();
   }, [searchValue]);
-
   return (
-    <div className={cx("item")}>
-      <div className={cx("header")}>
-        <span className={cx("title")}>Bài hát</span>
-      </div>
-      <div className={cx("")}>
-        {tracks?.tracks?.items.slice(0, 5).map((item, index) => {
-          return (
-            <PlaylistItem
-              i={index}
-              key={index}
-              durationTime={item?.duration_ms}
-              imgURL={item?.album.images[0].url}
-              title={item?.name}
-              albumId={item?.album?.id}
-              artistList={item?.artists}
-              albumName={item?.album?.name}
-              preview_url={item?.preview_url}
-              trackId={item?.id}
-              trackList={tracks?.tracks?.items}
-            />
-          );
-        })}
-      </div>
-    </div>
+    <>
+      {tracks?.tracks?.items?.length > 0 && (
+        <div className={cx("item")}>
+          <div className={cx("header")}>
+            <span className={cx("title")}>Bài hát</span>
+          </div>
+          <div className={cx("")}>
+            {tracks?.tracks?.items.slice(0, 5).map((item, index) => {
+              return (
+                <PlaylistItem
+                  i={index}
+                  key={index}
+                  durationTime={item?.duration_ms}
+                  imgURL={item?.album.images[0].url}
+                  title={item?.name}
+                  albumId={item?.album?.id}
+                  artistList={item?.artists}
+                  albumName={item?.album?.name}
+                  preview_url={item?.preview_url}
+                  trackId={item?.id}
+                  trackList={tracks?.tracks?.items}
+                />
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

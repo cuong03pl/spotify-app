@@ -33,43 +33,46 @@ function Show(props) {
     };
     fetchApi();
   }, [searchValue]);
-
   return (
-    <div className={cx("item")}>
-      <div className={cx("header")}>
-        <span className={cx("title")}>Podcast và chương trình</span>
-      </div>
-      <div className={cx("list")}>
-        <SwiperList>
-          {shows?.shows?.items.slice(0, 10).map((item, index) => {
-            return (
-              <SwiperSlide>
-                <AlbumItem
-                  key={index}
-                  id={item?.id}
-                  title={item?.name}
-                  description={item?.publisher}
-                  imgUrl={item?.images[0]?.url}
-                  show
-                  fallback={
-                    <FallBack
-                      icon={
-                        <ArtistFallBackIcon
-                          height={64}
-                          width={64}
-                          fill={"#b3b3b3"}
+    <>
+      {shows?.shows?.items?.length >= 5 && (
+        <div className={cx("item")}>
+          <div className={cx("header")}>
+            <span className={cx("title")}>Podcast và chương trình</span>
+          </div>
+          <div className={cx("list")}>
+            <SwiperList>
+              {shows?.shows?.items?.map((item, index) => {
+                return (
+                  <SwiperSlide>
+                    <AlbumItem
+                      key={index}
+                      id={item?.id}
+                      title={item?.name}
+                      description={item?.publisher}
+                      imgUrl={item?.images[0]?.url}
+                      show
+                      fallback={
+                        <FallBack
+                          icon={
+                            <ArtistFallBackIcon
+                              height={64}
+                              width={64}
+                              fill={"#b3b3b3"}
+                            />
+                          }
+                          artist
                         />
                       }
-                      artist
                     />
-                  }
-                />
-              </SwiperSlide>
-            );
-          })}
-        </SwiperList>
-      </div>
-    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </SwiperList>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

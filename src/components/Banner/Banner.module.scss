@@ -42,11 +42,13 @@
                 width: 100%;
                 span{
                     justify-content: space-between;
-                text-overflow: ellipsis;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;  
-                display: -webkit-box;
-                overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;  
+                    display: -webkit-box;
+                    overflow: hidden;
+                    white-space: unset;
+                    word-break: break-all;
                 }
                 .banner-btn {
                     display: none;

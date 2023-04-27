@@ -1,6 +1,6 @@
 .wrapper {
     background: var(--bg-base);
-    min-height: 100vh;
+    min-height: calc(100vh - var(--header-height));
 
 }
 .content {

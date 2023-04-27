@@ -14,14 +14,16 @@ import { useNavigate } from "react-router-dom";
 import { PlaylistFallBackIcon } from "components/Icon";
 import Spinner from "components/Spinner/Spinner";
 import FallBack from "components/FallBack/FallBack";
+import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
 function LibraryPlayListPage(props) {
   const [playlist, setPlaylist] = useState([]);
   const token = localStorage.getItem("token");
-  const [user, setUser] = useState();
+
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     setLoading(true);
@@ -37,16 +39,7 @@ function LibraryPlayListPage(props) {
     };
     fetchApi();
   }, []);
-  useEffect(() => {
-    const fetchApi = async () => {
-      await getUser({
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => setUser(res));
-    };
-    fetchApi();
-  }, [token]);
+
   useEffect(() => {
     window.document.title = `Spotify thư viện`;
   }, []);

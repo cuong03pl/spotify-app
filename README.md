@@ -1,4 +1,4 @@
-theem skeleton cho cac page --- ok
-thay đổi title các page ---- ok
-dùng meta tag
-tối ưu hóa web -- sửa lỗi giật ảnh + chỉnh lại kích thước skeleton --- ok
+tối ưu hóa web -- sửa lỗi giật ảnh
+-- chưa đăng nhập thì hiện thông báo + không cho sử dụng ---- ok
+
+nếu chưa có user thì hiện đăng nhập --- ok

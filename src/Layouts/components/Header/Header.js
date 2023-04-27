@@ -14,10 +14,11 @@ import Menu from "../../../components/Proper/Menu/Menu";
 import { getUser } from "../../../Services/Services";
 import { useEffect, useState } from "react";
 import Search from "../../../components/Search/Search";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearInputValue } from "./../../../components/Search/searchSlice";
 import Collection from "components/Collection/Collection";
 import queryString from "query-string";
+import { addUser } from "Auth/userSlice";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -60,6 +61,7 @@ function Header() {
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const [user, setUser] = useState();
+
   var response_type = "token";
   const scopes =
     "user-library-read user-follow-read playlist-modify-public playlist-modify-private user-library-modify user-follow-modify user-read-playback-state user-modify-playback-state user-read-currently-playing user-read-recently-played user-top-read";
@@ -70,11 +72,13 @@ function Header() {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then((res) => setUser(res));
+      }).then((res) => {
+        setUser(res);
+        dispatch(addUser(res));
+      });
     };
     fetchApi();
   }, [token]);
-
   useEffect(() => {
     if (!currentPath.includes("/search")) {
       dispatch(clearInputValue());
@@ -105,7 +109,7 @@ function Header() {
       </div>
 
       <div className={cx("header-right")}>
-        {token ? (
+        {user ? (
           <>
             <div className={cx("update-btn")}>
               <Button transparentBtn>Nâng cấp</Button>

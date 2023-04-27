@@ -31,28 +31,32 @@ function Album(props) {
     fetchApi();
   }, [searchValue]);
   return (
-    <div className={cx("item")}>
-      <div className={cx("header")}>
-        <span className={cx("title")}>Album</span>
-      </div>
-      <div className={cx("list")}>
-        <SwiperList>
-          {albums?.albums?.items.slice(0, 10).map((item, index) => {
-            return (
-              <SwiperSlide>
-                <AlbumItem
-                  key={index}
-                  id={item?.id}
-                  title={item?.name}
-                  datetime={item?.release_date.slice(0, 10).split("-")}
-                  imgUrl={item?.images[0].url}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </SwiperList>
-      </div>
-    </div>
+    <>
+      {albums?.albums?.items?.length >= 5 && (
+        <div className={cx("item")}>
+          <div className={cx("header")}>
+            <span className={cx("title")}>Album</span>
+          </div>
+          <div className={cx("list")}>
+            <SwiperList>
+              {albums?.albums?.items.map((item, index) => {
+                return (
+                  <SwiperSlide>
+                    <AlbumItem
+                      key={index}
+                      id={item?.id}
+                      title={item?.name}
+                      datetime={item?.release_date.slice(0, 10).split("-")}
+                      imgUrl={item?.images[0].url}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </SwiperList>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

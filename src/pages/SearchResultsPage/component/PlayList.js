@@ -17,7 +17,7 @@ function PlayList(props) {
   const [playlist, setPlaylist] = useState([]);
   const searchValue = useSelector((state) => state.search);
   const token = localStorage.getItem("token");
-  const [user, setUser] = useState();
+
   useEffect(() => {
     const fetchApi = async () => {
       await getSearch(`search`, {
@@ -36,29 +36,33 @@ function PlayList(props) {
   }, [searchValue]);
 
   return (
-    <div className={cx("item")}>
-      <div className={cx("header")}>
-        <span className={cx("title")}>Playlist</span>
-      </div>
-      <div className={cx("list")}>
-        <SwiperList>
-          {playlist?.playlists?.items?.slice(0, 10).map((item, index) => {
-            return (
-              <SwiperSlide>
-                <AlbumItem
-                  key={index}
-                  id={item?.id}
-                  title={item?.name}
-                  description={`Của ${item?.owner.display_name} `}
-                  imgUrl={item?.images[0]?.url}
-                  playlist
-                />
-              </SwiperSlide>
-            );
-          })}
-        </SwiperList>
-      </div>
-    </div>
+    <>
+      {playlist?.playlists?.items.length >= 5 && (
+        <div className={cx("item")}>
+          <div className={cx("header")}>
+            <span className={cx("title")}>Playlist</span>
+          </div>
+          <div className={cx("list")}>
+            <SwiperList>
+              {playlist?.playlists?.items?.map((item, index) => {
+                return (
+                  <SwiperSlide>
+                    <AlbumItem
+                      key={index}
+                      id={item?.id}
+                      title={item?.name}
+                      description={`Của ${item?.owner.display_name} `}
+                      imgUrl={item?.images[0]?.url}
+                      playlist
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </SwiperList>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

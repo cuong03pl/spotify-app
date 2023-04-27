@@ -71,6 +71,8 @@
             -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;  
             overflow: hidden;
+            white-space: unset;
+            word-break: break-all;
         }
         .des {
             font-size: 1.4rem;
@@ -82,6 +84,8 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;  
             overflow: hidden;
+            white-space: unset;
+            word-break: break-all;
         
         }
         .des + .des {

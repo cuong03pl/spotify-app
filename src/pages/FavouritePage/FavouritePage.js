@@ -12,11 +12,12 @@ import { deleteTracksThunk, getTracksThunk } from "./favouriteSlice";
 import Header from "components/Playlist/Header";
 const cx = classNames.bind(styles);
 function FavouritePage() {
-  const [user, setUser] = useState();
   const [tracks, setTracks] = useState([]);
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const state = useSelector((state) => state.favourite);
+  const user = useSelector((state) => state.user);
+
   useEffect(() => {
     const fetchApi = async () => {
       await dispatch(getTracksThunk(token))
@@ -31,16 +32,6 @@ function FavouritePage() {
     fetchApi();
   }, [state.total, token]);
 
-  useEffect(() => {
-    const fetchApi = async () => {
-      await getUser({
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => setUser(res));
-    };
-    fetchApi();
-  }, [token]);
   const handleUnlike = async (trackId) => {
     await dispatch(deleteTracksThunk({ trackId, token }))
       .unwrap()

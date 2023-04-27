@@ -18,12 +18,14 @@ import Menu from "./Menu/Menu";
 
 import styles from "./NavBar.module.scss";
 import ImageFallBack from "components/ImageFallBack/ImageFallBack";
+import { useSelector } from "react-redux";
 const cx = classNames.bind(styles);
 
 function NavBar() {
-  const [user, setUser] = useState();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+
   const handleCreatePlaylist = async () => {
     await postNewPlaylist(
       user?.id,
@@ -84,16 +86,6 @@ function NavBar() {
       activeIcon: <FavouriteIcon height={24} width={24} fill={"#fff"} />,
     },
   ];
-  useEffect(() => {
-    const fetchApi = async () => {
-      await getUser({
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => setUser(res));
-    };
-    fetchApi();
-  }, [token]);
 
   return (
     <div className={cx("wrapper")}>
