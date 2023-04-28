@@ -32,7 +32,7 @@ function ThumbnailsItem({ path, data }) {
         });
     };
     fetchApi();
-  }, []);
+  }, [path]);
   useEffect(() => {
     if (path.includes("shows")) {
       setIsShow(true);
@@ -40,7 +40,7 @@ function ThumbnailsItem({ path, data }) {
   }, [path]);
   return (
     <>
-      {!isLoading && (
+      {thumbnail?.images[0]?.url && (
         <Link
           to={isShow ? `/show/${thumbnail?.id}` : `/playlist/${thumbnail?.id}`}
           className={cx("thumbnail-item")}
@@ -48,7 +48,7 @@ function ThumbnailsItem({ path, data }) {
           <div className={cx("thumbnail-img")}>
             <ImageFallBack
               fallBack={image.fallback}
-              src={thumbnail?.images[0].url}
+              src={thumbnail?.images[0]?.url}
               alt=""
             />
           </div>
@@ -60,7 +60,7 @@ function ThumbnailsItem({ path, data }) {
           </div>
         </Link>
       )}
-      {isLoading && (
+      {!thumbnail?.images[0]?.url && (
         <Skeleton
           sx={{ bgcolor: "#ffffff1a" }}
           variant="rounded"

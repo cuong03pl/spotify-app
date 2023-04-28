@@ -32,7 +32,6 @@ function EpisodePage({}) {
   useEffect(() => {
     window.document.title = `${episodes?.name} - ${episodes?.show?.name} | Podcast on Spotify `;
   }, [episodes?.name, episodes?.show?.name]);
-  console.log(episodes);
   return (
     <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       {isLoading && <Spinner />}

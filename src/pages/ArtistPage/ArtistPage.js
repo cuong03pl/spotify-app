@@ -134,6 +134,7 @@ function ArtistPage({}) {
       },
     }).then((res) => setFollowed(false));
   };
+
   return (
     <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       {isLoading && <Spinner />}
@@ -178,52 +179,64 @@ function ArtistPage({}) {
               </div>
 
               <div className={cx("track")}>
-                <span className={cx("track-title")}>Phổ biến</span>
-                {topTracks?.tracks?.slice(0, size).map((item, index) => {
-                  return (
-                    <PlaylistItem
-                      key={index}
-                      i={index}
-                      durationTime={item?.duration_ms}
-                      title={item?.name}
-                      artistList={item?.artists}
-                      style={{ gridTemplateColumns: "5% 90% 5%" }}
-                      preview_url={item?.preview_url}
-                      trackId={item?.id}
-                      trackList={topTracks?.tracks}
-                    />
-                  );
-                })}
-                {seeAll ? (
-                  <span onClick={handleSeeLess} className={cx("see-more")}>
-                    Ẩn bớt
-                  </span>
-                ) : (
-                  <span onClick={handleSeeMore} className={cx("see-more")}>
-                    Xem thêm
-                  </span>
+                {topTracks?.tracks?.length > 0 && (
+                  <>
+                    <span className={cx("track-title")}>Phổ biến</span>
+                    {topTracks?.tracks?.slice(0, size).map((item, index) => {
+                      return (
+                        <PlaylistItem
+                          key={index}
+                          i={index}
+                          durationTime={item?.duration_ms}
+                          title={item?.name}
+                          artistList={item?.artists}
+                          style={{ gridTemplateColumns: "5% 90% 5%" }}
+                          preview_url={item?.preview_url}
+                          trackId={item?.id}
+                          trackList={topTracks?.tracks}
+                        />
+                      );
+                    })}
+
+                    {seeAll ? (
+                      <span onClick={handleSeeLess} className={cx("see-more")}>
+                        Ẩn bớt
+                      </span>
+                    ) : (
+                      <span onClick={handleSeeMore} className={cx("see-more")}>
+                        Xem thêm
+                      </span>
+                    )}
+                  </>
                 )}
               </div>
 
-              <span className={cx("title")}>Fan cũng thích</span>
-              <div className={cx("artist-list")}>
-                <SwiperList>
-                  {relatedArtists?.artists.slice(0, 10).map((item, index) => {
-                    return (
-                      <SwiperSlide>
-                        <AlbumItem
-                          key={index}
-                          id={item?.id}
-                          title={item?.name}
-                          description={item?.type}
-                          imgUrl={item?.images[0]?.url}
-                          artistItem
-                        />
-                      </SwiperSlide>
-                    );
-                  })}
-                </SwiperList>
-              </div>
+              {relatedArtists?.artists?.length > 0 && (
+                <>
+                  <span className={cx("title")}>Fan cũng thích</span>
+
+                  <div className={cx("artist-list")}>
+                    <SwiperList>
+                      {relatedArtists?.artists
+                        .slice(0, 10)
+                        .map((item, index) => {
+                          return (
+                            <SwiperSlide>
+                              <AlbumItem
+                                key={index}
+                                id={item?.id}
+                                title={item?.name}
+                                description={item?.type}
+                                imgUrl={item?.images[0]?.url}
+                                artistItem
+                              />
+                            </SwiperSlide>
+                          );
+                        })}
+                    </SwiperList>
+                  </div>
+                </>
+              )}
 
               <AlbumList
                 id={id}

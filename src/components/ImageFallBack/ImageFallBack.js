@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 
 import styles from "./ImageFallBack.module.scss";
+import LazyLoad from "react-lazyload";
 const cx = classNames.bind(styles);
 function ImageFallBack({ src, fallBack }) {
   const [fallBackSrc, setFallBackSrc] = useState("");
@@ -15,7 +16,9 @@ function ImageFallBack({ src, fallBack }) {
     setFallBackSrc(fallBack);
   };
   return (
-    <img src={fallBackSrc ? fallBack : src} alt="" onError={handleFallback} />
+    <LazyLoad once offset={200}>
+      <img src={fallBackSrc ? fallBack : src} alt="" onError={handleFallback} />
+    </LazyLoad>
   );
 }
 
