@@ -73,7 +73,6 @@ function ShowPage() {
   useEffect(() => {
     window.document.title = `${shows?.name} | Podcast on Spotify`;
   }, [shows?.name]);
-  console.log(shows);
   const handleFollow = async () => {
     await putFollowShows("", {
       params: {

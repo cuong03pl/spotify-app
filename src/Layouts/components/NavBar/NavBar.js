@@ -1,7 +1,6 @@
 import classNames from "classnames/bind";
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getUser, postNewPlaylist } from "Services/Services";
+import { postNewPlaylist } from "Services/Services";
 import { image } from "../../../assets/images";
 import {
   CreateListIcon,
@@ -19,9 +18,10 @@ import Menu from "./Menu/Menu";
 import styles from "./NavBar.module.scss";
 import ImageFallBack from "components/ImageFallBack/ImageFallBack";
 import { useSelector } from "react-redux";
+import { memo } from "react";
 const cx = classNames.bind(styles);
 
-function NavBar() {
+const NavBar = memo(function NavBar() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -86,7 +86,6 @@ function NavBar() {
       activeIcon: <FavouriteIcon height={24} width={24} fill={"#fff"} />,
     },
   ];
-
   return (
     <div className={cx("wrapper")}>
       <Link to={"/"} className={cx("logo")}>
@@ -103,6 +102,6 @@ function NavBar() {
       </div>
     </div>
   );
-}
+});
 
 export default NavBar;

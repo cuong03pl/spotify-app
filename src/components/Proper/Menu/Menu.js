@@ -16,6 +16,7 @@ function Menu({ children, data, placement, moreMenu }) {
   let classes = cx("wrapper", {
     moreMenu,
   });
+
   return (
     <Tippy
       interactive={true}

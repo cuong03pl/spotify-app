@@ -11,17 +11,15 @@ import { Link } from "react-router-dom";
 import { CheckUsersSavedTracks } from "Services/Services";
 import { LikeIcon, LoveSolidIcon } from "../Icon";
 import styles from "./PlayingBarInfo.module.scss";
-import ImageFallBack from "components/ImageFallBack/ImageFallBack";
-import { image } from "assets/images";
+import { memo } from "react";
 const cx = classNames.bind(styles);
 
-function PlayingBarInfo({ data }) {
+const PlayingBarInfo = memo(function PlayingBarInfo({ data }) {
   const token = localStorage.getItem("token");
   const [isLiked, setIsLiked] = useState();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.favourite);
   const player = useSelector((state) => state.player);
-
   useEffect(() => {
     const fetchApi = async () => {
       await CheckUsersSavedTracks({
@@ -115,6 +113,6 @@ function PlayingBarInfo({ data }) {
       )}
     </div>
   );
-}
+});
 
 export default PlayingBarInfo;

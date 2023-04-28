@@ -129,8 +129,7 @@ function PlayListPage() {
       },
     }).then((res) => setFollowed(false));
   };
-  console.log(playlist);
-  console.log(user?.id);
+
   return (
     <div style={{ minHeight: "100vh" }} className={cx("wrapper")}>
       {isLoading && <Spinner />}

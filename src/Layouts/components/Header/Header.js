@@ -84,7 +84,6 @@ function Header() {
       dispatch(clearInputValue());
     }
   }, [currentPath]);
-  console.log(user);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header-left")}>

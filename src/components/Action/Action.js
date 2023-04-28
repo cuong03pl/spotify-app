@@ -6,16 +6,8 @@ import Button from "../Button/Button";
 import Menu from "../Proper/Menu/Menu";
 import { FavouriteIcon, LikeThinIcon, MoreIcon } from "../Icon";
 
-import { useDispatch, useSelector } from "react-redux";
 const cx = classNames.bind(styles);
-const MENU_ITEMS_1 = [
-  {
-    title: "Sao chép liên kết chương trình ",
-  },
-  {
-    title: "Mở trong ứng dụng máy tính",
-  },
-];
+
 const MENU_ITEMS_2 = [
   {
     title: "Sao chép liên kết chương trình ",
@@ -24,11 +16,7 @@ const MENU_ITEMS_2 = [
     title: "Mở trong ứng dụng máy tính",
   },
 ];
-function Action({ id, url, onFollow, onUnfollow, isFollow, isUserPlaylist }) {
-  const [playing, setPlaying] = useState(true);
-  const state = useSelector((state) => state.player);
-
-  const dispatch = useDispatch();
+function Action({ onFollow, onUnfollow, isFollow }) {
   const handleFollow = () => {
     if (onFollow) {
       onFollow();
@@ -40,14 +28,6 @@ function Action({ id, url, onFollow, onUnfollow, isFollow, isUserPlaylist }) {
     }
   };
 
-  useEffect(() => {
-    if (state.id === id) {
-      setPlaying(true);
-    } else {
-      setPlaying(false);
-    }
-  }, [id, state.id]);
-  console.log(isUserPlaylist);
   return (
     <div className={cx("action")}>
       {/* {!isUserPlaylist && ( */}

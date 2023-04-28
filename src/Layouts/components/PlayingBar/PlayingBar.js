@@ -126,11 +126,9 @@ function PlayingBar() {
 
             Authorization: `Bearer ${token}`,
           },
-        })
-          .then((res) => {
-            setCurrentTrack(res);
-          })
-          .catch((err) => console.log(err));
+        }).then((res) => {
+          setCurrentTrack(res);
+        });
       } else {
         await getEpisode(state?.trackList[state?.index]?.id || state?.id, {
           headers: {
@@ -139,11 +137,9 @@ function PlayingBar() {
 
             Authorization: `Bearer ${token}`,
           },
-        })
-          .then((res) => {
-            setCurrentTrack(res);
-          })
-          .catch((err) => console.log(err));
+        }).then((res) => {
+          setCurrentTrack(res);
+        });
       }
     };
     fetchApi();
@@ -166,6 +162,7 @@ function PlayingBar() {
             isReplay={isReplay}
             audio={audio}
           />
+
           <PlayingBarRight audio={audio} />
           <audio
             ref={audio}

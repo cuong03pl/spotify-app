@@ -27,9 +27,7 @@ function ThumbnailsItem({ path, data }) {
           setThumbnail(res);
           setLoading(false);
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     };
     fetchApi();
   }, [path]);
@@ -38,6 +36,7 @@ function ThumbnailsItem({ path, data }) {
       setIsShow(true);
     } else setIsShow(false);
   }, [path]);
+
   return (
     <>
       {thumbnail?.images[0]?.url && (

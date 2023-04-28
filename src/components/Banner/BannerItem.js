@@ -29,9 +29,7 @@ function BannerItem({ path }) {
           setAlbum(res);
           setLoading(false);
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     };
     fetchApi();
   }, [token]);
@@ -47,7 +45,7 @@ function BannerItem({ path }) {
         <Skeleton
           sx={{ bgcolor: "#ffffff1a" }}
           variant="rounded"
-          width={368}
+          width={1000}
           height={80}
           animation="wave"
           className={cx("skeleton")}

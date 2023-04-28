@@ -79,42 +79,50 @@ function ProfilePage(props) {
             }
           />
           <div className={cx("content")}>
-            <span className={cx("title")}>Nghệ sĩ hàng đầu tháng này</span>
-            <div className={cx("list")}>
-              <SwiperList>
-                {topArtists?.map((item, index) => {
+            {topArtists?.length > 0 && (
+              <>
+                <span className={cx("title")}>Nghệ sĩ hàng đầu tháng này</span>
+                <div className={cx("list")}>
+                  <SwiperList>
+                    {topArtists?.map((item, index) => {
+                      return (
+                        <SwiperSlide>
+                          <AlbumItem
+                            key={index}
+                            id={item?.id}
+                            title={item?.name}
+                            description={item?.type}
+                            imgUrl={item?.images[0]?.url}
+                            artistItem
+                          />
+                        </SwiperSlide>
+                      );
+                    })}
+                  </SwiperList>
+                </div>
+              </>
+            )}
+
+            {topTracks && (
+              <>
+                <span className={cx("title")}>Bản nhạc hàng đầu tháng này</span>
+                {topTracks?.map((item, index) => {
                   return (
-                    <SwiperSlide>
-                      <AlbumItem
-                        key={index}
-                        id={item?.id}
-                        title={item?.name}
-                        description={item?.type}
-                        imgUrl={item?.images[0]?.url}
-                        artistItem
-                      />
-                    </SwiperSlide>
+                    <PlaylistItem
+                      key={index}
+                      i={index}
+                      durationTime={item?.duration_ms}
+                      title={item?.name}
+                      artistList={item?.artists}
+                      style={{ gridTemplateColumns: "5% 90% 5%" }}
+                      preview_url={item?.preview_url}
+                      trackId={item?.id}
+                      trackList={topTracks}
+                    />
                   );
                 })}
-              </SwiperList>
-            </div>
-
-            <span className={cx("title")}>Bản nhạc hàng đầu tháng này</span>
-            {topTracks?.map((item, index) => {
-              return (
-                <PlaylistItem
-                  key={index}
-                  i={index}
-                  durationTime={item?.duration_ms}
-                  title={item?.name}
-                  artistList={item?.artists}
-                  style={{ gridTemplateColumns: "5% 90% 5%" }}
-                  preview_url={item?.preview_url}
-                  trackId={item?.id}
-                  trackList={topTracks}
-                />
-              );
-            })}
+              </>
+            )}
           </div>
         </>
       )}

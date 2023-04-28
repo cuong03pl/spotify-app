@@ -17,7 +17,6 @@ function AuthContext({ children }) {
         window.location.hash = "";
         window.location.reload();
       }
-      console.log(hash);
     };
     getToken();
   });
