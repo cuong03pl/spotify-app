@@ -87,7 +87,7 @@ function Header() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header-left")}>
-        <div className={cx("icon")}>
+        {/* <div className={cx("icon")}>
           <Tippy arrow={false} content="Quay lại">
             <Button
               circleBtn
@@ -102,7 +102,7 @@ function Header() {
               leftIcon={<NextIcon height={22} width={22} fill={"#fff"} />}
             ></Button>
           </Tippy>
-        </div>
+        </div> */}
         {currentPath.includes("/search") && <Search />}
         {currentPath.includes("/collection") && <Collection />}
       </div>
