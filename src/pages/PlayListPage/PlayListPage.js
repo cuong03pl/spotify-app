@@ -137,7 +137,7 @@ function PlayListPage() {
         <>
           <Intro
             category={playlist?.type}
-            imgUrl={playlist?.images[0]?.url}
+            imgUrl={Array.isArray(playlist?.images) && playlist?.images[0]?.url ? playlist?.images[0]?.url : ""}
             title={playlist?.name}
             publisher={playlist?.publisher}
             description={playlist?.description}
@@ -185,7 +185,12 @@ function PlayListPage() {
                   return (
                     <PlaylistItem
                       key={index}
-                      imgURL={item?.album?.images[0]?.url}
+                     
+                      imgUrl={
+                        Array.isArray(item?.images) && item?.images[0]?.url
+                          ? item?.images[0]?.url
+                          : ""
+                      }
                       title={item?.name}
                       albumId={item?.album?.id}
                       artistList={item?.artists}

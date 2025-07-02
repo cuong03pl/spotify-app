@@ -41,7 +41,7 @@ function ThumbnailsItem({ path, data }) {
     <>
       {thumbnail?.images[0]?.url && (
         <Link
-          to={isShow ? `/show/${thumbnail?.id}` : `/playlist/${thumbnail?.id}`}
+          to={isShow ? `/show/${thumbnail?.id}` : `/albums/${thumbnail?.id}`}
           className={cx("thumbnail-item")}
         >
           <div className={cx("thumbnail-img")}>

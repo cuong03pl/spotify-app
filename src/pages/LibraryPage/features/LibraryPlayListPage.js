@@ -94,7 +94,11 @@ function LibraryPlayListPage(props) {
                       id={item?.id}
                       title={item?.name}
                       description={`Của ${item?.owner.display_name} `}
-                      imgUrl={item?.images[0]?.url}
+                      imgUrl={
+                        Array.isArray(item?.images) && item?.images[0]?.url
+                          ? item?.images[0]?.url
+                          : ""
+                      }
                       playlist
                       fallback={
                         <FallBack

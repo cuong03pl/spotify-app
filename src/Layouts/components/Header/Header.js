@@ -64,7 +64,7 @@ function Header() {
 
   var response_type = "token";
   const scopes =
-    "user-library-read user-follow-read playlist-modify-public playlist-modify-private user-library-modify user-follow-modify user-read-playback-state user-modify-playback-state user-read-currently-playing user-read-recently-played user-top-read";
+    "playlist-read-private playlist-read-collaborative user-library-read user-follow-read playlist-modify-public playlist-modify-private user-library-modify user-follow-modify user-read-playback-state user-modify-playback-state user-read-currently-playing user-read-recently-played user-top-read";
   const currentPath = window.location.pathname;
   useEffect(() => {
     const fetchApi = async () => {

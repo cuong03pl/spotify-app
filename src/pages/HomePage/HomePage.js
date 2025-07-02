@@ -8,12 +8,12 @@ const cx = classNames.bind(styles);
 
 function HomePage() {
   const PATH_LISTS = [
-    "playlists/37i9dQZF1DX29nkpzsmQhh",
+    "playlists/1QBQZo09U7Al3NRhv2TXUx",
     "shows/4wHBViHYk6eG53SAuvU7vr",
-    "playlists/37i9dQZF1DWVOaOWiVD1Lf",
+    "playlists/7x1G4GGTxZieeXIQxWHQKb",
     "shows/2tSnlvxQFKXWlNm7UkYcpe",
-    "playlists/37i9dQZF1EIXqYrHa9wbxP",
-    "playlists/37i9dQZF1E39Nj4cAIW2dL",
+    "shows/7Eo5RqrItEwmuwSJv5n6QZ",
+    "shows/1gH67pqJCPLSqkogZmjlN8",
   ];
 
   const PATH_LISTS1 = [
@@ -29,52 +29,43 @@ function HomePage() {
       ],
       title: "Chương trình của bạn ",
     },
+    
     {
       path: [
-        "playlists/37i9dQZF1E4ENzBpSxzc0j",
-        "playlists/37i9dQZF1DX0F4i7Q9pshJ",
-        "playlists/37i9dQZF1DX4g8Gs5nUhpp",
-        "playlists/37i9dQZF1DWVOaOWiVD1Lf",
-        "playlists/37i9dQZF1DWYLMi9ZNZUaz",
-        "playlists/37i9dQZF1DXbnGLxyfE2f5",
+        "albums/1wmnEWgcDdCcOujQpLwYxc",
+        "albums/10Dwjqs7dJNxn2g1PkvRCw",
+        "albums/2DCbDdIBNRxx0SxLtgyd4D",
+        "albums/03ZYR4zwCrkSsXTROnK2d0",
+        "albums/1AaxmI2e1HRhbwe9XJGPnT",
+        "albums/4faMbTZifuYsBllYHZsFKJ",
+        "albums/7kFyd5oyJdVX2pIi6P4iHE",
       ],
-      title: "Khám phá thêm nhạc của Madihu ",
+      title: "Album phổ biến",
     },
     {
       path: [
-        "playlists/37i9dQZF1E39Nj4cAIW2dL",
-        "playlists/37i9dQZF1E395qrlz7ANlx",
-        "playlists/37i9dQZF1E35827Vojjvm6",
-        "playlists/37i9dQZF1E37S23lOyHeC0",
-        "playlists/37i9dQZF1E3985PzO9KM4J",
-        "playlists/37i9dQZEVXcNODz12DP8Gn",
-        "playlists/37i9dQZEVXbmvGUCI8TyAX",
+        "albums/3a9qH2VEsSiOZvMrjaS0Nu",
+        "albums/79ONNoS4M9tfIA1mYLBYVX",
+        "albums/6pOiDiuDQqrmo5DbG0ZubR",
+        "albums/1nAQbHeOWTfQzbOoFrvndW",
+        "albums/2MHUaRi9OCyTN02SoyRRBJ",
+        "albums/5J4SS8wTmXdyIEVYjmHzpZ",
+        "albums/6DEjYFkNZh67HP7R9PSZvv",
       ],
-      title: "Dành Cho Bạn ",
+      title: "Album đề xuất cho bạn",
     },
     {
       path: [
-        "playlists/37i9dQZF1DX1e2VSJFudND",
-        "playlists/37i9dQZF1DWSqmBTGDYngZ",
-        "playlists/37i9dQZF1DWZd79rJ6a7lp",
-        "playlists/37i9dQZF1DX8ndGHjS8CWd",
-        "playlists/37i9dQZF1DWYshp3qt6eyW",
-        "playlists/37i9dQZF1DX0PE4eN3rxsW",
-        "playlists/37i9dQZF1DWWQRwui0ExPn",
+        "albums/1P7wZAMsCTQtRBdlEsStWN",
+        "albums/3pprs1r3mH3UhU23TUHBWJ",
+        "albums/1vi1WySkgPGkbR8NnQzlXu",
+        "albums/1vWMw6pu3err6qqZzI3RhH",
+        "albums/2KTHAp1v2iCntbFjNAOCUb",
+        "albums/0LM9Cm43Sug8Hfpm84qmt6",
       ],
-      title: "Tâm Trạng",
+      title: "Dành Cho Bạn",
     },
-    {
-      path: [
-        "playlists/37i9dQZF1DWYXyOUMgURXb",
-        "playlists/37i9dQZF1DXbnGLxyfE2f5",
-        "playlists/37i9dQZF1DX22YYiDtiJfD",
-        "playlists/37i9dQZF1DX29nkpzsmQhh",
-        "playlists/37i9dQZF1DX0Bm9rVRYPcY",
-        "playlists/37i9dQZF1DXd6eRC1rN02a",
-      ],
-      title: "Hoài Niệm",
-    },
+    
   ];
   useEffect(() => {
     window.document.title = `Spotify - Web Player: Music for everyone `;
